@@ -54,6 +54,12 @@ a:hover{text-decoration:underline;}
 .ov-stocks{display:flex;flex-wrap:wrap;gap:7px;}
 .ov-stock{background:#e8f0fe;color:#1967d2;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;text-decoration:none;}
 .ov-stock:hover{background:#1967d2;color:#fff;}
+/* 热议话题标签 */
+.ov-topic-row{margin-top:10px;}
+.ov-topic-label{font-size:10px;font-weight:600;color:var(--lt);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;}
+.ov-topic-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.topic-tag{background:#f0f4ff;color:#374785;font-size:12px;padding:4px 9px;border-radius:12px;display:inline-flex;align-items:center;gap:4px;}
+.topic-cnt{font-size:10px;background:rgba(55,71,133,.15);padding:1px 5px;border-radius:6px;font-weight:700;}
 /* 排行 */
 .ov-rank-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:12px;line-height:1.4;}
 .ov-medal{font-size:14px;flex-shrink:0;width:20px;text-align:center;}
@@ -224,11 +230,12 @@ tr:hover td{background:#fef9f5;}
 </div>
 <div class="ov-detail-row">
   <div class="ov-panel">
-    <div class="ov-panel-title">📅 内容节奏</div>
-    <div class="ov-item"><span class="ov-icon">📝</span><span class="ov-item-l">主要形式</span><span class="ov-item-v">文章 · 726 篇</span></div>
+    <div class="ov-panel-title">📝 本周内容总结</div>
     <div class="ov-item"><span class="ov-icon">📈</span><span class="ov-item-l">发帖高峰</span><span class="ov-item-v">4/10(五) · 169 条</span></div>
-    <div class="ov-item ov-item-note"><span class="ov-icon">💡</span><span class="ov-item-note-text">当日美国3月CPI超预期，拖累美股；港股受稳定币概念股及电池股带动高收，市场热度集中爆发。</span></div>
-    <div class="ov-item"><span class="ov-icon">📅</span><span class="ov-item-l">周末发帖</span><span class="ov-item-v">周六 47 条 · 周日 51 条</span></div>
+    <div class="ov-topic-row">
+      <div class="ov-topic-label">热议话题</div>
+      <div class="ov-topic-tags"><span class="topic-tag">加密市场<span class="topic-cnt">12</span></span><span class="topic-tag">霍尔木兹<span class="topic-cnt">11</span></span><span class="topic-tag">港股打新<span class="topic-cnt">10</span></span><span class="topic-tag">美伊停火<span class="topic-cnt">9</span></span><span class="topic-tag">思格新能<span class="topic-cnt">8</span></span><span class="topic-tag">长光辰芯<span class="topic-cnt">7</span></span><span class="topic-tag">群核科技<span class="topic-cnt">7</span></span><span class="topic-tag">量子计算<span class="topic-cnt">5</span></span><span class="topic-tag">加密货币<span class="topic-cnt">5</span></span><span class="topic-tag">比特币<span class="topic-cnt">5</span></span><span class="topic-tag">永续合约<span class="topic-cnt">5</span></span><span class="topic-tag">地缘博弈<span class="topic-cnt">4</span></span><span class="topic-tag">特朗普<span class="topic-cnt">4</span></span><span class="topic-tag">基础设施<span class="topic-cnt">4</span></span><span class="topic-tag">第二轮<span class="topic-cnt">4</span></span><span class="topic-tag">打新计划<span class="topic-cnt">4</span></span><span class="topic-tag">贝莱德<span class="topic-cnt">4</span></span><span class="topic-tag">预测市场<span class="topic-cnt">4</span></span><span class="topic-tag">情报局<span class="topic-cnt">4</span></span><span class="topic-tag">日市场综<span class="topic-cnt">4</span></span></div>
+    </div>
   </div>
   <div class="ov-panel">
     <div class="ov-panel-title">🔥 热门标的</div>
