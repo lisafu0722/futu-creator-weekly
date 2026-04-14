@@ -23,33 +23,45 @@ a:hover{text-decoration:underline;}
 .overview-box h2::before{content:'';display:inline-block;width:4px;height:16px;background:var(--p);border-radius:2px;}
 .overview-p{font-size:13px;color:#444;}
 .overview-p strong{color:var(--p);}
-/* KPI 数字行 */
-.ov-kpi-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px;}
-.ov-kpi{background:#f8fafc;border-radius:10px;padding:14px 8px;text-align:center;border:1px solid var(--bdr);}
-.ov-kpi-n{font-size:26px;font-weight:700;color:var(--p);line-height:1;}
-.ov-kpi-u{font-size:14px;font-weight:400;}
-.ov-kpi-l{font-size:11px;color:var(--lt);margin-top:4px;}
+/* KPI 行 - 分两组 */
+.ov-kpi-row{display:flex;gap:0;margin-bottom:16px;background:#f8fafc;border:1px solid var(--bdr);border-radius:12px;overflow:hidden;}
+.ov-kpi-group{flex:1;padding:14px 16px;}
+.ov-kpi-group:first-child{border-right:1px solid var(--bdr);}
+.ov-kpi-label{font-size:11px;font-weight:600;color:var(--lt);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;}
+.ov-kpi-pair{display:flex;gap:0;}
+.ov-kpi-divider{width:1px;background:var(--bdr);}
+.ov-kpi{flex:1;text-align:center;padding:4px 8px;border-right:1px solid var(--bdr);}
+.ov-kpi:last-child{border-right:none;}
+.ov-kpi-n{font-size:22px;font-weight:700;color:var(--p);line-height:1;}
+.ov-kpi-u{font-size:12px;font-weight:400;}
+.ov-kpi-l{font-size:10px;color:var(--lt);margin-top:3px;}
+.ov-kpi-dim .ov-kpi-n{color:#90a4ae;}
 /* 三栏详情 */
-.ov-detail-row{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:12px;}
+.ov-detail-row{display:grid;grid-template-columns:1.1fr 0.9fr 1.2fr;gap:12px;}
 .ov-panel{background:#f8fafc;border-radius:10px;padding:14px 16px;border:1px solid var(--bdr);}
-.ov-panel-title{font-size:13px;font-weight:600;color:var(--sec);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--bdr);}
-.ov-item{display:flex;align-items:center;gap:6px;margin-bottom:7px;font-size:12px;}
+.ov-panel-title{font-size:13px;font-weight:600;color:var(--sec);margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid var(--bdr);}
+.ov-item{display:flex;align-items:flex-start;gap:5px;margin-bottom:8px;font-size:12px;line-height:1.5;}
 .ov-item:last-child{margin-bottom:0;}
-.ov-item-l{color:var(--lt);white-space:nowrap;min-width:52px;}
+.ov-icon{font-size:13px;flex-shrink:0;margin-top:1px;}
+.ov-item-l{color:var(--lt);white-space:nowrap;min-width:52px;flex-shrink:0;}
 .ov-item-v{color:var(--sec);font-weight:500;}
 .ov-item-link{color:var(--p);font-weight:500;}
 .ov-item-extra{margin-top:8px;padding-top:8px;border-top:1px solid var(--bdr);}
-/* 热门股票标签 */
-.ov-stocks{display:flex;flex-wrap:wrap;gap:6px;}
-.ov-stock{background:#e8f0fe;color:#1967d2;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:500;}
+.ov-item-note{background:#fffde7;border-radius:6px;padding:6px 8px;margin-top:4px;}
+.ov-item-note-text{color:#6d4c00;font-size:11px;line-height:1.6;}
+/* 热门股票 */
+.ov-stocks{display:flex;flex-wrap:wrap;gap:7px;}
+.ov-stock{background:#e8f0fe;color:#1967d2;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;text-decoration:none;}
+.ov-stock:hover{background:#1967d2;color:#fff;}
 /* 排行 */
-.ov-rank-row{display:flex;align-items:center;gap:6px;margin-bottom:7px;font-size:12px;}
-.ov-rank{width:18px;height:18px;border-radius:50%;background:var(--p);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ov-rank-row:nth-child(2) .ov-rank,.ov-rank-row:nth-child(3) .ov-rank{background:#90a4ae;}
+.ov-rank-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:12px;line-height:1.4;}
+.ov-medal{font-size:14px;flex-shrink:0;width:20px;text-align:center;}
+.ov-rank{width:18px;height:18px;border-radius:50%;background:#cfd8dc;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .ov-rank-name{flex:1;color:var(--sec);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .ov-rank-val{color:var(--p);font-weight:600;white-space:nowrap;}
 .ov-rank-sub{color:var(--lt);font-size:10px;white-space:nowrap;}
-@media(max-width:900px){.ov-kpi-row{grid-template-columns:repeat(3,1fr);} .ov-detail-row{grid-template-columns:1fr;} }
+.ov-rank-divider{border-top:1px solid var(--bdr);margin:8px 0;}
+@media(max-width:900px){.ov-kpi-row{flex-direction:column;} .ov-detail-row{grid-template-columns:1fr;} }
 
 /* 统计卡片 */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;padding:0 24px 16px;max-width:1200px;margin:0 auto;}
@@ -174,29 +186,42 @@ tr:hover td{background:#fef9f5;}
   <h2>本周总结</h2>
   <div class="overview-p">
 <div class="ov-kpi-row">
-  <div class="ov-kpi"><div class="ov-kpi-n">90<span class="ov-kpi-u">/175</span></div><div class="ov-kpi-l">活跃创作者</div></div>
-  <div class="ov-kpi"><div class="ov-kpi-n">887</div><div class="ov-kpi-l">总发帖量</div></div>
-  <div class="ov-kpi"><div class="ov-kpi-n">5305<span class="ov-kpi-u">万</span></div><div class="ov-kpi-l">总浏览量</div></div>
-  <div class="ov-kpi"><div class="ov-kpi-n">5,254</div><div class="ov-kpi-l">总点赞数</div></div>
-  <div class="ov-kpi"><div class="ov-kpi-n">1,670</div><div class="ov-kpi-l">总评论数</div></div>
-  <div class="ov-kpi"><div class="ov-kpi-n">51<span class="ov-kpi-u">%</span></div><div class="ov-kpi-l">活跃率</div></div>
+  <div class="ov-kpi-group">
+    <div class="ov-kpi-label">创作者活跃</div>
+    <div class="ov-kpi-pair">
+      <div class="ov-kpi"><div class="ov-kpi-n">90<span class="ov-kpi-u">/175</span></div><div class="ov-kpi-l">活跃创作者</div></div>
+      <div class="ov-kpi"><div class="ov-kpi-n">51<span class="ov-kpi-u">%</span></div><div class="ov-kpi-l">活跃率</div></div>
+      <div class="ov-kpi ov-kpi-dim"><div class="ov-kpi-n">85</div><div class="ov-kpi-l">未活跃</div></div>
+    </div>
+  </div>
+  <div class="ov-kpi-divider"></div>
+  <div class="ov-kpi-group">
+    <div class="ov-kpi-label">内容数据</div>
+    <div class="ov-kpi-pair">
+      <div class="ov-kpi"><div class="ov-kpi-n">887</div><div class="ov-kpi-l">总发帖量</div></div>
+      <div class="ov-kpi"><div class="ov-kpi-n">5305<span class="ov-kpi-u">万</span></div><div class="ov-kpi-l">总浏览量</div></div>
+      <div class="ov-kpi"><div class="ov-kpi-n">5,254</div><div class="ov-kpi-l">点赞</div></div>
+      <div class="ov-kpi"><div class="ov-kpi-n">1,670</div><div class="ov-kpi-l">评论</div></div>
+    </div>
+  </div>
 </div>
 <div class="ov-detail-row">
   <div class="ov-panel">
     <div class="ov-panel-title">📅 内容节奏</div>
-    <div class="ov-item"><span class="ov-item-l">主要形式</span><span class="ov-item-v">文章 · 726 篇</span></div>
-    <div class="ov-item"><span class="ov-item-l">发帖高峰</span><span class="ov-item-v">4/10(五) · 209 条</span></div>
-    <div class="ov-item"><span class="ov-item-l">周末发帖</span><span class="ov-item-v">周六 60 条 · 周日 61 条</span></div>
-    <div class="ov-item"><span class="ov-item-l">未活跃</span><span class="ov-item-v">85 位本周未发布</span></div>
+    <div class="ov-item"><span class="ov-icon">📝</span><span class="ov-item-l">主要形式</span><span class="ov-item-v">文章 · 726 篇</span></div>
+    <div class="ov-item"><span class="ov-icon">📈</span><span class="ov-item-l">发帖高峰</span><span class="ov-item-v">4/10(五) · 209 条</span></div>
+    <div class="ov-item ov-item-note"><span class="ov-icon">💡</span><span class="ov-item-note-text">当日美国3月CPI超预期，拖累美股；港股受稳定币概念股及电池股带动高收，市场热度集中爆发。</span></div>
+    <div class="ov-item"><span class="ov-icon">📅</span><span class="ov-item-l">周末发帖</span><span class="ov-item-v">周六 60 条 · 周日 61 条</span></div>
   </div>
   <div class="ov-panel">
     <div class="ov-panel-title">🔥 热门标的</div>
-    <div class="ov-stocks"><span class="ov-stock">特斯拉</span><span class="ov-stock">阿里巴巴-W</span><span class="ov-stock">恒生指數</span><span class="ov-stock">納斯達克100指數期貨主連 </span><span class="ov-stock">英偉達</span></div>
+    <div class="ov-stocks"><a class="ov-stock" href="https://q.futunn.com/search?keyword=特斯拉" target="_blank">特斯拉</a><a class="ov-stock" href="https://q.futunn.com/search?keyword=阿里巴巴-W" target="_blank">阿里巴巴-W</a><a class="ov-stock" href="https://q.futunn.com/search?keyword=恒生指數" target="_blank">恒生指數</a><a class="ov-stock" href="https://q.futunn.com/search?keyword=納斯達克100指數期貨主連 " target="_blank">納斯達克100指數期貨主連 </a><a class="ov-stock" href="https://q.futunn.com/search?keyword=英偉達" target="_blank">英偉達</a></div>
   </div>
   <div class="ov-panel">
-    <div class="ov-panel-title">⭐ 发帖量 Top 5</div>
-    <div class="ov-rank-row"><span class="ov-rank">1</span><a class="ov-rank-name" href="https://q.futunn.com/profile/28424063" target="_blank">链捕手ChainCatcher</a><span class="ov-rank-val">278 篇</span><span class="ov-rank-sub">276万浏览</span></div><div class="ov-rank-row"><span class="ov-rank">2</span><a class="ov-rank-name" href="https://q.futunn.com/profile/7388642" target="_blank">深潮 TechFlow</a><span class="ov-rank-val">219 篇</span><span class="ov-rank-sub">220万浏览</span></div><div class="ov-rank-row"><span class="ov-rank">3</span><a class="ov-rank-name" href="https://q.futunn.com/profile/33792705" target="_blank">PANews</a><span class="ov-rank-val">50 篇</span><span class="ov-rank-sub">45万浏览</span></div><div class="ov-rank-row"><span class="ov-rank">4</span><a class="ov-rank-name" href="https://q.futunn.com/profile/26294087" target="_blank">Techub News</a><span class="ov-rank-val">28 篇</span><span class="ov-rank-sub">29万浏览</span></div><div class="ov-rank-row"><span class="ov-rank">5</span><a class="ov-rank-name" href="https://q.futunn.com/profile/18799623" target="_blank">Leo Jesse Livermore</a><span class="ov-rank-val">23 篇</span><span class="ov-rank-sub">222万浏览</span></div>
-    <div class="ov-item ov-item-extra"><span class="ov-item-l">最高浏览</span><a class="ov-item-link" href="https://q.futunn.com/profile/17296331" target="_blank">孫子的末代傳人</a><span class="ov-item-v">493 万次</span></div>
+    <div class="ov-panel-title">⭐ 发帖量 Top 10</div>
+    <div class="ov-rank-row"><span class="ov-medal">🥇</span><a class="ov-rank-name" href="https://q.futunn.com/profile/28424063" target="_blank">链捕手ChainCatcher</a><span class="ov-rank-val">278篇</span><span class="ov-rank-sub">276.0万浏览</span></div><div class="ov-rank-row"><span class="ov-medal">🥈</span><a class="ov-rank-name" href="https://q.futunn.com/profile/7388642" target="_blank">深潮 TechFlow</a><span class="ov-rank-val">219篇</span><span class="ov-rank-sub">220.0万浏览</span></div><div class="ov-rank-row"><span class="ov-medal">🥉</span><a class="ov-rank-name" href="https://q.futunn.com/profile/33792705" target="_blank">PANews</a><span class="ov-rank-val">50篇</span><span class="ov-rank-sub">45.0万浏览</span></div><div class="ov-rank-row"><span class="ov-medal"><span class="ov-rank">4</span></span><a class="ov-rank-name" href="https://q.futunn.com/profile/26294087" target="_blank">Techub News</a><span class="ov-rank-val">28篇</span><span class="ov-rank-sub">29.0万浏览</span></div><div class="ov-rank-row"><span class="ov-medal"><span class="ov-rank">5</span></span><a class="ov-rank-name" href="https://q.futunn.com/profile/18799623" target="_blank">Leo Jesse Livermore</a><span class="ov-rank-val">23篇</span><span class="ov-rank-sub">222.0万浏览</span></div><div class="ov-rank-row"><span class="ov-medal"><span class="ov-rank">6</span></span><a class="ov-rank-name" href="https://q.futunn.com/profile/231575065" target="_blank">很大很大的橙子</a><span class="ov-rank-val">21篇</span><span class="ov-rank-sub">72.0万浏览</span></div><div class="ov-rank-row"><span class="ov-medal"><span class="ov-rank">7</span></span><a class="ov-rank-name" href="https://q.futunn.com/profile/1472793" target="_blank">火风战士</a><span class="ov-rank-val">17篇</span><span class="ov-rank-sub">102.0万浏览</span></div><div class="ov-rank-row"><span class="ov-medal"><span class="ov-rank">8</span></span><a class="ov-rank-name" href="https://q.futunn.com/profile/14405456" target="_blank">守猪逮兔估值模型</a><span class="ov-rank-val">15篇</span><span class="ov-rank-sub">205.0万浏览</span></div><div class="ov-rank-row"><span class="ov-medal"><span class="ov-rank">9</span></span><a class="ov-rank-name" href="https://q.futunn.com/profile/2869652" target="_blank">罗超频道</a><span class="ov-rank-val">14篇</span><span class="ov-rank-sub">8.0万浏览</span></div><div class="ov-rank-row"><span class="ov-medal"><span class="ov-rank">10</span></span><a class="ov-rank-name" href="https://q.futunn.com/profile/1065155" target="_blank">说财经</a><span class="ov-rank-val">14篇</span><span class="ov-rank-sub">238.0万浏览</span></div>
+    <div class="ov-rank-divider"></div>
+    <div class="ov-item ov-item-extra"><span class="ov-icon">👁</span><span class="ov-item-l">最高浏览</span><a class="ov-item-link" href="https://q.futunn.com/profile/17296331" target="_blank">孫子的末代傳人</a><span class="ov-item-v">&nbsp;493万次</span></div>
   </div>
 </div></div>
 </div>
