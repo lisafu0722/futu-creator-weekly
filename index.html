@@ -36,8 +36,9 @@ a:hover{text-decoration:underline;}
 .ov-kpi-u{font-size:12px;font-weight:400;}
 .ov-kpi-l{font-size:10px;color:var(--lt);margin-top:3px;}
 .ov-kpi-dim .ov-kpi-n{color:#90a4ae;}
-/* 三栏详情 */
-.ov-detail-row{display:grid;grid-template-columns:1.1fr 0.9fr 1.2fr;gap:12px;}
+/* 四栏详情 */
+.ov-detail-row{display:grid;grid-template-columns:1.1fr 0.9fr 1.1fr 1.4fr;gap:12px;}
+.ov-panel-wide{}
 .ov-panel{background:#f8fafc;border-radius:10px;padding:14px 16px;border:1px solid var(--bdr);}
 .ov-panel-title{font-size:13px;font-weight:600;color:var(--sec);margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid var(--bdr);}
 .ov-item{display:flex;align-items:flex-start;gap:5px;margin-bottom:8px;font-size:12px;line-height:1.5;}
@@ -61,7 +62,17 @@ a:hover{text-decoration:underline;}
 .ov-rank-val{color:var(--p);font-weight:600;white-space:nowrap;}
 .ov-rank-sub{color:var(--lt);font-size:10px;white-space:nowrap;}
 .ov-rank-divider{border-top:1px solid var(--bdr);margin:8px 0;}
-@media(max-width:900px){.ov-kpi-row{flex-direction:column;} .ov-detail-row{grid-template-columns:1fr;} }
+/* 高互动帖子 */
+.tp-row{display:flex;align-items:flex-start;gap:6px;margin-bottom:10px;}
+.tp-row:last-child{margin-bottom:0;}
+.tp-body{flex:1;min-width:0;}
+.tp-title{display:block;font-size:12px;color:var(--sec);font-weight:500;line-height:1.4;margin-bottom:3px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.tp-title:hover{color:var(--p);}
+.tp-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.tp-author{font-size:11px;color:var(--p);}
+.tp-stat{font-size:11px;color:var(--lt);}
+@media(max-width:1100px){.ov-detail-row{grid-template-columns:1fr 1fr;} }
+@media(max-width:700px){.ov-kpi-row{flex-direction:column;} .ov-detail-row{grid-template-columns:1fr;} }
 
 /* 统计卡片 */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;padding:0 24px 16px;max-width:1200px;margin:0 auto;}
@@ -223,6 +234,10 @@ tr:hover td{background:#fef9f5;}
     <div class="ov-rank-divider"></div>
     <div class="ov-item ov-item-extra"><span class="ov-icon">👁</span><span class="ov-item-l">最高浏览</span><a class="ov-item-link" href="https://q.futunn.com/profile/17296331" target="_blank">孫子的末代傳人</a><span class="ov-item-v">&nbsp;493万次</span></div>
   </div>
+  <div class="ov-panel ov-panel-wide">
+    <div class="ov-panel-title">💬 本周高互动帖子 Top 5</div>
+    <div class="tp-row"><span class="ov-medal">🥇</span><div class="tp-body"><a class="tp-title" href="https://q.futunn.com/feed/116372594032644" target="_blank">【牛友故事】连阿妈积蓄都蚀光！10个月翻身赚千万，揭秘25岁财富自由的翻身法则！</a><div class="tp-meta"><a class="tp-author" href="https://q.futunn.com/profile/5890381" target="_blank">Keith 趨勢價值投資</a><span class="tp-stat">👁 3,132,094</span><span class="tp-stat">👍 445</span><span class="tp-stat">💬 236</span></div></div></div><div class="tp-row"><span class="ov-medal">🥈</span><div class="tp-body"><a class="tp-title" href="https://q.futunn.com/feed/116374683779076" target="_blank">一切进入康庄大道？绝不简单的2026年 四月8-9号复盘</a><div class="tp-meta"><a class="tp-author" href="https://q.futunn.com/profile/17296331" target="_blank">孫子的末代傳人</a><span class="tp-stat">👁 1,940,812</span><span class="tp-stat">👍 56</span><span class="tp-stat">💬 9</span></div></div></div><div class="tp-row"><span class="ov-medal">🥉</span><div class="tp-body"><a class="tp-title" href="https://q.futunn.com/feed/116361296347540" target="_blank">最后24小时！直线反弹还是再杀一轮？该做出抉择了！</a><div class="tp-meta"><a class="tp-author" href="https://q.futunn.com/profile/16134209" target="_blank">股市马斯克</a><span class="tp-stat">👁 1,047,564</span><span class="tp-stat">👍 67</span><span class="tp-stat">💬 18</span></div></div></div><div class="tp-row"><span class="ov-medal"><span class="ov-rank">4</span></span><div class="tp-body"><a class="tp-title" href="https://q.futunn.com/feed/116368128212996" target="_blank">港股复盘+往后看，中国也会出现类似苹果这样伟大的公司！</a><div class="tp-meta"><a class="tp-author" href="https://q.futunn.com/profile/11351602" target="_blank">Daniel 玄</a><span class="tp-stat">👁 1,011,494</span><span class="tp-stat">👍 47</span><span class="tp-stat">💬 3</span></div></div></div><div class="tp-row"><span class="ov-medal"><span class="ov-rank">5</span></span><div class="tp-body"><a class="tp-title" href="https://q.futunn.com/feed/116368487285940" target="_blank">08042026 (三) 达成停火协议的后续</a><div class="tp-meta"><a class="tp-author" href="https://q.futunn.com/profile/13340775" target="_blank">使徒行者之蘇羽</a><span class="tp-stat">👁 926,687</span><span class="tp-stat">👍 81</span><span class="tp-stat">💬 25</span></div></div></div>
+  </div>
 </div></div>
 </div>
 
@@ -248,50 +263,6 @@ tr:hover td{background:#fef9f5;}
   <circle cx="36.0" cy="85.1" r="4" fill="var(--p,#1565c0)" stroke="#fff" stroke-width="1.5"/><text x="36.0" y="77.1" text-anchor="middle" font-size="10" fill="#555" font-weight="600">61</text><circle cx="143.3" cy="61.8" r="4" fill="var(--p,#1565c0)" stroke="#fff" stroke-width="1.5"/><text x="143.3" y="53.8" text-anchor="middle" font-size="10" fill="#555" font-weight="600">114</text><circle cx="250.7" cy="27.0" r="4" fill="var(--p,#1565c0)" stroke="#fff" stroke-width="1.5"/><text x="250.7" y="19.0" text-anchor="middle" font-size="10" fill="#555" font-weight="600">193</text><circle cx="358.0" cy="28.8" r="4" fill="var(--p,#1565c0)" stroke="#fff" stroke-width="1.5"/><text x="358.0" y="20.8" text-anchor="middle" font-size="10" fill="#555" font-weight="600">189</text><circle cx="465.3" cy="20.0" r="4" fill="var(--p,#1565c0)" stroke="#fff" stroke-width="1.5"/><text x="465.3" y="12.0" text-anchor="middle" font-size="10" fill="#555" font-weight="600">209</text><circle cx="572.7" cy="85.6" r="4" fill="#b0bec5" stroke="#fff" stroke-width="1.5"/><text x="572.7" y="77.6" text-anchor="middle" font-size="10" fill="#555" font-weight="600">60</text><circle cx="680.0" cy="85.1" r="4" fill="#b0bec5" stroke="#fff" stroke-width="1.5"/><text x="680.0" y="77.1" text-anchor="middle" font-size="10" fill="#555" font-weight="600">61</text>
   <text x="36.0" y="140.0" text-anchor="middle" font-size="10" fill="#999">4/6(一)</text><text x="143.3" y="140.0" text-anchor="middle" font-size="10" fill="#999">4/7(二)</text><text x="250.7" y="140.0" text-anchor="middle" font-size="10" fill="#999">4/8(三)</text><text x="358.0" y="140.0" text-anchor="middle" font-size="10" fill="#999">4/9(四)</text><text x="465.3" y="140.0" text-anchor="middle" font-size="10" fill="#999">4/10(五)</text><text x="572.7" y="140.0" text-anchor="middle" font-size="10" fill="#999">4/11(六)</text><text x="680.0" y="140.0" text-anchor="middle" font-size="10" fill="#999">4/12(日)</text>
 </svg></div>
-</div>
-
-<!-- Top5 帖子 -->
-<div class="top5-sec" style="padding:18px 24px;">
-  <h3>🔥 本周高互动帖子 Top 5</h3>
-  <table>
-    <thead><tr><th>#</th><th>创作者</th><th>帖子标题/内容</th><th>浏览</th><th>赞</th><th>评</th></tr></thead>
-    <tbody><tr>
-  <td>1</td>
-  <td><a href="https://q.futunn.com/profile/5890381" target="_blank">Keith 趨勢價值投資</a></td>
-  <td><a href="https://q.futunn.com/feed/116372594032644" target="_blank">【牛友故事】连阿妈积蓄都蚀光！10个月翻身赚千万，揭秘25岁财富自由的翻身法则！</a></td>
-  <td>3,132,094</td>
-  <td>445</td>
-  <td>236</td>
-</tr><tr>
-  <td>2</td>
-  <td><a href="https://q.futunn.com/profile/17296331" target="_blank">孫子的末代傳人</a></td>
-  <td><a href="https://q.futunn.com/feed/116374683779076" target="_blank">一切进入康庄大道？绝不简单的2026年 四月8-9号复盘</a></td>
-  <td>1,940,812</td>
-  <td>56</td>
-  <td>9</td>
-</tr><tr>
-  <td>3</td>
-  <td><a href="https://q.futunn.com/profile/16134209" target="_blank">股市马斯克</a></td>
-  <td><a href="https://q.futunn.com/feed/116361296347540" target="_blank">最后24小时！直线反弹还是再杀一轮？该做出抉择了！</a></td>
-  <td>1,047,564</td>
-  <td>67</td>
-  <td>18</td>
-</tr><tr>
-  <td>4</td>
-  <td><a href="https://q.futunn.com/profile/11351602" target="_blank">Daniel 玄</a></td>
-  <td><a href="https://q.futunn.com/feed/116368128212996" target="_blank">港股复盘+往后看，中国也会出现类似苹果这样伟大的公司！</a></td>
-  <td>1,011,494</td>
-  <td>47</td>
-  <td>3</td>
-</tr><tr>
-  <td>5</td>
-  <td><a href="https://q.futunn.com/profile/13340775" target="_blank">使徒行者之蘇羽</a></td>
-  <td><a href="https://q.futunn.com/feed/116368487285940" target="_blank">08042026 (三) 达成停火协议的后续</a></td>
-  <td>926,687</td>
-  <td>81</td>
-  <td>25</td>
-</tr></tbody>
-  </table>
 </div>
 
 <!-- 控制栏 -->
