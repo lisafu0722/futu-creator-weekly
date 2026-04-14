@@ -23,6 +23,11 @@ a:hover{text-decoration:underline;}
 .overview-box h2::before{content:'';display:inline-block;width:4px;height:16px;background:var(--p);border-radius:2px;}
 .overview-p{font-size:13px;line-height:1.9;color:#444;}
 .overview-p strong{color:var(--p);}
+.ov-section{margin-bottom:14px;}
+.ov-section:last-child{margin-bottom:0;}
+.ov-title{font-size:13px;font-weight:600;color:var(--sec);margin-bottom:4px;}
+.ov-section p{margin:0;}
+.type-filter{margin-left:8px;}
 
 /* 统计卡片 */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;padding:0 24px 16px;max-width:1200px;margin:0 auto;}
@@ -145,7 +150,10 @@ tr:hover td{background:#fef9f5;}
 <!-- 本周总结 -->
 <div class="overview-box">
   <h2>本周总结</h2>
-  <p class="overview-p">本周（4月6日至12日），个人创作者中共有 <strong>84</strong> 位在富途牛牛圈保持活跃，活跃率 <strong>50%</strong>，另有 84 位暂未发布内容。 全周合计发帖 <strong>305</strong> 条，总浏览量超过 <strong>4719 万次</strong>，获得点赞 5,098 次、评论 1,648 次。 内容形式以文章为主（144 篇），发帖高峰出现在 4/8(三)，当日共发布 82 条内容。 本周创作者最关注的标的包括 <strong>特斯拉、阿里巴巴-W、恒生指數、納斯達克100指數期貨主連 </strong>。 发帖量最多的创作者为 Leo Jesse Livermore（23篇）、很大很大的橙子（21篇）、火风战士（17篇）；浏览量最高的为 <strong>孫子的末代傳人</strong>，本周累计浏览 493 万次。</p>
+  <div class="overview-p"><div class="ov-section"><div class="ov-title">📊 活跃概览</div><p>本周（4月6日至12日）共有 <strong>90</strong> 位创作者在富途牛牛圈保持活跃，活跃率 <strong>51%</strong>，另有 85 位创作者本周暂未发布内容。全周合计发帖 <strong>887</strong> 条，总浏览量超过 <strong>5305 万次</strong>，获得点赞 5,254 次、评论 1,670 次。</p></div>
+<div class="ov-section"><div class="ov-title">📅 内容节奏</div><p>内容形式以<strong>文章</strong>为主（726 篇）。发帖高峰出现在 <strong>4/10(五)</strong>，当日共发布 209 条内容；周末发帖量有所回落，周六 60 条、周日 61 条。</p></div>
+<div class="ov-section"><div class="ov-title">🔥 热门标的</div><p>本周创作者最关注的标的包括 <strong>特斯拉、阿里巴巴-W、恒生指數、納斯達克100指數期貨主連 、英偉達</strong>。</p></div>
+<div class="ov-section"><div class="ov-title">⭐ 创作者亮点</div><p>发帖量 Top 5：<strong>链捕手ChainCatcher</strong>（278篇）、<strong>深潮 TechFlow</strong>（219篇）、<strong>PANews</strong>（50篇）、<strong>Techub News</strong>（28篇）、<strong>Leo Jesse Livermore</strong>（23篇）。浏览量最高的为 <strong>孫子的末代傳人</strong>，本周累计浏览 493 万次。</p></div></div>
 </div>
 
 <!-- 统计卡片 -->
