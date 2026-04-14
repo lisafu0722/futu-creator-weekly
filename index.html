@@ -66,6 +66,7 @@ tr:hover td{background:#fef9f5;}
 .creator-name:hover{color:var(--p);text-decoration:none;}
 .creator-uid{font-size:10px;color:var(--lt);}
 .post-badge{background:var(--p);color:#fff;font-size:11px;padding:2px 7px;border-radius:10px;font-weight:600;}
+.cert-badge{background:#fff8e1;color:#e65100;font-size:10px;padding:2px 6px;border-radius:6px;border:1px solid #ffe082;white-space:nowrap;}
 
 /* 活跃热图 */
 .day-heatmap{display:flex;gap:4px;margin-bottom:8px;}
@@ -144,7 +145,7 @@ tr:hover td{background:#fef9f5;}
 <!-- 本周总结 -->
 <div class="overview-box">
   <h2>本周总结</h2>
-  <p class="overview-p">本周（4月6日至12日）共有 <strong>90</strong> 位创作者在富途牛牛圈保持活跃，活跃率 <strong>51%</strong>，另有 85 位创作者本周暂未发布内容。 全周合计发帖 <strong>887</strong> 条，总浏览量超过 <strong>5305 万次</strong>，获得点赞 5,254 次、评论 1,670 次。 内容形式以文章为主（726 篇），发帖高峰出现在 4/10(五)，当日共发布 209 条内容；周末（周六、周日）发帖量明显回落，分别仅有 60、61 条。 本周创作者最关注的标的包括 <strong>特斯拉(TSLA.US)、阿里巴巴-W(09988.HK)、恒生指數(800000.HK)、納斯達克100指數期貨主連 (2606)(NQmain.US)</strong>。 发帖量最多的创作者为 链捕手ChainCatcher（278篇）、深潮 TechFlow（219篇）、PANews（50篇）；浏览量最高的为 <strong>孫子的末代傳人</strong>，本周累计浏览 493 万次。</p>
+  <p class="overview-p">本周（4月6日至12日），个人创作者中共有 <strong>84</strong> 位在富途牛牛圈保持活跃，活跃率 <strong>50%</strong>，另有 84 位暂未发布内容。 全周合计发帖 <strong>305</strong> 条，总浏览量超过 <strong>4719 万次</strong>，获得点赞 5,098 次、评论 1,648 次。 内容形式以文章为主（144 篇），发帖高峰出现在 4/8(三)，当日共发布 82 条内容。 本周创作者最关注的标的包括 <strong>特斯拉、阿里巴巴-W、恒生指數、納斯達克100指數期貨主連 </strong>。 发帖量最多的创作者为 Leo Jesse Livermore（23篇）、很大很大的橙子（21篇）、火风战士（17篇）；浏览量最高的为 <strong>孫子的末代傳人</strong>，本周累计浏览 493 万次。</p>
 </div>
 
 <!-- 统计卡片 -->
@@ -230,16 +231,22 @@ tr:hover td{background:#fef9f5;}
     <button class="tab" onclick="setTab('inactive',this)">未发布 (85)</button>
     <button class="tab" onclick="setTab('all',this)">全部</button>
   </div>
+  <div class="tabs">
+    <button class="tab on" onclick="setType('all',this)">全部账号</button>
+    <button class="tab" onclick="setType('personal',this)">个人号</button>
+    <button class="tab" onclick="setType('media',this)">媒体号</button>
+  </div>
   <span class="cnt-lbl" id="cl">显示 90 位</span>
 </div>
 
 <!-- 创作者卡片 -->
 <div class="grid" id="grid">
-<div class="creator-card" data-uid="28424063" data-posts="278" data-views="2767774" data-likes="78" data-days="7" data-engagement="5799">
+<div class="creator-card" data-uid="28424063" data-posts="278" data-views="2767774" data-likes="78" data-days="7" data-engagement="5799" data-accttype="media">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/28424063" target="_blank">链捕手ChainCatcher</a>
       <span class="creator-uid">#28424063</span>
+      <span class="cert-badge">认证媒体</span>
       <span class="post-badge">278 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -405,11 +412,12 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 258 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7388642" data-posts="219" data-views="2207893" data-likes="52" data-days="7" data-engagement="4641">
+<div class="creator-card" data-uid="7388642" data-posts="219" data-views="2207893" data-likes="52" data-days="7" data-engagement="4641" data-accttype="media">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7388642" target="_blank">深潮 TechFlow</a>
       <span class="creator-uid">#7388642</span>
+      <span class="cert-badge">认证媒体</span>
       <span class="post-badge">219 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -575,11 +583,12 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 199 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="33792705" data-posts="50" data-views="456418" data-likes="6" data-days="7" data-engagement="935">
+<div class="creator-card" data-uid="33792705" data-posts="50" data-views="456418" data-likes="6" data-days="7" data-engagement="935" data-accttype="media">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/33792705" target="_blank">PANews</a>
       <span class="creator-uid">#33792705</span>
+      <span class="cert-badge">认证媒体</span>
       <span class="post-badge">50 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -745,11 +754,12 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 30 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="26294087" data-posts="28" data-views="299761" data-likes="13" data-days="5" data-engagement="638">
+<div class="creator-card" data-uid="26294087" data-posts="28" data-views="299761" data-likes="13" data-days="5" data-engagement="638" data-accttype="media">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/26294087" target="_blank">Techub News</a>
       <span class="creator-uid">#26294087</span>
+      <span class="cert-badge">认证媒体</span>
       <span class="post-badge">28 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -915,11 +925,12 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 8 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="18799623" data-posts="23" data-views="2222052" data-likes="355" data-days="7" data-engagement="5914">
+<div class="creator-card" data-uid="18799623" data-posts="23" data-views="2222052" data-likes="355" data-days="7" data-engagement="5914" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/18799623" target="_blank">Leo Jesse Livermore</a>
       <span class="creator-uid">#18799623</span>
+      
       <span class="post-badge">23 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -1085,11 +1096,12 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 3 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="231575065" data-posts="21" data-views="723211" data-likes="31" data-days="7" data-engagement="1609">
+<div class="creator-card" data-uid="231575065" data-posts="21" data-views="723211" data-likes="31" data-days="7" data-engagement="1609" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/231575065" target="_blank">很大很大的橙子</a>
       <span class="creator-uid">#231575065</span>
+      
       <span class="post-badge">21 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -1255,11 +1267,12 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 1 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1472793" data-posts="17" data-views="1024587" data-likes="103" data-days="4" data-engagement="2543">
+<div class="creator-card" data-uid="1472793" data-posts="17" data-views="1024587" data-likes="103" data-days="4" data-engagement="2543" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1472793" target="_blank">火风战士</a>
       <span class="creator-uid">#1472793</span>
+      
       <span class="post-badge">17 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -1404,11 +1417,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="14405456" data-posts="15" data-views="2059277" data-likes="66" data-days="6" data-engagement="4676">
+<div class="creator-card" data-uid="14405456" data-posts="15" data-views="2059277" data-likes="66" data-days="6" data-engagement="4676" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/14405456" target="_blank">守猪逮兔估值模型</a>
       <span class="creator-uid">#14405456</span>
+      
       <span class="post-badge">15 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -1539,11 +1553,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="2869652" data-posts="14" data-views="87530" data-likes="3" data-days="5" data-engagement="189">
+<div class="creator-card" data-uid="2869652" data-posts="14" data-views="87530" data-likes="3" data-days="5" data-engagement="189" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/2869652" target="_blank">罗超频道</a>
       <span class="creator-uid">#2869652</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">14 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -1667,11 +1682,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1065155" data-posts="14" data-views="2382424" data-likes="58" data-days="4" data-engagement="5178">
+<div class="creator-card" data-uid="1065155" data-posts="14" data-views="2382424" data-likes="58" data-days="4" data-engagement="5178" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1065155" target="_blank">说财经</a>
       <span class="creator-uid">#1065155</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">14 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -1795,11 +1811,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="15816956" data-posts="9" data-views="533643" data-likes="69" data-days="5" data-engagement="1459">
+<div class="creator-card" data-uid="15816956" data-posts="9" data-views="533643" data-likes="69" data-days="5" data-engagement="1459" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15816956" target="_blank">韭菜專家</a>
       <span class="creator-uid">#15816956</span>
+      
       <span class="post-badge">9 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -1888,11 +1905,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="34275720" data-posts="8" data-views="28766" data-likes="4" data-days="4" data-engagement="79">
+<div class="creator-card" data-uid="34275720" data-posts="8" data-views="28766" data-likes="4" data-days="4" data-engagement="79" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/34275720" target="_blank">Cato_KT</a>
       <span class="creator-uid">#34275720</span>
+      
       <span class="post-badge">8 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -1974,11 +1992,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="24989235" data-posts="8" data-views="91284" data-likes="2" data-days="4" data-engagement="188">
+<div class="creator-card" data-uid="24989235" data-posts="8" data-views="91284" data-likes="2" data-days="4" data-engagement="188" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/24989235" target="_blank">律动BlockBeat_APP</a>
       <span class="creator-uid">#24989235</span>
+      
       <span class="post-badge">8 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2060,11 +2079,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11891989" data-posts="7" data-views="504112" data-likes="155" data-days="6" data-engagement="1543">
+<div class="creator-card" data-uid="11891989" data-posts="7" data-views="504112" data-likes="155" data-days="6" data-engagement="1543" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11891989" target="_blank">OptionJack</a>
       <span class="creator-uid">#11891989</span>
+      
       <span class="post-badge">7 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -2139,11 +2159,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="17296331" data-posts="6" data-views="4931473" data-likes="318" data-days="2" data-engagement="11101">
+<div class="creator-card" data-uid="17296331" data-posts="6" data-views="4931473" data-likes="318" data-days="2" data-engagement="11101" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17296331" target="_blank">孫子的末代傳人</a>
       <span class="creator-uid">#17296331</span>
+      
       <span class="post-badge">6 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2211,11 +2232,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7483116" data-posts="6" data-views="59442" data-likes="3" data-days="5" data-engagement="127">
+<div class="creator-card" data-uid="7483116" data-posts="6" data-views="59442" data-likes="3" data-days="5" data-engagement="127" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7483116" target="_blank">价值事务所</a>
       <span class="creator-uid">#7483116</span>
+      
       <span class="post-badge">6 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2283,11 +2305,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="14639775" data-posts="6" data-views="724804" data-likes="144" data-days="4" data-engagement="2026">
+<div class="creator-card" data-uid="14639775" data-posts="6" data-views="724804" data-likes="144" data-days="4" data-engagement="2026" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/14639775" target="_blank">Ive仔30歲投資筆記</a>
       <span class="creator-uid">#14639775</span>
+      
       <span class="post-badge">6 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2355,11 +2378,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="5579233" data-posts="5" data-views="1169731" data-likes="118" data-days="2" data-engagement="2878">
+<div class="creator-card" data-uid="5579233" data-posts="5" data-views="1169731" data-likes="118" data-days="2" data-engagement="2878" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5579233" target="_blank">虎哥趨勢投資</a>
       <span class="creator-uid">#5579233</span>
+      <span class="cert-badge">特许金融分析师</span>
       <span class="post-badge">5 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2420,11 +2444,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="25914640" data-posts="5" data-views="896424" data-likes="28" data-days="5" data-engagement="1901">
+<div class="creator-card" data-uid="25914640" data-posts="5" data-views="896424" data-likes="28" data-days="5" data-engagement="1901" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/25914640" target="_blank">京城Z先生</a>
       <span class="creator-uid">#25914640</span>
+      
       <span class="post-badge">5 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -2485,11 +2510,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="17567706" data-posts="5" data-views="79351" data-likes="4" data-days="5" data-engagement="170">
+<div class="creator-card" data-uid="17567706" data-posts="5" data-views="79351" data-likes="4" data-days="5" data-engagement="170" data-accttype="media">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17567706" target="_blank">吴说</a>
       <span class="creator-uid">#17567706</span>
+      <span class="cert-badge">认证媒体</span>
       <span class="post-badge">5 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -2550,11 +2576,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7223813" data-posts="4" data-views="794661" data-likes="89" data-days="3" data-engagement="1861">
+<div class="creator-card" data-uid="7223813" data-posts="4" data-views="794661" data-likes="89" data-days="3" data-engagement="1861" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7223813" target="_blank">莊主_Logic投資山莊</a>
       <span class="creator-uid">#7223813</span>
+      
       <span class="post-badge">4 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2608,11 +2635,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16751620" data-posts="4" data-views="2083318" data-likes="248" data-days="2" data-engagement="5040">
+<div class="creator-card" data-uid="16751620" data-posts="4" data-views="2083318" data-likes="248" data-days="2" data-engagement="5040" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16751620" target="_blank">中戶變大戶小牛變大牛</a>
       <span class="creator-uid">#16751620</span>
+      
       <span class="post-badge">4 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2666,11 +2694,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16134209" data-posts="4" data-views="2451180" data-likes="194" data-days="4" data-engagement="5704">
+<div class="creator-card" data-uid="16134209" data-posts="4" data-views="2451180" data-likes="194" data-days="4" data-engagement="5704" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16134209" target="_blank">股市马斯克</a>
       <span class="creator-uid">#16134209</span>
+      
       <span class="post-badge">4 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2724,11 +2753,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="12178975" data-posts="4" data-views="426676" data-likes="36" data-days="4" data-engagement="1006">
+<div class="creator-card" data-uid="12178975" data-posts="4" data-views="426676" data-likes="36" data-days="4" data-engagement="1006" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/12178975" target="_blank">郭二侠说财</a>
       <span class="creator-uid">#12178975</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">4 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2782,11 +2812,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16428923" data-posts="4" data-views="511992" data-likes="46" data-days="3" data-engagement="1211">
+<div class="creator-card" data-uid="16428923" data-posts="4" data-views="511992" data-likes="46" data-days="3" data-engagement="1211" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16428923" target="_blank">王二狗子</a>
       <span class="creator-uid">#16428923</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">4 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2840,11 +2871,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="3351456" data-posts="4" data-views="32596" data-likes="4" data-days="3" data-engagement="82">
+<div class="creator-card" data-uid="3351456" data-posts="4" data-views="32596" data-likes="4" data-days="3" data-engagement="82" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/3351456" target="_blank">John的投资笔记</a>
       <span class="creator-uid">#3351456</span>
+      
       <span class="post-badge">4 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2898,11 +2930,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="32861462" data-posts="4" data-views="7123" data-likes="2" data-days="3" data-engagement="20">
+<div class="creator-card" data-uid="32861462" data-posts="4" data-views="7123" data-likes="2" data-days="3" data-engagement="20" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/32861462" target="_blank">Jack-Yi</a>
       <span class="creator-uid">#32861462</span>
+      
       <span class="post-badge">4 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -2956,11 +2989,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="5263553" data-posts="4" data-views="786463" data-likes="118" data-days="3" data-engagement="1996">
+<div class="creator-card" data-uid="5263553" data-posts="4" data-views="786463" data-likes="118" data-days="3" data-engagement="1996" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5263553" target="_blank">富哥搞钱</a>
       <span class="creator-uid">#5263553</span>
+      
       <span class="post-badge">4 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3014,11 +3048,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11341665" data-posts="3" data-views="14523" data-likes="40" data-days="1" data-engagement="184">
+<div class="creator-card" data-uid="11341665" data-posts="3" data-views="14523" data-likes="40" data-days="1" data-engagement="184" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11341665" target="_blank">紅磡索螺絲</a>
       <span class="creator-uid">#11341665</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3065,11 +3100,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="13340775" data-posts="3" data-views="1505823" data-likes="341" data-days="2" data-engagement="4304">
+<div class="creator-card" data-uid="13340775" data-posts="3" data-views="1505823" data-likes="341" data-days="2" data-engagement="4304" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/13340775" target="_blank">使徒行者之蘇羽</a>
       <span class="creator-uid">#13340775</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -3116,11 +3152,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1160930" data-posts="3" data-views="347663" data-likes="13" data-days="3" data-engagement="754">
+<div class="creator-card" data-uid="1160930" data-posts="3" data-views="347663" data-likes="13" data-days="3" data-engagement="754" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1160930" target="_blank">静姐的财富第六感</a>
       <span class="creator-uid">#1160930</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3167,11 +3204,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="17491305" data-posts="3" data-views="786959" data-likes="50" data-days="3" data-engagement="1788">
+<div class="creator-card" data-uid="17491305" data-posts="3" data-views="786959" data-likes="50" data-days="3" data-engagement="1788" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17491305" target="_blank">读财报话新股</a>
       <span class="creator-uid">#17491305</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -3218,11 +3256,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="14657515" data-posts="3" data-views="488181" data-likes="114" data-days="3" data-engagement="1433">
+<div class="creator-card" data-uid="14657515" data-posts="3" data-views="488181" data-likes="114" data-days="3" data-engagement="1433" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/14657515" target="_blank">问就是加多</a>
       <span class="creator-uid">#14657515</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3269,11 +3308,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16564531" data-posts="3" data-views="1096057" data-likes="130" data-days="2" data-engagement="3587">
+<div class="creator-card" data-uid="16564531" data-posts="3" data-views="1096057" data-likes="130" data-days="2" data-engagement="3587" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16564531" target="_blank">悠闲小兰胖</a>
       <span class="creator-uid">#16564531</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3320,11 +3360,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="5995073" data-posts="3" data-views="458090" data-likes="31" data-days="3" data-engagement="1029">
+<div class="creator-card" data-uid="5995073" data-posts="3" data-views="458090" data-likes="31" data-days="3" data-engagement="1029" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5995073" target="_blank">富竹</a>
       <span class="creator-uid">#5995073</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3371,11 +3412,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="12623418" data-posts="3" data-views="212524" data-likes="13" data-days="2" data-engagement="494">
+<div class="creator-card" data-uid="12623418" data-posts="3" data-views="212524" data-likes="13" data-days="2" data-engagement="494" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/12623418" target="_blank">爱投资的小熊猫</a>
       <span class="creator-uid">#12623418</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3422,11 +3464,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="17981141" data-posts="3" data-views="203697" data-likes="78" data-days="2" data-engagement="711">
+<div class="creator-card" data-uid="17981141" data-posts="3" data-views="203697" data-likes="78" data-days="2" data-engagement="711" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17981141" target="_blank">小散老俞</a>
       <span class="creator-uid">#17981141</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3473,11 +3516,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="10604518" data-posts="3" data-views="30078" data-likes="23" data-days="3" data-engagement="379">
+<div class="creator-card" data-uid="10604518" data-posts="3" data-views="30078" data-likes="23" data-days="3" data-engagement="379" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/10604518" target="_blank">丁有鱼</a>
       <span class="creator-uid">#10604518</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3524,11 +3568,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="231870570" data-posts="3" data-views="126" data-likes="0" data-days="1" data-engagement="0">
+<div class="creator-card" data-uid="231870570" data-posts="3" data-views="126" data-likes="0" data-days="1" data-engagement="0" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/231870570" target="_blank">Bill Qian</a>
       <span class="creator-uid">#231870570</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3575,11 +3620,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="15813386" data-posts="3" data-views="2531579" data-likes="102" data-days="3" data-engagement="5459">
+<div class="creator-card" data-uid="15813386" data-posts="3" data-views="2531579" data-likes="102" data-days="3" data-engagement="5459" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15813386" target="_blank">嘉哥爱自由</a>
       <span class="creator-uid">#15813386</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3626,11 +3672,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="28353219" data-posts="3" data-views="37200" data-likes="4" data-days="3" data-engagement="116">
+<div class="creator-card" data-uid="28353219" data-posts="3" data-views="37200" data-likes="4" data-days="3" data-engagement="116" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/28353219" target="_blank">MrKC深夜学堂</a>
       <span class="creator-uid">#28353219</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3677,11 +3724,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="30481835" data-posts="3" data-views="847682" data-likes="109" data-days="3" data-engagement="2062">
+<div class="creator-card" data-uid="30481835" data-posts="3" data-views="847682" data-likes="109" data-days="3" data-engagement="2062" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/30481835" target="_blank">牛头法师</a>
       <span class="creator-uid">#30481835</span>
+      
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3728,11 +3776,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="3226989" data-posts="3" data-views="250604" data-likes="6" data-days="3" data-engagement="524">
+<div class="creator-card" data-uid="3226989" data-posts="3" data-views="250604" data-likes="6" data-days="3" data-engagement="524" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/3226989" target="_blank">Jet_Media輪證分析</a>
       <span class="creator-uid">#3226989</span>
+      <span class="cert-badge">认证媒体</span>
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3779,11 +3828,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="21036193" data-posts="3" data-views="603083" data-likes="113" data-days="3" data-engagement="2490">
+<div class="creator-card" data-uid="21036193" data-posts="3" data-views="603083" data-likes="113" data-days="3" data-engagement="2490" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/21036193" target="_blank">富途馮文慧 Anna</a>
       <span class="creator-uid">#21036193</span>
+      <span class="cert-badge">富途证券高级分析师</span>
       <span class="post-badge">3 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3830,11 +3880,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11351602" data-posts="2" data-views="1356710" data-likes="101" data-days="2" data-engagement="3051">
+<div class="creator-card" data-uid="11351602" data-posts="2" data-views="1356710" data-likes="101" data-days="2" data-engagement="3051" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11351602" target="_blank">Daniel 玄</a>
       <span class="creator-uid">#11351602</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3874,11 +3925,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="25169348" data-posts="2" data-views="1822162" data-likes="172" data-days="2" data-engagement="4350">
+<div class="creator-card" data-uid="25169348" data-posts="2" data-views="1822162" data-likes="172" data-days="2" data-engagement="4350" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/25169348" target="_blank">股海GSO</a>
       <span class="creator-uid">#25169348</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3918,11 +3970,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="31386762" data-posts="2" data-views="107830" data-likes="11" data-days="2" data-engagement="248">
+<div class="creator-card" data-uid="31386762" data-posts="2" data-views="107830" data-likes="11" data-days="2" data-engagement="248" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/31386762" target="_blank">期权六艺</a>
       <span class="creator-uid">#31386762</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -3962,11 +4015,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="18031209" data-posts="2" data-views="223132" data-likes="15" data-days="2" data-engagement="496">
+<div class="creator-card" data-uid="18031209" data-posts="2" data-views="223132" data-likes="15" data-days="2" data-engagement="496" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/18031209" target="_blank">家哥的小黑屋</a>
       <span class="creator-uid">#18031209</span>
+      <span class="cert-badge">特许金融分析师</span>
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4006,11 +4060,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11922518" data-posts="2" data-views="94379" data-likes="53" data-days="2" data-engagement="477">
+<div class="creator-card" data-uid="11922518" data-posts="2" data-views="94379" data-likes="53" data-days="2" data-engagement="477" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11922518" target="_blank">穩中求勝Sam</a>
       <span class="creator-uid">#11922518</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -4050,11 +4105,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11283976" data-posts="2" data-views="54228" data-likes="3" data-days="2" data-engagement="117">
+<div class="creator-card" data-uid="11283976" data-posts="2" data-views="54228" data-likes="3" data-days="2" data-engagement="117" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11283976" target="_blank">思辨财经</a>
       <span class="creator-uid">#11283976</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4094,11 +4150,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="5977079" data-posts="2" data-views="51045" data-likes="3" data-days="1" data-engagement="116">
+<div class="creator-card" data-uid="5977079" data-posts="2" data-views="51045" data-likes="3" data-days="1" data-engagement="116" data-accttype="media">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5977079" target="_blank">真是港股圈</a>
       <span class="creator-uid">#5977079</span>
+      <span class="cert-badge">认证媒体</span>
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4138,11 +4195,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="231866069" data-posts="2" data-views="234953" data-likes="12" data-days="2" data-engagement="520">
+<div class="creator-card" data-uid="231866069" data-posts="2" data-views="234953" data-likes="12" data-days="2" data-engagement="520" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/231866069" target="_blank">滕叔投美股</a>
       <span class="creator-uid">#231866069</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4182,11 +4240,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="30936527" data-posts="2" data-views="21257" data-likes="7" data-days="1" data-engagement="78">
+<div class="creator-card" data-uid="30936527" data-posts="2" data-views="21257" data-likes="7" data-days="1" data-engagement="78" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/30936527" target="_blank">狮子做趋势交易</a>
       <span class="creator-uid">#30936527</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4226,11 +4285,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="18437538" data-posts="2" data-views="47034" data-likes="1" data-days="2" data-engagement="97">
+<div class="creator-card" data-uid="18437538" data-posts="2" data-views="47034" data-likes="1" data-days="2" data-engagement="97" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/18437538" target="_blank">道总有理</a>
       <span class="creator-uid">#18437538</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4270,11 +4330,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7149196" data-posts="2" data-views="685162" data-likes="92" data-days="2" data-engagement="1716">
+<div class="creator-card" data-uid="7149196" data-posts="2" data-views="685162" data-likes="92" data-days="2" data-engagement="1716" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7149196" target="_blank">Sam Lam (森林）</a>
       <span class="creator-uid">#7149196</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4314,11 +4375,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="35244821" data-posts="2" data-views="59018" data-likes="1" data-days="2" data-engagement="121">
+<div class="creator-card" data-uid="35244821" data-posts="2" data-views="59018" data-likes="1" data-days="2" data-engagement="121" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/35244821" target="_blank">美国中文投资网</a>
       <span class="creator-uid">#35244821</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4358,11 +4420,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="631978" data-posts="2" data-views="1010013" data-likes="35" data-days="2" data-engagement="2170">
+<div class="creator-card" data-uid="631978" data-posts="2" data-views="1010013" data-likes="35" data-days="2" data-engagement="2170" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/631978" target="_blank">多汁先生</a>
       <span class="creator-uid">#631978</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4402,11 +4465,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="5890381" data-posts="2" data-views="3636798" data-likes="522" data-days="2" data-engagement="10124">
+<div class="creator-card" data-uid="5890381" data-posts="2" data-views="3636798" data-likes="522" data-days="2" data-engagement="10124" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5890381" target="_blank">Keith 趨勢價值投資</a>
       <span class="creator-uid">#5890381</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4446,11 +4510,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="231506941" data-posts="2" data-views="12294" data-likes="6" data-days="2" data-engagement="42">
+<div class="creator-card" data-uid="231506941" data-posts="2" data-views="12294" data-likes="6" data-days="2" data-engagement="42" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/231506941" target="_blank">企鵝爸爸</a>
       <span class="creator-uid">#231506941</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4490,11 +4555,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="26621837" data-posts="2" data-views="73051" data-likes="28" data-days="1" data-engagement="240">
+<div class="creator-card" data-uid="26621837" data-posts="2" data-views="73051" data-likes="28" data-days="1" data-engagement="240" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/26621837" target="_blank">BIG78</a>
       <span class="creator-uid">#26621837</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4534,11 +4600,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="34125173" data-posts="2" data-views="131563" data-likes="111" data-days="2" data-engagement="916">
+<div class="creator-card" data-uid="34125173" data-posts="2" data-views="131563" data-likes="111" data-days="2" data-engagement="916" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/34125173" target="_blank">attarian</a>
       <span class="creator-uid">#34125173</span>
+      
       <span class="post-badge">2 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4578,11 +4645,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="18953260" data-posts="1" data-views="26436" data-likes="7" data-days="1" data-engagement="73">
+<div class="creator-card" data-uid="18953260" data-posts="1" data-views="26436" data-likes="7" data-days="1" data-engagement="73" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/18953260" target="_blank">曼巴投资</a>
       <span class="creator-uid">#18953260</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4615,11 +4683,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16565779" data-posts="1" data-views="2546" data-likes="0" data-days="1" data-engagement="10">
+<div class="creator-card" data-uid="16565779" data-posts="1" data-views="2546" data-likes="0" data-days="1" data-engagement="10" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16565779" target="_blank">JW Invest</a>
       <span class="creator-uid">#16565779</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4652,11 +4721,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7275545" data-posts="1" data-views="39689" data-likes="62" data-days="1" data-engagement="325">
+<div class="creator-card" data-uid="7275545" data-posts="1" data-views="39689" data-likes="62" data-days="1" data-engagement="325" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7275545" target="_blank">潘驴邓晓闲缺一</a>
       <span class="creator-uid">#7275545</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4689,11 +4759,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11350158" data-posts="1" data-views="688736" data-likes="23" data-days="1" data-engagement="1476">
+<div class="creator-card" data-uid="11350158" data-posts="1" data-views="688736" data-likes="23" data-days="1" data-engagement="1476" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11350158" target="_blank">丹尼斯王子</a>
       <span class="creator-uid">#11350158</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4726,11 +4797,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="10203125" data-posts="1" data-views="39187" data-likes="0" data-days="1" data-engagement="78">
+<div class="creator-card" data-uid="10203125" data-posts="1" data-views="39187" data-likes="0" data-days="1" data-engagement="78" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/10203125" target="_blank">下一個女股神經B</a>
       <span class="creator-uid">#10203125</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4763,11 +4835,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7971272" data-posts="1" data-views="59" data-likes="2" data-days="1" data-engagement="6">
+<div class="creator-card" data-uid="7971272" data-posts="1" data-views="59" data-likes="2" data-days="1" data-engagement="6" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7971272" target="_blank">李奧 leleleo</a>
       <span class="creator-uid">#7971272</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -4800,11 +4873,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7625228" data-posts="1" data-views="279983" data-likes="89" data-days="1" data-engagement="906">
+<div class="creator-card" data-uid="7625228" data-posts="1" data-views="279983" data-likes="89" data-days="1" data-engagement="906" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7625228" target="_blank">杨杨得億</a>
       <span class="creator-uid">#7625228</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4837,11 +4911,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7004578" data-posts="1" data-views="152597" data-likes="45" data-days="1" data-engagement="455">
+<div class="creator-card" data-uid="7004578" data-posts="1" data-views="152597" data-likes="45" data-days="1" data-engagement="455" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7004578" target="_blank">锦李 98</a>
       <span class="creator-uid">#7004578</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4874,11 +4949,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="25481759" data-posts="1" data-views="155465" data-likes="17" data-days="1" data-engagement="361">
+<div class="creator-card" data-uid="25481759" data-posts="1" data-views="155465" data-likes="17" data-days="1" data-engagement="361" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/25481759" target="_blank">不知名选手_</a>
       <span class="creator-uid">#25481759</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4911,11 +4987,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7198520" data-posts="1" data-views="1869" data-likes="0" data-days="1" data-engagement="3">
+<div class="creator-card" data-uid="7198520" data-posts="1" data-views="1869" data-likes="0" data-days="1" data-engagement="3" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7198520" target="_blank">Fisher的信徒</a>
       <span class="creator-uid">#7198520</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4948,11 +5025,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11995189" data-posts="1" data-views="253352" data-likes="65" data-days="1" data-engagement="706">
+<div class="creator-card" data-uid="11995189" data-posts="1" data-views="253352" data-likes="65" data-days="1" data-engagement="706" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11995189" target="_blank">搏盡佢啦</a>
       <span class="creator-uid">#11995189</span>
+      <span class="cert-badge">私募基金经理</span>
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -4985,11 +5063,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1312525" data-posts="1" data-views="189" data-likes="0" data-days="1" data-engagement="0">
+<div class="creator-card" data-uid="1312525" data-posts="1" data-views="189" data-likes="0" data-days="1" data-engagement="0" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1312525" target="_blank">FinMelon</a>
       <span class="creator-uid">#1312525</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -5022,11 +5101,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="29638625" data-posts="1" data-views="64721" data-likes="0" data-days="1" data-engagement="129">
+<div class="creator-card" data-uid="29638625" data-posts="1" data-views="64721" data-likes="0" data-days="1" data-engagement="129" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/29638625" target="_blank">乔令财经</a>
       <span class="creator-uid">#29638625</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell active weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5059,11 +5139,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7117423" data-posts="1" data-views="370183" data-likes="23" data-days="1" data-engagement="844">
+<div class="creator-card" data-uid="7117423" data-posts="1" data-views="370183" data-likes="23" data-days="1" data-engagement="844" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7117423" target="_blank">安硕财经</a>
       <span class="creator-uid">#7117423</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5096,11 +5177,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="15389198" data-posts="1" data-views="469857" data-likes="22" data-days="1" data-engagement="1005">
+<div class="creator-card" data-uid="15389198" data-posts="1" data-views="469857" data-likes="22" data-days="1" data-engagement="1005" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15389198" target="_blank">三思期权</a>
       <span class="creator-uid">#15389198</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell active" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5133,11 +5215,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="30752545" data-posts="1" data-views="17817" data-likes="15" data-days="1" data-engagement="80">
+<div class="creator-card" data-uid="30752545" data-posts="1" data-views="17817" data-likes="15" data-days="1" data-engagement="80" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/30752545" target="_blank">蟹仔量化</a>
       <span class="creator-uid">#30752545</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5170,11 +5253,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="15765592" data-posts="1" data-views="7745" data-likes="1" data-days="1" data-engagement="18">
+<div class="creator-card" data-uid="15765592" data-posts="1" data-views="7745" data-likes="1" data-days="1" data-engagement="18" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15765592" target="_blank">新熵</a>
       <span class="creator-uid">#15765592</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5207,11 +5291,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11578390" data-posts="1" data-views="15250" data-likes="0" data-days="1" data-engagement="30">
+<div class="creator-card" data-uid="11578390" data-posts="1" data-views="15250" data-likes="0" data-days="1" data-engagement="30" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11578390" target="_blank">霍大侠</a>
       <span class="creator-uid">#11578390</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5244,11 +5329,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="29817577" data-posts="1" data-views="175520" data-likes="34" data-days="1" data-engagement="483">
+<div class="creator-card" data-uid="29817577" data-posts="1" data-views="175520" data-likes="34" data-days="1" data-engagement="483" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/29817577" target="_blank">小财喵爱炒股</a>
       <span class="creator-uid">#29817577</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5281,11 +5367,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7351896" data-posts="1" data-views="239669" data-likes="21" data-days="1" data-engagement="547">
+<div class="creator-card" data-uid="7351896" data-posts="1" data-views="239669" data-likes="21" data-days="1" data-engagement="547" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7351896" target="_blank">港股IPO咖啡館</a>
       <span class="creator-uid">#7351896</span>
+      <span class="cert-badge">互联网自媒体</span>
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5318,11 +5405,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="233869085" data-posts="1" data-views="14889" data-likes="2" data-days="1" data-engagement="35">
+<div class="creator-card" data-uid="233869085" data-posts="1" data-views="14889" data-likes="2" data-days="1" data-engagement="35" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/233869085" target="_blank">老沉期权分析</a>
       <span class="creator-uid">#233869085</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5355,11 +5443,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="21257693" data-posts="1" data-views="50321" data-likes="4" data-days="1" data-engagement="112">
+<div class="creator-card" data-uid="21257693" data-posts="1" data-views="50321" data-likes="4" data-days="1" data-engagement="112" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/21257693" target="_blank">比比_溫傑</a>
       <span class="creator-uid">#21257693</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell active" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5392,11 +5481,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="127715" data-posts="1" data-views="193993" data-likes="37" data-days="1" data-engagement="518">
+<div class="creator-card" data-uid="127715" data-posts="1" data-views="193993" data-likes="37" data-days="1" data-engagement="518" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/127715" target="_blank">只做主升不做调整</a>
       <span class="creator-uid">#127715</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell active weekend-day" title="2026-04-12">日</div></div>
@@ -5429,11 +5519,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="165850" data-posts="1" data-views="91172" data-likes="19" data-days="1" data-engagement="249">
+<div class="creator-card" data-uid="165850" data-posts="1" data-views="91172" data-likes="19" data-days="1" data-engagement="249" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/165850" target="_blank">wangdizhe</a>
       <span class="creator-uid">#165850</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5466,11 +5557,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="35143402" data-posts="1" data-views="158704" data-likes="24" data-days="1" data-engagement="399">
+<div class="creator-card" data-uid="35143402" data-posts="1" data-views="158704" data-likes="24" data-days="1" data-engagement="399" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/35143402" target="_blank">耀文港古</a>
       <span class="creator-uid">#35143402</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5503,11 +5595,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1499823" data-posts="1" data-views="17973" data-likes="9" data-days="1" data-engagement="67">
+<div class="creator-card" data-uid="1499823" data-posts="1" data-views="17973" data-likes="9" data-days="1" data-engagement="67" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1499823" target="_blank">证悟君</a>
       <span class="creator-uid">#1499823</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell active" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5540,11 +5633,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="232965591" data-posts="1" data-views="134127" data-likes="30" data-days="1" data-engagement="473">
+<div class="creator-card" data-uid="232965591" data-posts="1" data-views="134127" data-likes="30" data-days="1" data-engagement="473" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/232965591" target="_blank">eFusion Cap 易方資本</a>
       <span class="creator-uid">#232965591</span>
+      
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5577,11 +5671,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="12103405" data-posts="1" data-views="1956" data-likes="5" data-days="1" data-engagement="28">
+<div class="creator-card" data-uid="12103405" data-posts="1" data-views="1956" data-likes="5" data-days="1" data-engagement="28" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/12103405" target="_blank">文主任</a>
       <span class="creator-uid">#12103405</span>
+      <span class="cert-badge">特许金融分析师</span>
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell inactive" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell active" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5614,11 +5709,12 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="30385745" data-posts="1" data-views="13804" data-likes="11" data-days="1" data-engagement="60">
+<div class="creator-card" data-uid="30385745" data-posts="1" data-views="13804" data-likes="11" data-days="1" data-engagement="60" data-accttype="personal">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/30385745" target="_blank">富途譚智樂 Arnold</a>
       <span class="creator-uid">#30385745</span>
+      <span class="cert-badge">富途证券首席分析师</span>
       <span class="post-badge">1 篇</span>
     </div>
     <div class="day-heatmap"><div class="day-cell active" title="2026-04-06">一</div><div class="day-cell inactive" title="2026-04-07">二</div><div class="day-cell inactive" title="2026-04-08">三</div><div class="day-cell inactive" title="2026-04-09">四</div><div class="day-cell inactive" title="2026-04-10">五</div><div class="day-cell inactive weekend-day" title="2026-04-11">六</div><div class="day-cell inactive weekend-day" title="2026-04-12">日</div></div>
@@ -5663,7 +5759,7 @@ tr:hover td{background:#fef9f5;}
 <div class="footer">富途牛牛圈 创作者运营周报 &nbsp;·&nbsp; 数据来源：q.futunn.com &nbsp;·&nbsp; 每周一自动更新</div>
 
 <script>
-let curTab='active';
+let curTab='active', curType='all';
 const cards=()=>Array.from(document.querySelectorAll('.creator-card'));
 
 function filter(){
@@ -5674,8 +5770,9 @@ function filter(){
     const id=c.querySelector('.creator-uid').textContent.toLowerCase();
     const matchQ=!q||nm.includes(q)||id.includes(q);
     const matchT=curTab==='all'?true:curTab==='active'?+c.dataset.posts>0:+c.dataset.posts===0;
-    c.classList.toggle('hidden',!(matchQ&&matchT));
-    if(matchQ&&matchT) n++;
+    const matchType=curType==='all'?true:c.dataset.accttype===curType;
+    c.classList.toggle('hidden',!(matchQ&&matchT&&matchType));
+    if(matchQ&&matchT&&matchType) n++;
   });
   document.getElementById('cl').textContent='显示 '+n+' 位';
   document.getElementById('inact').style.display=(curTab==='inactive'||curTab==='all')?'':'none';
@@ -5683,7 +5780,14 @@ function filter(){
 
 function setTab(t,el){
   curTab=t;
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  el.closest('.tabs').querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');
+  filter();
+}
+
+function setType(t,el){
+  curType=t;
+  el.closest('.tabs').querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
   el.classList.add('on');
   filter();
 }
