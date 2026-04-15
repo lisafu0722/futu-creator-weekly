@@ -26,7 +26,10 @@ non_media_creators = {uid: v for uid, v in creators.items() if uid not in MEDIA_
 
 # ===== 基础统计（口径：仅文章）=====
 def get_articles(v):
-    return [p for p in v.get('posts', []) if p.get('feed_type_str') == '文章']
+    uid = str(v.get('uid', ''))
+    return [p for p in v.get('posts', [])
+            if p.get('feed_type_str') == '文章'
+            and (not p.get('author_uid') or p.get('author_uid') == uid)]
 
 total = len(all_uids)
 # 活跃/未活跃 以是否有文章为准
@@ -384,7 +387,7 @@ def gen_creator_card(uid, v):
     summary_text = gen_creator_summary(uid, v)
 
     # 内容类型计数（本周内容模块）
-    ct_articles = content_types.get('文章', 0)  # 原创文章
+    ct_articles = len(posts)  # 原创文章（author_uid == uid）
     ct_reposts = content_types.get('转发帖', 0)   # 转发其他文章
 
     # 互动数据：获得的转发数量
