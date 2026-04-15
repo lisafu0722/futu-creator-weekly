@@ -465,7 +465,6 @@ def gen_creator_card(uid, v):
     <div class="card-data-label">本周内容</div>
     <div class="metrics-row">
       <div class="metric"><span class="num">{ct_articles}</span><span class="lbl">原创文章</span></div>
-      <div class="metric"><span class="num">{ct_reposts}</span><span class="lbl">转发</span></div>
     </div>
   </div>
   <div class="card-data-section">
