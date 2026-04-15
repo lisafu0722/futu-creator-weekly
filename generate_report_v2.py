@@ -122,80 +122,91 @@ def gen_creator_summary(uid, v):
     posts = get_own_posts(uid, v)
     if not posts:
         return ''
-    name = v.get('nick_name', f'用户{uid}')
-    post_count = len(posts)
     active_days = sorted(set(p['date'] for p in posts))
-    content_types = {}
-    for p in posts:
-        t = p['feed_type_str']
-        content_types[t] = content_types.get(t, 0) + 1
     total_views_c = sum(p.get('views', 0) for p in posts)
     total_likes_c = sum(p.get('likes', 0) for p in posts)
+    day_count = len(active_days)
 
-    # 主要类型
-    main_type = max(content_types, key=content_types.get) if content_types else ''
-    other_types = {k: n for k, n in content_types.items() if k != main_type and n > 0}
+    articles = [p for p in posts if p.get('feed_type_str') == '文章']
 
     # 活跃节奏
-    day_count = len(active_days)
     if day_count >= 7:
-        rhythm = '全周每天均有发布，保持高频更新'
+        rhythm = '全周每天均有发布'
     elif day_count >= 5:
-        rhythm = f'一周内 {day_count} 天活跃，发布较为规律'
+        rhythm = f'一周内 {day_count} 天活跃'
     elif day_count >= 3:
-        rhythm = f'本周在 {day_count} 天内集中发布'
+        rhythm = f'本周 {day_count} 天发布'
     else:
         short_dates = '、'.join([d[-5:] for d in active_days])
-        rhythm = f'仅在 {short_dates} 发布内容'
+        rhythm = f'仅在 {short_dates} 发布'
 
-    # 主题词提取（从标题和文字中找高频词）
-    all_text = ' '.join([(p.get('title') or '') + ' ' + p.get('text', '') for p in posts])
-    # 去掉 @/$/# 标签后提取关键词
-    clean_text = re.sub(r'[@$#]\S+', '', all_text)
-    # 简单关键词：出现频率较高的名词片段
-    keywords = Counter(re.findall(r'[\u4e00-\u9fa5]{2,4}', clean_text)).most_common(8)
-    topic_words = [w for w, n in keywords if n >= 2 and w not in
-                   ['评论', '转发', '关注', '分享', '更新', '今日', '发布', '内容', '市场', '投资', '行情']][:4]
+    parts = []
+
+    # 文章内容：直接引用标题
+    if articles:
+        n = len(articles)
+        arts_by_time = sorted(articles, key=lambda p: p.get('timestamp', 0))
+        if n == 1:
+            a = arts_by_time[0]
+            title = (a.get('title') or a.get('text', ''))[:45]
+            excerpt = a.get('text', '')[:60]
+            parts.append(f'本周发布 1 篇文章，{rhythm}。')
+            if title:
+                parts.append(f'文章《{title}》')
+                if excerpt and excerpt != title:
+                    parts.append(f'，内容涉及{excerpt[:40]}')
+                parts.append('。')
+        elif n <= 4:
+            parts.append(f'本周发布 {n} 篇文章，{rhythm}。本周文章：')
+            titles = []
+            for a in arts_by_time:
+                t = (a.get('title') or a.get('text', ''))[:40]
+                if t:
+                    titles.append(f'《{t}》')
+            parts.append('、'.join(titles) + '。')
+        else:
+            # 文章多时：列出标题 + 提炼主题
+            parts.append(f'本周发布 {n} 篇文章，{rhythm}。本周文章：')
+            titles = [(a.get('title') or a.get('text', ''))[:35] for a in arts_by_time[:4]]
+            parts.append('、'.join(f'《{t}》' for t in titles if t))
+            if n > 4:
+                parts.append(f'等共 {n} 篇')
+            parts.append('。')
+            # 提炼高频主题词作补充
+            all_text = ' '.join([(a.get('title') or '') + ' ' + a.get('text', '') for a in articles])
+            clean_text = re.sub(r'[@$#]\S+', '', all_text)
+            keywords = Counter(re.findall(r'[\u4e00-\u9fa5]{2,4}', clean_text)).most_common(8)
+            topic_words = [w for w, n in keywords if n >= 2 and w not in _TOPIC_STOP][:3]
+            if topic_words:
+                parts.append(f'内容涵盖{"、".join(topic_words)}等方向。')
+    else:
+        content_types = {}
+        for p in posts:
+            t = p['feed_type_str']
+            content_types[t] = content_types.get(t, 0) + 1
+        main_type = max(content_types, key=content_types.get) if content_types else ''
+        if main_type == '转发帖':
+            parts.append(f'本周转发 {len(posts)} 条内容，{rhythm}。')
+        elif main_type == '股票评论':
+            parts.append(f'本周以股票评论为主，共 {len(posts)} 条，{rhythm}。')
+        else:
+            parts.append(f'本周发布内容 {len(posts)} 条，{rhythm}。')
+
+    # 最高互动文章（多于1篇时才单独点出）
+    if len(articles) > 1:
+        best = max(articles, key=lambda p: p['likes'] * 3 + p['comments'] * 5 + p['views'] // 1000)
+        best_title = (best.get('title') or best.get('text', ''))[:40]
+        if best_title and best.get('views', 0) > 0:
+            parts.append(f'最高互动：《{best_title}》（浏览 {best["views"]:,}、获赞 {best["likes"]}）。')
 
     # 提及股票
     stock_counter = Counter()
     for p in posts:
         for s in p.get('stocks_mentioned', []):
             stock_counter[s['name']] += 1
-    top_stocks = [s for s, _ in stock_counter.most_common(3)]
-
-    # 互动
-    best_post = max(posts, key=lambda p: p['likes'] + p['comments'] * 2 + p['views'] // 1000) if posts else None
-
-    # 组织小结文字
-    parts = []
-
-    # 基本活跃描述
-    if main_type == '文章':
-        parts.append(f'本周共发布 {post_count} 篇文章，{rhythm}。')
-    elif main_type == '转发帖':
-        parts.append(f'本周共转发 {post_count} 条内容，{rhythm}。')
-    elif main_type == '股票评论':
-        parts.append(f'本周主要以股票评论形式活跃，共发布 {post_count} 条，{rhythm}。')
-    else:
-        parts.append(f'本周发布内容 {post_count} 条，{rhythm}。')
-
-    # 内容类型多样性
-    if other_types:
-        other_str = '、'.join([f'{k} {n} 篇' for k, n in sorted(other_types.items(), key=lambda x: -x[1])])
-        parts.append(f'内容形式包含{other_str}。')
-
-    # 主题方向
-    if topic_words:
-        parts.append(f'内容主要围绕{"、".join(topic_words)}等话题展开。')
-    elif top_stocks:
-        parts.append(f'重点关注{"、".join(top_stocks[:2])}等标的。')
-
-    # 股票提及
-    if top_stocks and not topic_words:
-        pass  # 已在上面提
-    elif top_stocks:
-        parts.append(f'频繁提及 {"、".join(top_stocks[:2])} 等。')
+    top_stocks = [s for s, _ in stock_counter.most_common(2)]
+    if top_stocks:
+        parts.append(f'重点关注{"、".join(top_stocks)}等标的。')
 
     # 互动表现
     if total_views_c >= 1_000_000:
