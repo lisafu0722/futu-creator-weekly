@@ -31,6 +31,12 @@ def get_articles(v):
             if p.get('feed_type_str') == '文章'
             and (not p.get('author_uid') or p.get('author_uid') == uid)]
 
+def get_own_posts(uid, v):
+    """返回创作者本人发布的所有帖子（过滤掉他人帖子）"""
+    uid_str = str(uid)
+    return [p for p in v.get('posts', [])
+            if not p.get('author_uid') or p.get('author_uid') == uid_str]
+
 total = len(all_uids)
 # 活跃/未活跃 以是否有文章为准
 active_creators_list = [(uid, v) for uid, v in creators.items() if len(get_articles(v)) > 0]
@@ -113,15 +119,18 @@ top_posts_global = sorted(all_posts_flat, key=lambda x: x['views'] + x['likes']*
 # ===== 内容小结生成 =====
 def gen_creator_summary(uid, v):
     """为每位创作者生成一段文字小结"""
-    posts = v.get('posts', [])
+    posts = get_own_posts(uid, v)
     if not posts:
         return ''
     name = v.get('nick_name', f'用户{uid}')
     post_count = len(posts)
-    active_days = v.get('active_days', [])
-    content_types = v.get('content_types', {})
-    total_views_c = v.get('total_views', 0)
-    total_likes_c = v.get('total_likes', 0)
+    active_days = sorted(set(p['date'] for p in posts))
+    content_types = {}
+    for p in posts:
+        t = p['feed_type_str']
+        content_types[t] = content_types.get(t, 0) + 1
+    total_views_c = sum(p.get('views', 0) for p in posts)
+    total_likes_c = sum(p.get('likes', 0) for p in posts)
 
     # 主要类型
     main_type = max(content_types, key=content_types.get) if content_types else ''
@@ -368,8 +377,8 @@ def gen_day_heatmap(active_days):
 
 def gen_creator_card(uid, v):
     s_name = v.get('nick_name', f'用户{uid}')
-    posts = get_articles(v)          # 只取文章
-    all_posts = v.get('posts', [])   # 全部帖子（用于帖子列表展示）
+    posts = get_articles(v)          # 只取原创文章
+    own_posts = get_own_posts(uid, v)  # 本人全部帖子（互动数据和帖子列表）
     post_count = len(posts)
     active_days = sorted(set(p['date'] for p in posts)) if posts else []
     content_types = v.get('content_types', {})
@@ -391,7 +400,7 @@ def gen_creator_card(uid, v):
     ct_reposts = content_types.get('转发帖', 0)   # 转发其他文章
 
     # 互动数据：获得的转发数量
-    total_s = sum(p.get('shares', 0) for p in all_posts)
+    total_s = sum(p.get('shares', 0) for p in own_posts)
 
     # 股票标签
     stock_counter = Counter()
@@ -409,10 +418,10 @@ def gen_creator_card(uid, v):
         )
         stocks_html = f'<div class="stocks-row">关注标的：{stock_spans}</div>'
 
-    # 指标
-    total_v = v.get('total_views', 0)
-    total_l = v.get('total_likes', 0)
-    total_c = v.get('total_comments', 0)
+    # 指标（只计算本人帖子）
+    total_v = sum(p.get('views', 0) for p in own_posts)
+    total_l = sum(p.get('likes', 0) for p in own_posts)
+    total_c = sum(p.get('comments', 0) for p in own_posts)
     day_count = len(active_days)
     engagement_score = total_l * 3 + total_c * 5 + total_v // 500
     fans_count = v.get('fans', 0)
@@ -420,7 +429,7 @@ def gen_creator_card(uid, v):
 
     # 帖子列表（带链接）
     posts_list_html = ''
-    for p in all_posts[:20]:
+    for p in own_posts[:20]:
         feed_url = f'https://q.futunn.com/feed/{p["feed_id"]}'
         text = p.get('text', '')
         title = p.get('title', '')
@@ -437,8 +446,8 @@ def gen_creator_card(uid, v):
   <a class="post-link" href="{feed_url}" target="_blank">{display_short}</a>
   <span class="post-metrics">👁{p["views"]:,} &nbsp;👍{p["likes"]} &nbsp;💬{p["comments"]}</span>
 </div>'''
-    if len(posts) > 20:
-        posts_list_html += f'<div class="more-hint">…还有 {len(all_posts)-20} 条帖子</div>'
+    if len(own_posts) > 20:
+        posts_list_html += f'<div class="more-hint">…还有 {len(own_posts)-20} 条帖子</div>'
 
     # 代表帖
     if posts:
