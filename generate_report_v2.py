@@ -142,43 +142,68 @@ def gen_creator_summary(uid, v):
 
     parts = []
 
-    # 文章内容：直接引用标题
+    # 文章内容：直接引用标题 + 提及股票
+    def _article_stocks(art_list):
+        """汇总文章中提及的股票，返回最多3个名称"""
+        sc = Counter()
+        for a in art_list:
+            for s in a.get('stocks_mentioned', []):
+                sc[s['name']] += 1
+        return [s for s, _ in sc.most_common(3)]
+
     if articles:
         n = len(articles)
         arts_by_time = sorted(articles, key=lambda p: p.get('timestamp', 0))
+        art_stocks = _article_stocks(articles)
+        stocks_clause = f'，涉及{"、".join(art_stocks)}等标的' if art_stocks else ''
+
+        # 检查是否有 ai_summary 可用
+        ai_summaries = [a.get('ai_summary', '') for a in arts_by_time]
+        has_ai = any(s for s in ai_summaries)
+
         if n == 1:
             a = arts_by_time[0]
             title = (a.get('title') or a.get('text', ''))[:45]
-            excerpt = a.get('text', '')[:60]
             parts.append(f'本周发布 1 篇文章，{rhythm}。')
-            if title:
-                parts.append(f'文章《{title}》')
-                if excerpt and excerpt != title:
-                    parts.append(f'，内容涉及{excerpt[:40]}')
-                parts.append('。')
+            if has_ai and ai_summaries[0]:
+                parts.append(f'《{title}》：{ai_summaries[0]}')
+                parts.append(f'浏览 {a["views"]:,}、获赞 {a["likes"]}。')
+            elif title:
+                parts.append(f'文章《{title}》{stocks_clause}，浏览 {a["views"]:,}、获赞 {a["likes"]}。')
         elif n <= 4:
-            parts.append(f'本周发布 {n} 篇文章，{rhythm}。本周文章：')
-            titles = []
-            for a in arts_by_time:
-                t = (a.get('title') or a.get('text', ''))[:40]
-                if t:
-                    titles.append(f'《{t}》')
-            parts.append('、'.join(titles) + '。')
+            titles = '、'.join(
+                f'《{(a.get("title") or a.get("text", ""))[:38]}》'
+                for a in arts_by_time
+            )
+            parts.append(f'本周发布 {n} 篇文章，{rhythm}：{titles}。')
+            if has_ai:
+                # 合并各篇 ai_summary，用分号分隔
+                combined = '；'.join(s for s in ai_summaries if s)
+                if combined:
+                    parts.append(combined)
+            elif art_stocks:
+                parts.append(f'涉及{"、".join(art_stocks)}等标的。')
         else:
-            # 文章多时：列出标题 + 提炼主题
-            parts.append(f'本周发布 {n} 篇文章，{rhythm}。本周文章：')
-            titles = [(a.get('title') or a.get('text', ''))[:35] for a in arts_by_time[:4]]
-            parts.append('、'.join(f'《{t}》' for t in titles if t))
-            if n > 4:
-                parts.append(f'等共 {n} 篇')
-            parts.append('。')
-            # 提炼高频主题词作补充
-            all_text = ' '.join([(a.get('title') or '') + ' ' + a.get('text', '') for a in articles])
-            clean_text = re.sub(r'[@$#]\S+', '', all_text)
-            keywords = Counter(re.findall(r'[\u4e00-\u9fa5]{2,4}', clean_text)).most_common(8)
-            topic_words = [w for w, n in keywords if n >= 2 and w not in _TOPIC_STOP][:3]
-            if topic_words:
-                parts.append(f'内容涵盖{"、".join(topic_words)}等方向。')
+            # 文章多时：前4篇标题 + ai_summary 或主题词
+            titles = '、'.join(
+                f'《{(a.get("title") or a.get("text", ""))[:30]}》'
+                for a in arts_by_time[:4]
+            )
+            parts.append(f'本周发布 {n} 篇文章，{rhythm}，包括{titles}等。')
+            if has_ai:
+                # 取有摘要的前2篇合并
+                combined = '；'.join(s for s in ai_summaries[:2] if s)
+                if combined:
+                    parts.append(combined)
+            elif art_stocks:
+                parts.append(f'涉及{"、".join(art_stocks)}等标的。')
+            else:
+                all_title_text = ' '.join((a.get('title') or '') for a in articles)
+                clean_text = re.sub(r'[@$#]\S+', '', all_title_text)
+                keywords = Counter(re.findall(r'[\u4e00-\u9fa5]{2,4}', clean_text)).most_common(8)
+                topic_words = [w for w, c in keywords if c >= 2 and w not in _TOPIC_STOP][:3]
+                if topic_words:
+                    parts.append(f'内容涵盖{"、".join(topic_words)}等方向。')
     else:
         content_types = {}
         for p in posts:
@@ -198,15 +223,6 @@ def gen_creator_summary(uid, v):
         best_title = (best.get('title') or best.get('text', ''))[:40]
         if best_title and best.get('views', 0) > 0:
             parts.append(f'最高互动：《{best_title}》（浏览 {best["views"]:,}、获赞 {best["likes"]}）。')
-
-    # 提及股票
-    stock_counter = Counter()
-    for p in posts:
-        for s in p.get('stocks_mentioned', []):
-            stock_counter[s['name']] += 1
-    top_stocks = [s for s, _ in stock_counter.most_common(2)]
-    if top_stocks:
-        parts.append(f'重点关注{"、".join(top_stocks)}等标的。')
 
     # 互动表现
     if total_views_c >= 1_000_000:
