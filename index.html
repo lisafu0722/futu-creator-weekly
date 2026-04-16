@@ -106,8 +106,10 @@ tr:hover td{background:#fef9f5;}
 
 /* 控制栏 */
 .ctrl{display:flex;flex-wrap:wrap;gap:8px;padding:0 24px 12px;max-width:1200px;margin:0 auto;align-items:center;}
-.ctrl input{border:1px solid var(--bdr);border-radius:8px;padding:7px 12px;font-size:13px;outline:none;flex:1;min-width:180px;}
+.search-wrap{position:relative;flex:1;min-width:180px;display:flex;align-items:center;}
+.ctrl input{border:1px solid var(--bdr);border-radius:8px;padding:7px 36px 7px 12px;font-size:13px;outline:none;width:100%;box-sizing:border-box;}
 .ctrl input:focus{border-color:var(--p);}
+.search-clear{position:absolute;right:8px;background:none;border:none;cursor:pointer;color:var(--lt);font-size:14px;padding:0;line-height:1;display:none;}
 .ctrl select{border:1px solid var(--bdr);border-radius:8px;padding:7px 10px;font-size:12px;background:#fff;outline:none;cursor:pointer;}
 .tabs{display:flex;}
 .tab{padding:7px 14px;border:1px solid var(--bdr);font-size:12px;cursor:pointer;background:#fff;color:var(--lt);}
@@ -272,7 +274,10 @@ tr:hover td{background:#fef9f5;}
 
 <!-- 控制栏 -->
 <div class="ctrl">
-  <input type="text" id="si" placeholder="搜索创作者名称或 ID…" oninput="filter()">
+  <div class="search-wrap">
+    <input type="text" id="si" placeholder="搜索创作者名称或 ID（支持简繁体）…" oninput="filter()">
+    <button class="search-clear" id="sc" onclick="clearSearch()" title="清除搜索">✕</button>
+  </div>
   <select id="ss" onchange="resort()">
     <option value="posts">按发帖数排序</option>
     <option value="views">按浏览量排序</option>
@@ -295,7 +300,7 @@ tr:hover td{background:#fef9f5;}
 
 <!-- 创作者卡片 -->
 <div class="grid" id="grid">
-<div class="creator-card" data-uid="7388642" data-posts="143" data-views="1572638" data-likes="40" data-days="5" data-engagement="3305" data-fans="2465" data-accttype="media">
+<div class="creator-card" data-uid="7388642" data-posts="143" data-views="1572638" data-likes="40" data-days="5" data-engagement="3305" data-fans="2465" data-accttype="media" data-search="深潮 techflow">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7388642" target="_blank">深潮 TechFlow</a>
@@ -472,7 +477,7 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 123 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="28424063" data-posts="121" data-views="1011370" data-likes="26" data-days="4" data-engagement="2110" data-fans="1464" data-accttype="media">
+<div class="creator-card" data-uid="28424063" data-posts="121" data-views="1011370" data-likes="26" data-days="4" data-engagement="2110" data-fans="1464" data-accttype="media" data-search="链捕手chaincatcher">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/28424063" target="_blank">链捕手ChainCatcher</a>
@@ -649,7 +654,7 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 101 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="33792705" data-posts="50" data-views="513794" data-likes="6" data-days="7" data-engagement="1050" data-fans="924" data-accttype="media">
+<div class="creator-card" data-uid="33792705" data-posts="50" data-views="513794" data-likes="6" data-days="7" data-engagement="1050" data-fans="924" data-accttype="media" data-search="panews">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/33792705" target="_blank">PANews</a>
@@ -826,7 +831,7 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 30 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1162342" data-posts="38" data-views="4600861" data-likes="75" data-days="3" data-engagement="9461" data-fans="27599" data-accttype="media">
+<div class="creator-card" data-uid="1162342" data-posts="38" data-views="4600861" data-likes="75" data-days="3" data-engagement="9461" data-fans="27599" data-accttype="media" data-search="港股窩輪jenny">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1162342" target="_blank">港股窩輪Jenny</a>
@@ -1003,7 +1008,7 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 18 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="26294087" data-posts="28" data-views="333662" data-likes="13" data-days="5" data-engagement="706" data-fans="602" data-accttype="media">
+<div class="creator-card" data-uid="26294087" data-posts="28" data-views="333662" data-likes="13" data-days="5" data-engagement="706" data-fans="602" data-accttype="media" data-search="techub news">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/26294087" target="_blank">Techub News</a>
@@ -1180,7 +1185,7 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 8 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="231575065" data-posts="21" data-views="941328" data-likes="31" data-days="7" data-engagement="2040" data-fans="4260" data-accttype="personal">
+<div class="creator-card" data-uid="231575065" data-posts="21" data-views="941328" data-likes="31" data-days="7" data-engagement="2040" data-fans="4260" data-accttype="personal" data-search="很大很大的橙子">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/231575065" target="_blank">很大很大的橙子</a>
@@ -1353,7 +1358,7 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 1 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="18799623" data-posts="16" data-views="548213" data-likes="153" data-days="6" data-engagement="1660" data-fans="5934" data-accttype="personal">
+<div class="creator-card" data-uid="18799623" data-posts="16" data-views="548213" data-likes="153" data-days="6" data-engagement="1660" data-fans="5934" data-accttype="personal" data-search="leo jesse livermore">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/18799623" target="_blank">Leo Jesse Livermore</a>
@@ -1498,7 +1503,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="14405456" data-posts="15" data-views="2388496" data-likes="62" data-days="6" data-engagement="5317" data-fans="19683" data-accttype="personal">
+<div class="creator-card" data-uid="14405456" data-posts="15" data-views="2388496" data-likes="62" data-days="6" data-engagement="5317" data-fans="19683" data-accttype="personal" data-search="守猪逮兔估值模型">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/14405456" target="_blank">守猪逮兔估值模型</a>
@@ -1636,7 +1641,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1065155" data-posts="15" data-views="3531323" data-likes="72" data-days="4" data-engagement="7538" data-fans="22273" data-accttype="personal">
+<div class="creator-card" data-uid="1065155" data-posts="15" data-views="3531323" data-likes="72" data-days="4" data-engagement="7538" data-fans="22273" data-accttype="personal" data-search="說財經 说财经">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1065155" target="_blank">说财经</a>
@@ -1778,7 +1783,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="13503549" data-posts="14" data-views="79295" data-likes="65" data-days="5" data-engagement="358" data-fans="18912" data-accttype="personal">
+<div class="creator-card" data-uid="13503549" data-posts="14" data-views="79295" data-likes="65" data-days="5" data-engagement="358" data-fans="18912" data-accttype="personal" data-search="但斌">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/13503549" target="_blank">但斌</a>
@@ -1913,7 +1918,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1472793" data-posts="12" data-views="1906727" data-likes="92" data-days="4" data-engagement="4104" data-fans="35313" data-accttype="personal">
+<div class="creator-card" data-uid="1472793" data-posts="12" data-views="1906727" data-likes="92" data-days="4" data-engagement="4104" data-fans="35313" data-accttype="personal" data-search="火風战士 火风战士">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1472793" target="_blank">火风战士</a>
@@ -2034,7 +2039,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="2869652" data-posts="12" data-views="90700" data-likes="3" data-days="5" data-engagement="195" data-fans="18844" data-accttype="personal">
+<div class="creator-card" data-uid="2869652" data-posts="12" data-views="90700" data-likes="3" data-days="5" data-engagement="195" data-fans="18844" data-accttype="personal" data-search="罗超頻道 罗超频道">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/2869652" target="_blank">罗超频道</a>
@@ -2155,7 +2160,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="34275720" data-posts="8" data-views="30106" data-likes="4" data-days="4" data-engagement="82" data-fans="1735" data-accttype="personal">
+<div class="creator-card" data-uid="34275720" data-posts="8" data-views="30106" data-likes="4" data-days="4" data-engagement="82" data-fans="1735" data-accttype="personal" data-search="cato_kt">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/34275720" target="_blank">Cato_KT</a>
@@ -2244,7 +2249,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="24989235" data-posts="8" data-views="101571" data-likes="2" data-days="4" data-engagement="209" data-fans="568" data-accttype="personal">
+<div class="creator-card" data-uid="24989235" data-posts="8" data-views="101571" data-likes="2" data-days="4" data-engagement="209" data-fans="568" data-accttype="personal" data-search="律動blockbeat_app 律动blockbeat_app">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/24989235" target="_blank">律动BlockBeat_APP</a>
@@ -2337,7 +2342,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11891989" data-posts="7" data-views="642272" data-likes="163" data-days="6" data-engagement="1858" data-fans="10655" data-accttype="personal">
+<div class="creator-card" data-uid="11891989" data-posts="7" data-views="642272" data-likes="163" data-days="6" data-engagement="1858" data-fans="10655" data-accttype="personal" data-search="optionjack">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11891989" target="_blank">OptionJack</a>
@@ -2423,7 +2428,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16565779" data-posts="6" data-views="29042" data-likes="16" data-days="3" data-engagement="186" data-fans="10148" data-accttype="personal">
+<div class="creator-card" data-uid="16565779" data-posts="6" data-views="29042" data-likes="16" data-days="3" data-engagement="186" data-fans="10148" data-accttype="personal" data-search="jw invest">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16565779" target="_blank">JW Invest</a>
@@ -2498,7 +2503,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="25914640" data-posts="6" data-views="1578602" data-likes="41" data-days="5" data-engagement="3305" data-fans="3109" data-accttype="personal">
+<div class="creator-card" data-uid="25914640" data-posts="6" data-views="1578602" data-likes="41" data-days="5" data-engagement="3305" data-fans="3109" data-accttype="personal" data-search="京城z先生">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/25914640" target="_blank">京城Z先生</a>
@@ -2577,7 +2582,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7483116" data-posts="6" data-views="100326" data-likes="3" data-days="5" data-engagement="209" data-fans="604" data-accttype="personal">
+<div class="creator-card" data-uid="7483116" data-posts="6" data-views="100326" data-likes="3" data-days="5" data-engagement="209" data-fans="604" data-accttype="personal" data-search="价值事務所 价值事务所">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7483116" target="_blank">价值事务所</a>
@@ -2656,7 +2661,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="21036193" data-posts="6" data-views="2949168" data-likes="220" data-days="3" data-engagement="7183" data-fans="5790" data-accttype="personal">
+<div class="creator-card" data-uid="21036193" data-posts="6" data-views="2949168" data-likes="220" data-days="3" data-engagement="7183" data-fans="5790" data-accttype="personal" data-search="富途馮文慧 anna">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/21036193" target="_blank">富途馮文慧 Anna</a>
@@ -2735,7 +2740,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="17567706" data-posts="5" data-views="94253" data-likes="4" data-days="5" data-engagement="200" data-fans="614" data-accttype="media">
+<div class="creator-card" data-uid="17567706" data-posts="5" data-views="94253" data-likes="4" data-days="5" data-engagement="200" data-fans="614" data-accttype="media" data-search="吳說 吴说">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17567706" target="_blank">吴说</a>
@@ -2807,7 +2812,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="15584643" data-posts="5" data-views="1758816" data-likes="161" data-days="4" data-engagement="4170" data-fans="6618" data-accttype="personal">
+<div class="creator-card" data-uid="15584643" data-posts="5" data-views="1758816" data-likes="161" data-days="4" data-engagement="4170" data-fans="6618" data-accttype="personal" data-search="我爱广州gz">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15584643" target="_blank">我爱广州GZ</a>
@@ -2875,7 +2880,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="14639775" data-posts="5" data-views="176327" data-likes="22" data-days="4" data-engagement="458" data-fans="759" data-accttype="personal">
+<div class="creator-card" data-uid="14639775" data-posts="5" data-views="176327" data-likes="22" data-days="4" data-engagement="458" data-fans="759" data-accttype="personal" data-search="ive仔30歲投资筆記 ive仔30歲投資筆記">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/14639775" target="_blank">Ive仔30歲投資筆記</a>
@@ -2947,7 +2952,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7223813" data-posts="4" data-views="804718" data-likes="94" data-days="3" data-engagement="1896" data-fans="15973" data-accttype="personal">
+<div class="creator-card" data-uid="7223813" data-posts="4" data-views="804718" data-likes="94" data-days="3" data-engagement="1896" data-fans="15973" data-accttype="personal" data-search="莊主_logic投资山莊 莊主_logic投資山莊">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7223813" target="_blank">莊主_Logic投資山莊</a>
@@ -3012,7 +3017,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="17813031" data-posts="4" data-views="925827" data-likes="62" data-days="2" data-engagement="2292" data-fans="28419" data-accttype="personal">
+<div class="creator-card" data-uid="17813031" data-posts="4" data-views="925827" data-likes="62" data-days="2" data-engagement="2292" data-fans="28419" data-accttype="personal" data-search="大藍天 小雨點 大藍天 小雨点">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17813031" target="_blank">大藍天 小雨點</a>
@@ -3073,7 +3078,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="13298710" data-posts="4" data-views="5522380" data-likes="159" data-days="3" data-engagement="11726" data-fans="44580" data-accttype="personal">
+<div class="creator-card" data-uid="13298710" data-posts="4" data-views="5522380" data-likes="159" data-days="3" data-engagement="11726" data-fans="44580" data-accttype="personal" data-search="摩帥 摩帅">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/13298710" target="_blank">摩帥</a>
@@ -3138,7 +3143,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16134209" data-posts="4" data-views="2607467" data-likes="196" data-days="4" data-engagement="6022" data-fans="13461" data-accttype="personal">
+<div class="creator-card" data-uid="16134209" data-posts="4" data-views="2607467" data-likes="196" data-days="4" data-engagement="6022" data-fans="13461" data-accttype="personal" data-search="股市馬斯克 股市马斯克">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16134209" target="_blank">股市马斯克</a>
@@ -3203,7 +3208,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="12178975" data-posts="4" data-views="493240" data-likes="38" data-days="4" data-engagement="1150" data-fans="33244" data-accttype="personal">
+<div class="creator-card" data-uid="12178975" data-posts="4" data-views="493240" data-likes="38" data-days="4" data-engagement="1150" data-fans="33244" data-accttype="personal" data-search="郭二侠说财 郭二侠說財">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/12178975" target="_blank">郭二侠说财</a>
@@ -3268,7 +3273,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16428923" data-posts="4" data-views="579851" data-likes="46" data-days="3" data-engagement="1352" data-fans="3914" data-accttype="personal">
+<div class="creator-card" data-uid="16428923" data-posts="4" data-views="579851" data-likes="46" data-days="3" data-engagement="1352" data-fans="3914" data-accttype="personal" data-search="王二狗子">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16428923" target="_blank">王二狗子</a>
@@ -3333,7 +3338,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="3351456" data-posts="4" data-views="33427" data-likes="4" data-days="3" data-engagement="83" data-fans="3522" data-accttype="personal">
+<div class="creator-card" data-uid="3351456" data-posts="4" data-views="33427" data-likes="4" data-days="3" data-engagement="83" data-fans="3522" data-accttype="personal" data-search="john的投资笔记 john的投資笔记">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/3351456" target="_blank">John的投资笔记</a>
@@ -3394,7 +3399,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="32861462" data-posts="4" data-views="7284" data-likes="2" data-days="3" data-engagement="20" data-fans="265" data-accttype="personal">
+<div class="creator-card" data-uid="32861462" data-posts="4" data-views="7284" data-likes="2" data-days="3" data-engagement="20" data-fans="265" data-accttype="personal" data-search="jack-yi">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/32861462" target="_blank">Jack-Yi</a>
@@ -3455,7 +3460,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11341665" data-posts="3" data-views="19244" data-likes="40" data-days="1" data-engagement="198" data-fans="21425" data-accttype="personal">
+<div class="creator-card" data-uid="11341665" data-posts="3" data-views="19244" data-likes="40" data-days="1" data-engagement="198" data-fans="21425" data-accttype="personal" data-search="紅磡索螺絲">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11341665" target="_blank">紅磡索螺絲</a>
@@ -3509,7 +3514,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16751620" data-posts="3" data-views="1344227" data-likes="163" data-days="2" data-engagement="3247" data-fans="28222" data-accttype="personal">
+<div class="creator-card" data-uid="16751620" data-posts="3" data-views="1344227" data-likes="163" data-days="2" data-engagement="3247" data-fans="28222" data-accttype="personal" data-search="中戶变大戶小牛变大牛 中戶變大戶小牛變大牛">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16751620" target="_blank">中戶變大戶小牛變大牛</a>
@@ -3567,7 +3572,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="25169348" data-posts="3" data-views="3252592" data-likes="255" data-days="2" data-engagement="7595" data-fans="19027" data-accttype="personal">
+<div class="creator-card" data-uid="25169348" data-posts="3" data-views="3252592" data-likes="255" data-days="2" data-engagement="7595" data-fans="19027" data-accttype="personal" data-search="股海gso">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/25169348" target="_blank">股海GSO</a>
@@ -3625,7 +3630,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="16459220" data-posts="3" data-views="3167467" data-likes="269" data-days="3" data-engagement="7286" data-fans="34040" data-accttype="personal">
+<div class="creator-card" data-uid="16459220" data-posts="3" data-views="3167467" data-likes="269" data-days="3" data-engagement="7286" data-fans="34040" data-accttype="personal" data-search="zona投资隨筆 zona投資隨筆">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16459220" target="_blank">Zona投資隨筆</a>
@@ -3683,7 +3688,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="23597001" data-posts="3" data-views="469923" data-likes="42" data-days="3" data-engagement="1105" data-fans="9164" data-accttype="personal">
+<div class="creator-card" data-uid="23597001" data-posts="3" data-views="469923" data-likes="42" data-days="3" data-engagement="1105" data-fans="9164" data-accttype="personal" data-search="市场職人 gstock888 市場職人 gstock888">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/23597001" target="_blank">市場職人 GStock888</a>
@@ -3741,7 +3746,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1160930" data-posts="3" data-views="381694" data-likes="15" data-days="3" data-engagement="828" data-fans="15461" data-accttype="personal">
+<div class="creator-card" data-uid="1160930" data-posts="3" data-views="381694" data-likes="15" data-days="3" data-engagement="828" data-fans="15461" data-accttype="personal" data-search="静姐的财富第六感 静姐的財富第六感">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1160930" target="_blank">静姐的财富第六感</a>
@@ -3795,7 +3800,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="17491305" data-posts="3" data-views="1006858" data-likes="56" data-days="3" data-engagement="2256" data-fans="37499" data-accttype="personal">
+<div class="creator-card" data-uid="17491305" data-posts="3" data-views="1006858" data-likes="56" data-days="3" data-engagement="2256" data-fans="37499" data-accttype="personal" data-search="读财报话新股 讀財報話新股">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17491305" target="_blank">读财报话新股</a>
@@ -3853,7 +3858,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="14657515" data-posts="3" data-views="497092" data-likes="118" data-days="3" data-engagement="1483" data-fans="5795" data-accttype="personal">
+<div class="creator-card" data-uid="14657515" data-posts="3" data-views="497092" data-likes="118" data-days="3" data-engagement="1483" data-fans="5795" data-accttype="personal" data-search="問就是加多 问就是加多">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/14657515" target="_blank">问就是加多</a>
@@ -3911,7 +3916,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="5995073" data-posts="3" data-views="578398" data-likes="31" data-days="3" data-engagement="1269" data-fans="8495" data-accttype="personal">
+<div class="creator-card" data-uid="5995073" data-posts="3" data-views="578398" data-likes="31" data-days="3" data-engagement="1269" data-fans="8495" data-accttype="personal" data-search="富竹">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5995073" target="_blank">富竹</a>
@@ -3969,7 +3974,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="5579233" data-posts="3" data-views="267518" data-likes="72" data-days="2" data-engagement="866" data-fans="78757" data-accttype="personal">
+<div class="creator-card" data-uid="5579233" data-posts="3" data-views="267518" data-likes="72" data-days="2" data-engagement="866" data-fans="78757" data-accttype="personal" data-search="虎哥趨勢投资 虎哥趨勢投資">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5579233" target="_blank">虎哥趨勢投資</a>
@@ -4023,7 +4028,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="12623418" data-posts="3" data-views="222598" data-likes="13" data-days="2" data-engagement="514" data-fans="48120" data-accttype="personal">
+<div class="creator-card" data-uid="12623418" data-posts="3" data-views="222598" data-likes="13" data-days="2" data-engagement="514" data-fans="48120" data-accttype="personal" data-search="爱投资的小熊猫 爱投資的小熊猫">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/12623418" target="_blank">爱投资的小熊猫</a>
@@ -4081,7 +4086,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="17981141" data-posts="3" data-views="250130" data-likes="78" data-days="2" data-engagement="804" data-fans="15563" data-accttype="personal">
+<div class="creator-card" data-uid="17981141" data-posts="3" data-views="250130" data-likes="78" data-days="2" data-engagement="804" data-fans="15563" data-accttype="personal" data-search="小散老俞">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17981141" target="_blank">小散老俞</a>
@@ -4139,7 +4144,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="15816956" data-posts="3" data-views="77447" data-likes="2" data-days="2" data-engagement="165" data-fans="3177" data-accttype="personal">
+<div class="creator-card" data-uid="15816956" data-posts="3" data-views="77447" data-likes="2" data-days="2" data-engagement="165" data-fans="3177" data-accttype="personal" data-search="韭菜專家">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15816956" target="_blank">韭菜專家</a>
@@ -4193,7 +4198,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="15813386" data-posts="3" data-views="3384782" data-likes="103" data-days="3" data-engagement="7168" data-fans="5737" data-accttype="personal">
+<div class="creator-card" data-uid="15813386" data-posts="3" data-views="3384782" data-likes="103" data-days="3" data-engagement="7168" data-fans="5737" data-accttype="personal" data-search="嘉哥爱自由">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15813386" target="_blank">嘉哥爱自由</a>
@@ -4247,7 +4252,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="28353219" data-posts="3" data-views="86239" data-likes="19" data-days="3" data-engagement="264" data-fans="1389" data-accttype="personal">
+<div class="creator-card" data-uid="28353219" data-posts="3" data-views="86239" data-likes="19" data-days="3" data-engagement="264" data-fans="1389" data-accttype="personal" data-search="mrkc深夜学堂 mrkc深夜學堂">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/28353219" target="_blank">MrKC深夜学堂</a>
@@ -4301,7 +4306,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="34125173" data-posts="3" data-views="631453" data-likes="231" data-days="3" data-engagement="2660" data-fans="7218" data-accttype="personal">
+<div class="creator-card" data-uid="34125173" data-posts="3" data-views="631453" data-likes="231" data-days="3" data-engagement="2660" data-fans="7218" data-accttype="personal" data-search="attarian">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/34125173" target="_blank">attarian</a>
@@ -4359,7 +4364,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="30481835" data-posts="3" data-views="859484" data-likes="109" data-days="3" data-engagement="2085" data-fans="8851" data-accttype="personal">
+<div class="creator-card" data-uid="30481835" data-posts="3" data-views="859484" data-likes="109" data-days="3" data-engagement="2085" data-fans="8851" data-accttype="personal" data-search="牛頭法師 牛头法师">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/30481835" target="_blank">牛头法师</a>
@@ -4417,7 +4422,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="5263553" data-posts="3" data-views="673282" data-likes="66" data-days="3" data-engagement="1584" data-fans="8176" data-accttype="personal">
+<div class="creator-card" data-uid="5263553" data-posts="3" data-views="673282" data-likes="66" data-days="3" data-engagement="1584" data-fans="8176" data-accttype="personal" data-search="富哥搞錢 富哥搞钱">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5263553" target="_blank">富哥搞钱</a>
@@ -4471,7 +4476,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="23462267" data-posts="2" data-views="1086562" data-likes="264" data-days="1" data-engagement="3210" data-fans="55238" data-accttype="personal">
+<div class="creator-card" data-uid="23462267" data-posts="2" data-views="1086562" data-likes="264" data-days="1" data-engagement="3210" data-fans="55238" data-accttype="personal" data-search="年頭旺到年尾 年头旺到年尾">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/23462267" target="_blank">年頭旺到年尾</a>
@@ -4522,7 +4527,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="17296331" data-posts="2" data-views="5282881" data-likes="130" data-days="1" data-engagement="11085" data-fans="109460" data-accttype="personal">
+<div class="creator-card" data-uid="17296331" data-posts="2" data-views="5282881" data-likes="130" data-days="1" data-engagement="11085" data-fans="109460" data-accttype="personal" data-search="孙子的末代傳人 孫子的末代傳人">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17296331" target="_blank">孫子的末代傳人</a>
@@ -4573,7 +4578,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11351602" data-posts="2" data-views="1903388" data-likes="106" data-days="2" data-engagement="4159" data-fans="24068" data-accttype="personal">
+<div class="creator-card" data-uid="11351602" data-posts="2" data-views="1903388" data-likes="106" data-days="2" data-engagement="4159" data-fans="24068" data-accttype="personal" data-search="daniel 玄">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11351602" target="_blank">Daniel 玄</a>
@@ -4620,7 +4625,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="31386762" data-posts="2" data-views="108237" data-likes="12" data-days="2" data-engagement="252" data-fans="6616" data-accttype="personal">
+<div class="creator-card" data-uid="31386762" data-posts="2" data-views="108237" data-likes="12" data-days="2" data-engagement="252" data-fans="6616" data-accttype="personal" data-search="期权六艺 期權六藝">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/31386762" target="_blank">期权六艺</a>
@@ -4671,7 +4676,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="18031209" data-posts="2" data-views="265497" data-likes="17" data-days="2" data-engagement="586" data-fans="15394" data-accttype="personal">
+<div class="creator-card" data-uid="18031209" data-posts="2" data-views="265497" data-likes="17" data-days="2" data-engagement="586" data-fans="15394" data-accttype="personal" data-search="家哥的小黑屋">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/18031209" target="_blank">家哥的小黑屋</a>
@@ -4722,7 +4727,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="10200673" data-posts="2" data-views="1322637" data-likes="95" data-days="2" data-engagement="3035" data-fans="11529" data-accttype="personal">
+<div class="creator-card" data-uid="10200673" data-posts="2" data-views="1322637" data-likes="95" data-days="2" data-engagement="3035" data-fans="11529" data-accttype="personal" data-search="o聖者为王o o聖者為王o">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/10200673" target="_blank">o聖者為王o</a>
@@ -4773,7 +4778,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11922518" data-posts="2" data-views="110609" data-likes="55" data-days="2" data-engagement="536" data-fans="74553" data-accttype="personal">
+<div class="creator-card" data-uid="11922518" data-posts="2" data-views="110609" data-likes="55" data-days="2" data-engagement="536" data-fans="74553" data-accttype="personal" data-search="穩中求勝sam">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11922518" target="_blank">穩中求勝Sam</a>
@@ -4820,7 +4825,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11283976" data-posts="2" data-views="65567" data-likes="4" data-days="2" data-engagement="143" data-fans="37751" data-accttype="personal">
+<div class="creator-card" data-uid="11283976" data-posts="2" data-views="65567" data-likes="4" data-days="2" data-engagement="143" data-fans="37751" data-accttype="personal" data-search="思辨财经 思辨財經">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11283976" target="_blank">思辨财经</a>
@@ -4871,7 +4876,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="26938318" data-posts="2" data-views="398983" data-likes="21" data-days="1" data-engagement="895" data-fans="34302" data-accttype="personal">
+<div class="creator-card" data-uid="26938318" data-posts="2" data-views="398983" data-likes="21" data-days="1" data-engagement="895" data-fans="34302" data-accttype="personal" data-search="港美猎人">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/26938318" target="_blank">港美猎人</a>
@@ -4922,7 +4927,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="5977079" data-posts="2" data-views="52165" data-likes="3" data-days="1" data-engagement="118" data-fans="10239" data-accttype="media">
+<div class="creator-card" data-uid="5977079" data-posts="2" data-views="52165" data-likes="3" data-days="1" data-engagement="118" data-fans="10239" data-accttype="media" data-search="真是港股圈">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5977079" target="_blank">真是港股圈</a>
@@ -4973,7 +4978,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="231866069" data-posts="2" data-views="273731" data-likes="12" data-days="2" data-engagement="598" data-fans="8944" data-accttype="personal">
+<div class="creator-card" data-uid="231866069" data-posts="2" data-views="273731" data-likes="12" data-days="2" data-engagement="598" data-fans="8944" data-accttype="personal" data-search="滕叔投美股">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/231866069" target="_blank">滕叔投美股</a>
@@ -5024,7 +5029,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="30936527" data-posts="2" data-views="26560" data-likes="9" data-days="1" data-engagement="95" data-fans="2968" data-accttype="personal">
+<div class="creator-card" data-uid="30936527" data-posts="2" data-views="26560" data-likes="9" data-days="1" data-engagement="95" data-fans="2968" data-accttype="personal" data-search="狮子做趋势交易">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/30936527" target="_blank">狮子做趋势交易</a>
@@ -5071,7 +5076,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="18437538" data-posts="2" data-views="53572" data-likes="2" data-days="2" data-engagement="113" data-fans="103" data-accttype="personal">
+<div class="creator-card" data-uid="18437538" data-posts="2" data-views="53572" data-likes="2" data-days="2" data-engagement="113" data-fans="103" data-accttype="personal" data-search="道總有理 道总有理">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/18437538" target="_blank">道总有理</a>
@@ -5122,7 +5127,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7149196" data-posts="2" data-views="770880" data-likes="100" data-days="2" data-engagement="1931" data-fans="8304" data-accttype="personal">
+<div class="creator-card" data-uid="7149196" data-posts="2" data-views="770880" data-likes="100" data-days="2" data-engagement="1931" data-fans="8304" data-accttype="personal" data-search="sam lam (森林）">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7149196" target="_blank">Sam Lam (森林）</a>
@@ -5173,7 +5178,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="35244821" data-posts="2" data-views="59177" data-likes="1" data-days="2" data-engagement="121" data-fans="314" data-accttype="personal">
+<div class="creator-card" data-uid="35244821" data-posts="2" data-views="59177" data-likes="1" data-days="2" data-engagement="121" data-fans="314" data-accttype="personal" data-search="美國中文投資网 美国中文投资网">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/35244821" target="_blank">美国中文投资网</a>
@@ -5224,7 +5229,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="231870570" data-posts="2" data-views="178" data-likes="0" data-days="1" data-engagement="0" data-fans="69" data-accttype="personal">
+<div class="creator-card" data-uid="231870570" data-posts="2" data-views="178" data-likes="0" data-days="1" data-engagement="0" data-fans="69" data-accttype="personal" data-search="bill qian">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/231870570" target="_blank">Bill Qian</a>
@@ -5271,7 +5276,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="231506941" data-posts="2" data-views="12599" data-likes="6" data-days="2" data-engagement="43" data-fans="308" data-accttype="personal">
+<div class="creator-card" data-uid="231506941" data-posts="2" data-views="12599" data-likes="6" data-days="2" data-engagement="43" data-fans="308" data-accttype="personal" data-search="企鵝爸爸">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/231506941" target="_blank">企鵝爸爸</a>
@@ -5318,7 +5323,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="26621837" data-posts="2" data-views="120328" data-likes="29" data-days="1" data-engagement="337" data-fans="4437" data-accttype="personal">
+<div class="creator-card" data-uid="26621837" data-posts="2" data-views="120328" data-likes="29" data-days="1" data-engagement="337" data-fans="4437" data-accttype="personal" data-search="big78">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/26621837" target="_blank">BIG78</a>
@@ -5369,7 +5374,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="3226989" data-posts="2" data-views="212445" data-likes="4" data-days="2" data-engagement="436" data-fans="1100" data-accttype="personal">
+<div class="creator-card" data-uid="3226989" data-posts="2" data-views="212445" data-likes="4" data-days="2" data-engagement="436" data-fans="1100" data-accttype="personal" data-search="jet_media輪證分析">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/3226989" target="_blank">Jet_Media輪證分析</a>
@@ -5420,7 +5425,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="18953260" data-posts="1" data-views="39658" data-likes="7" data-days="1" data-engagement="100" data-fans="5998" data-accttype="personal">
+<div class="creator-card" data-uid="18953260" data-posts="1" data-views="39658" data-likes="7" data-days="1" data-engagement="100" data-fans="5998" data-accttype="personal" data-search="曼巴投資 曼巴投资">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/18953260" target="_blank">曼巴投资</a>
@@ -5464,7 +5469,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7275545" data-posts="1" data-views="42086" data-likes="62" data-days="1" data-engagement="330" data-fans="27762" data-accttype="personal">
+<div class="creator-card" data-uid="7275545" data-posts="1" data-views="42086" data-likes="62" data-days="1" data-engagement="330" data-fans="27762" data-accttype="personal" data-search="潘驴邓晓闲缺一 潘驴鄧晓闲缺一">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7275545" target="_blank">潘驴邓晓闲缺一</a>
@@ -5504,7 +5509,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11350158" data-posts="1" data-views="868827" data-likes="24" data-days="1" data-engagement="1839" data-fans="62297" data-accttype="personal">
+<div class="creator-card" data-uid="11350158" data-posts="1" data-views="868827" data-likes="24" data-days="1" data-engagement="1839" data-fans="62297" data-accttype="personal" data-search="丹尼斯王子">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11350158" target="_blank">丹尼斯王子</a>
@@ -5544,7 +5549,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="10203125" data-posts="1" data-views="39300" data-likes="0" data-days="1" data-engagement="78" data-fans="0" data-accttype="personal">
+<div class="creator-card" data-uid="10203125" data-posts="1" data-views="39300" data-likes="0" data-days="1" data-engagement="78" data-fans="0" data-accttype="personal" data-search="下一個女股神經b 下一个女股神经b">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/10203125" target="_blank">下一個女股神經B</a>
@@ -5584,7 +5589,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="13340775" data-posts="1" data-views="800125" data-likes="79" data-days="1" data-engagement="1952" data-fans="5380" data-accttype="personal">
+<div class="creator-card" data-uid="13340775" data-posts="1" data-views="800125" data-likes="79" data-days="1" data-engagement="1952" data-fans="5380" data-accttype="personal" data-search="使徒行者之蘇羽">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/13340775" target="_blank">使徒行者之蘇羽</a>
@@ -5628,7 +5633,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7971272" data-posts="1" data-views="182" data-likes="2" data-days="1" data-engagement="6" data-fans="680" data-accttype="personal">
+<div class="creator-card" data-uid="7971272" data-posts="1" data-views="182" data-likes="2" data-days="1" data-engagement="6" data-fans="680" data-accttype="personal" data-search="李奧 leleleo">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7971272" target="_blank">李奧 leleleo</a>
@@ -5668,7 +5673,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7625228" data-posts="1" data-views="291968" data-likes="91" data-days="1" data-engagement="936" data-fans="12566" data-accttype="personal">
+<div class="creator-card" data-uid="7625228" data-posts="1" data-views="291968" data-likes="91" data-days="1" data-engagement="936" data-fans="12566" data-accttype="personal" data-search="楊楊得億 杨杨得億">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7625228" target="_blank">杨杨得億</a>
@@ -5712,7 +5717,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7004578" data-posts="1" data-views="153520" data-likes="46" data-days="1" data-engagement="460" data-fans="9707" data-accttype="personal">
+<div class="creator-card" data-uid="7004578" data-posts="1" data-views="153520" data-likes="46" data-days="1" data-engagement="460" data-fans="9707" data-accttype="personal" data-search="锦李 98">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7004578" target="_blank">锦李 98</a>
@@ -5756,7 +5761,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="25481759" data-posts="1" data-views="180386" data-likes="17" data-days="1" data-engagement="411" data-fans="15626" data-accttype="personal">
+<div class="creator-card" data-uid="25481759" data-posts="1" data-views="180386" data-likes="17" data-days="1" data-engagement="411" data-fans="15626" data-accttype="personal" data-search="不知名选手_ 不知名選手_">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/25481759" target="_blank">不知名选手_</a>
@@ -5800,7 +5805,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7198520" data-posts="1" data-views="2285" data-likes="0" data-days="1" data-engagement="4" data-fans="101617" data-accttype="personal">
+<div class="creator-card" data-uid="7198520" data-posts="1" data-views="2285" data-likes="0" data-days="1" data-engagement="4" data-fans="101617" data-accttype="personal" data-search="fisher的信徒">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7198520" target="_blank">Fisher的信徒</a>
@@ -5840,7 +5845,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11995189" data-posts="1" data-views="263991" data-likes="66" data-days="1" data-engagement="730" data-fans="83737" data-accttype="personal">
+<div class="creator-card" data-uid="11995189" data-posts="1" data-views="263991" data-likes="66" data-days="1" data-engagement="730" data-fans="83737" data-accttype="personal" data-search="搏盡佢啦">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11995189" target="_blank">搏盡佢啦</a>
@@ -5884,7 +5889,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="29638625" data-posts="1" data-views="72179" data-likes="0" data-days="1" data-engagement="144" data-fans="23286" data-accttype="personal">
+<div class="creator-card" data-uid="29638625" data-posts="1" data-views="72179" data-likes="0" data-days="1" data-engagement="144" data-fans="23286" data-accttype="personal" data-search="乔令財經 乔令财经">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/29638625" target="_blank">乔令财经</a>
@@ -5928,7 +5933,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="10604518" data-posts="1" data-views="998" data-likes="0" data-days="1" data-engagement="21" data-fans="14699" data-accttype="personal">
+<div class="creator-card" data-uid="10604518" data-posts="1" data-views="998" data-likes="0" data-days="1" data-engagement="21" data-fans="14699" data-accttype="personal" data-search="丁有鱼">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/10604518" target="_blank">丁有鱼</a>
@@ -5968,7 +5973,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="15389198" data-posts="1" data-views="481538" data-likes="22" data-days="1" data-engagement="1029" data-fans="9273" data-accttype="personal">
+<div class="creator-card" data-uid="15389198" data-posts="1" data-views="481538" data-likes="22" data-days="1" data-engagement="1029" data-fans="9273" data-accttype="personal" data-search="三思期权 三思期權">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15389198" target="_blank">三思期权</a>
@@ -6012,7 +6017,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="30752545" data-posts="1" data-views="18355" data-likes="15" data-days="1" data-engagement="81" data-fans="11907" data-accttype="personal">
+<div class="creator-card" data-uid="30752545" data-posts="1" data-views="18355" data-likes="15" data-days="1" data-engagement="81" data-fans="11907" data-accttype="personal" data-search="蟹仔量化">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/30752545" target="_blank">蟹仔量化</a>
@@ -6052,7 +6057,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="15765592" data-posts="1" data-views="7785" data-likes="1" data-days="1" data-engagement="18" data-fans="516" data-accttype="personal">
+<div class="creator-card" data-uid="15765592" data-posts="1" data-views="7785" data-likes="1" data-days="1" data-engagement="18" data-fans="516" data-accttype="personal" data-search="新熵">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15765592" target="_blank">新熵</a>
@@ -6096,7 +6101,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="11578390" data-posts="1" data-views="15362" data-likes="0" data-days="1" data-engagement="30" data-fans="4293" data-accttype="personal">
+<div class="creator-card" data-uid="11578390" data-posts="1" data-views="15362" data-likes="0" data-days="1" data-engagement="30" data-fans="4293" data-accttype="personal" data-search="霍大侠">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11578390" target="_blank">霍大侠</a>
@@ -6136,7 +6141,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="29817577" data-posts="1" data-views="225454" data-likes="34" data-days="1" data-engagement="582" data-fans="9261" data-accttype="personal">
+<div class="creator-card" data-uid="29817577" data-posts="1" data-views="225454" data-likes="34" data-days="1" data-engagement="582" data-fans="9261" data-accttype="personal" data-search="小财喵爱炒股 小財喵爱炒股">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/29817577" target="_blank">小财喵爱炒股</a>
@@ -6180,7 +6185,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="7351896" data-posts="1" data-views="247884" data-likes="21" data-days="1" data-engagement="568" data-fans="18823" data-accttype="personal">
+<div class="creator-card" data-uid="7351896" data-posts="1" data-views="247884" data-likes="21" data-days="1" data-engagement="568" data-fans="18823" data-accttype="personal" data-search="港股ipo咖啡館">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7351896" target="_blank">港股IPO咖啡館</a>
@@ -6224,7 +6229,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="233869085" data-posts="1" data-views="14933" data-likes="2" data-days="1" data-engagement="35" data-fans="178" data-accttype="personal">
+<div class="creator-card" data-uid="233869085" data-posts="1" data-views="14933" data-likes="2" data-days="1" data-engagement="35" data-fans="178" data-accttype="personal" data-search="老沉期权分析 老沉期權分析">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/233869085" target="_blank">老沉期权分析</a>
@@ -6264,7 +6269,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="21257693" data-posts="1" data-views="84857" data-likes="5" data-days="1" data-engagement="184" data-fans="1082" data-accttype="personal">
+<div class="creator-card" data-uid="21257693" data-posts="1" data-views="84857" data-likes="5" data-days="1" data-engagement="184" data-fans="1082" data-accttype="personal" data-search="比比_溫傑">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/21257693" target="_blank">比比_溫傑</a>
@@ -6304,7 +6309,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="127715" data-posts="1" data-views="374977" data-likes="46" data-days="1" data-engagement="907" data-fans="12768" data-accttype="personal">
+<div class="creator-card" data-uid="127715" data-posts="1" data-views="374977" data-likes="46" data-days="1" data-engagement="907" data-fans="12768" data-accttype="personal" data-search="只做主升不做调整 隻做主升不做調整">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/127715" target="_blank">只做主升不做调整</a>
@@ -6348,7 +6353,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="631978" data-posts="1" data-views="334430" data-likes="15" data-days="1" data-engagement="728" data-fans="9494" data-accttype="personal">
+<div class="creator-card" data-uid="631978" data-posts="1" data-views="334430" data-likes="15" data-days="1" data-engagement="728" data-fans="9494" data-accttype="personal" data-search="多汁先生">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/631978" target="_blank">多汁先生</a>
@@ -6392,7 +6397,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="165850" data-posts="1" data-views="91766" data-likes="19" data-days="1" data-engagement="250" data-fans="5987" data-accttype="personal">
+<div class="creator-card" data-uid="165850" data-posts="1" data-views="91766" data-likes="19" data-days="1" data-engagement="250" data-fans="5987" data-accttype="personal" data-search="wangdizhe">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/165850" target="_blank">wangdizhe</a>
@@ -6436,7 +6441,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="35143402" data-posts="1" data-views="182873" data-likes="24" data-days="1" data-engagement="447" data-fans="6753" data-accttype="personal">
+<div class="creator-card" data-uid="35143402" data-posts="1" data-views="182873" data-likes="24" data-days="1" data-engagement="447" data-fans="6753" data-accttype="personal" data-search="耀文港古">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/35143402" target="_blank">耀文港古</a>
@@ -6480,7 +6485,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="1499823" data-posts="1" data-views="18308" data-likes="9" data-days="1" data-engagement="68" data-fans="2733" data-accttype="personal">
+<div class="creator-card" data-uid="1499823" data-posts="1" data-views="18308" data-likes="9" data-days="1" data-engagement="68" data-fans="2733" data-accttype="personal" data-search="证悟君">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1499823" target="_blank">证悟君</a>
@@ -6520,7 +6525,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="12103405" data-posts="1" data-views="2633" data-likes="5" data-days="1" data-engagement="30" data-fans="4055" data-accttype="personal">
+<div class="creator-card" data-uid="12103405" data-posts="1" data-views="2633" data-likes="5" data-days="1" data-engagement="30" data-fans="4055" data-accttype="personal" data-search="文主任">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/12103405" target="_blank">文主任</a>
@@ -6560,7 +6565,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card" data-uid="30385745" data-posts="1" data-views="18211" data-likes="11" data-days="1" data-engagement="69" data-fans="21512" data-accttype="personal">
+<div class="creator-card" data-uid="30385745" data-posts="1" data-views="18211" data-likes="11" data-days="1" data-engagement="69" data-fans="21512" data-accttype="personal" data-search="富途譚智樂 arnold">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/30385745" target="_blank">富途譚智樂 Arnold</a>
@@ -6615,13 +6620,19 @@ tr:hover td{background:#fef9f5;}
 let curTab='active', curType='all';
 const cards=()=>Array.from(document.querySelectorAll('.creator-card'));
 
+function clearSearch(){
+  document.getElementById('si').value='';
+  document.getElementById('sc').style.display='none';
+  filter();
+}
 function filter(){
   const q=document.getElementById('si').value.toLowerCase();
+  document.getElementById('sc').style.display=q?'inline-block':'none';
   let n=0;
   cards().forEach(c=>{
-    const nm=c.querySelector('.creator-name').textContent.toLowerCase();
+    const srch=(c.dataset.search||'').toLowerCase();
     const id=c.querySelector('.creator-uid').textContent.toLowerCase();
-    const matchQ=!q||nm.includes(q)||id.includes(q);
+    const matchQ=!q||srch.includes(q)||id.includes(q);
     const matchT=curTab==='all'?true:curTab==='active'?+c.dataset.posts>0:+c.dataset.posts===0;
     const matchType=curType==='all'?true:c.dataset.accttype===curType;
     c.classList.toggle('hidden',!(matchQ&&matchT&&matchType));
