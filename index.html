@@ -6650,7 +6650,7 @@ function resort(){
   const g=document.getElementById('grid');
   const cs=[...g.querySelectorAll('.creator-card')];
   cs.sort((a,b)=>{
-    const keys={posts:'posts',views:'views',likes:'likes',days:'days',engagement:'engagement'};
+    const keys={posts:'posts',views:'views',likes:'likes',days:'days',fans:'fans'};
     return +b.dataset[keys[k]]-(+a.dataset[keys[k]]);
   });
   cs.forEach(c=>g.appendChild(c));
