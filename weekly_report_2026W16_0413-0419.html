@@ -63,20 +63,22 @@ a:hover{text-decoration:underline;}
 .ov-kpi-label{font-size:10px;font-weight:700;color:var(--lt);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;}
 .ov-kpi-pair{display:flex;gap:0;}
 .ov-kpi-divider{width:1px;background:var(--bdr);}
-.ov-owner-row{display:flex;align-items:center;gap:12px;padding:12px 24px;max-width:1200px;margin:0 auto 4px;flex-wrap:wrap;}
-.ov-owner-label{font-size:10px;font-weight:700;color:var(--lt);text-transform:uppercase;letter-spacing:.8px;white-space:nowrap;}
-.ov-owner-card{flex:1;min-width:160px;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:10px 14px;}
-.ov-owner-name{font-size:13px;font-weight:700;color:#334155;margin-bottom:6px;}
-.ov-owner-nums{display:flex;gap:8px;align-items:center;margin-bottom:6px;flex-wrap:wrap;}
-.ov-owner-total{font-size:12px;color:#334155;font-weight:600;}
-.ov-owner-active{font-size:11px;color:#16a34a;background:#dcfce7;padding:1px 7px;border-radius:10px;}
-.ov-owner-inactive{font-size:11px;color:#dc2626;background:#fee2e2;padding:1px 7px;border-radius:10px;}
-.ov-owner-bar{height:4px;background:#e2e8f0;border-radius:2px;margin-bottom:4px;}
-.ov-owner-bar-fill{height:100%;background:#22c55e;border-radius:2px;}
-.ov-owner-rate{font-size:10px;color:var(--lt);margin-bottom:8px;}
-.ov-owner-content{display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid var(--bdr);padding-top:8px;}
-.ov-owner-stat{font-size:11px;color:var(--lt);white-space:nowrap;}
-.ov-owner-stat-n{font-weight:700;color:#334155;margin-right:1px;}
+.ov-owner-table-wrap{padding:0 24px 16px;max-width:1200px;margin:0 auto;}
+.ov-owner-label{font-size:10px;font-weight:700;color:var(--lt);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;}
+.ov-owner-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;}
+.ov-owner-table th{background:#f8fafc;font-size:11px;font-weight:600;color:var(--lt);text-align:center;padding:8px 12px;border-bottom:1px solid var(--bdr);}
+.ov-owner-table th:first-child{text-align:left;}
+.ov-owner-table td{padding:10px 12px;border-bottom:1px solid #f1f5f9;text-align:center;color:#334155;}
+.ov-owner-table tr:last-child td{border-bottom:none;}
+.ov-owner-table tbody tr:hover{background:#f8fafc;}
+.ov-ot-name{font-weight:700;color:var(--sec);text-align:left!important;}
+.ov-ot-num{font-weight:600;}
+.ov-owner-active{font-size:12px;color:#16a34a;background:#dcfce7;padding:2px 8px;border-radius:10px;font-weight:600;}
+.ov-owner-inactive{font-size:12px;color:#dc2626;background:#fee2e2;padding:2px 8px;border-radius:10px;font-weight:600;}
+.ov-ot-bar-wrap{display:flex;align-items:center;gap:6px;justify-content:center;}
+.ov-ot-bar{width:60px;height:5px;background:#e2e8f0;border-radius:3px;flex-shrink:0;}
+.ov-ot-bar-fill{height:100%;background:#22c55e;border-radius:3px;}
+.ov-ot-rate{font-size:11px;color:var(--lt);white-space:nowrap;}
 .ov-kpi{flex:1;text-align:center;padding:4px 10px;border-right:1px solid var(--bdr);}
 .ov-kpi:last-child{border-right:none;}
 .ov-kpi-n{font-size:28px;font-weight:700;color:var(--sec);line-height:1;}
@@ -335,69 +337,77 @@ tr:hover td{background:#fef9f5;}
     </div>
   </div>
 </div>
-<div class="ov-owner-row">
+<div class="ov-owner-table-wrap">
   <div class="ov-owner-label">跟进人分布</div>
-  <div class="ov-owner-card">
-    <div class="ov-owner-name">blakeli</div>
-    <div class="ov-owner-nums">
-      <span class="ov-owner-total">44 人</span>
-      <span class="ov-owner-active">活跃 22</span>
-      <span class="ov-owner-inactive">未发布 22</span>
-    </div>
-    <div class="ov-owner-bar"><div class="ov-owner-bar-fill" style="width:50%"></div></div>
-    <div class="ov-owner-rate">50% 活跃率</div>
-    <div class="ov-owner-content">
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">856</span>篇</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">1537.0</span>万浏览</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">1269</span>点赞</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">360</span>评论</span>
-    </div>
-  </div><div class="ov-owner-card">
-    <div class="ov-owner-name">chuiszewu</div>
-    <div class="ov-owner-nums">
-      <span class="ov-owner-total">39 人</span>
-      <span class="ov-owner-active">活跃 27</span>
-      <span class="ov-owner-inactive">未发布 12</span>
-    </div>
-    <div class="ov-owner-bar"><div class="ov-owner-bar-fill" style="width:69%"></div></div>
-    <div class="ov-owner-rate">69% 活跃率</div>
-    <div class="ov-owner-content">
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">192</span>篇</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">1900.0</span>万浏览</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">1425</span>点赞</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">658</span>评论</span>
-    </div>
-  </div><div class="ov-owner-card">
-    <div class="ov-owner-name">kristrawzeng</div>
-    <div class="ov-owner-nums">
-      <span class="ov-owner-total">52 人</span>
-      <span class="ov-owner-active">活跃 28</span>
-      <span class="ov-owner-inactive">未发布 24</span>
-    </div>
-    <div class="ov-owner-bar"><div class="ov-owner-bar-fill" style="width:54%"></div></div>
-    <div class="ov-owner-rate">54% 活跃率</div>
-    <div class="ov-owner-content">
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">116</span>篇</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">2476.0</span>万浏览</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">2806</span>点赞</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">746</span>评论</span>
-    </div>
-  </div><div class="ov-owner-card">
-    <div class="ov-owner-name">lisafu</div>
-    <div class="ov-owner-nums">
-      <span class="ov-owner-total">40 人</span>
-      <span class="ov-owner-active">活跃 18</span>
-      <span class="ov-owner-inactive">未发布 22</span>
-    </div>
-    <div class="ov-owner-bar"><div class="ov-owner-bar-fill" style="width:45%"></div></div>
-    <div class="ov-owner-rate">45% 活跃率</div>
-    <div class="ov-owner-content">
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">57</span>篇</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">1843.0</span>万浏览</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">1219</span>点赞</span>
-      <span class="ov-owner-stat"><span class="ov-owner-stat-n">367</span>评论</span>
-    </div>
-  </div>
+  <table class="ov-owner-table">
+    <thead><tr>
+      <th>跟进人</th><th>总人数</th><th>活跃</th><th>未发布</th><th>活跃率</th>
+      <th>发帖</th><th>浏览</th><th>点赞</th><th>评论</th>
+    </tr></thead>
+    <tbody>
+    <tr>
+      <td class="ov-ot-name">blakeli</td>
+      <td>44</td>
+      <td><span class="ov-owner-active">22</span></td>
+      <td><span class="ov-owner-inactive">22</span></td>
+      <td>
+        <div class="ov-ot-bar-wrap">
+          <div class="ov-ot-bar"><div class="ov-ot-bar-fill" style="width:50%"></div></div>
+          <span class="ov-ot-rate">50%</span>
+        </div>
+      </td>
+      <td class="ov-ot-num">856</td>
+      <td class="ov-ot-num">1537.0万</td>
+      <td class="ov-ot-num">1269</td>
+      <td class="ov-ot-num">360</td>
+    </tr><tr>
+      <td class="ov-ot-name">chuiszewu</td>
+      <td>39</td>
+      <td><span class="ov-owner-active">27</span></td>
+      <td><span class="ov-owner-inactive">12</span></td>
+      <td>
+        <div class="ov-ot-bar-wrap">
+          <div class="ov-ot-bar"><div class="ov-ot-bar-fill" style="width:69%"></div></div>
+          <span class="ov-ot-rate">69%</span>
+        </div>
+      </td>
+      <td class="ov-ot-num">192</td>
+      <td class="ov-ot-num">1900.0万</td>
+      <td class="ov-ot-num">1425</td>
+      <td class="ov-ot-num">658</td>
+    </tr><tr>
+      <td class="ov-ot-name">kristrawzeng</td>
+      <td>52</td>
+      <td><span class="ov-owner-active">28</span></td>
+      <td><span class="ov-owner-inactive">24</span></td>
+      <td>
+        <div class="ov-ot-bar-wrap">
+          <div class="ov-ot-bar"><div class="ov-ot-bar-fill" style="width:54%"></div></div>
+          <span class="ov-ot-rate">54%</span>
+        </div>
+      </td>
+      <td class="ov-ot-num">116</td>
+      <td class="ov-ot-num">2476.0万</td>
+      <td class="ov-ot-num">2806</td>
+      <td class="ov-ot-num">746</td>
+    </tr><tr>
+      <td class="ov-ot-name">lisafu</td>
+      <td>40</td>
+      <td><span class="ov-owner-active">18</span></td>
+      <td><span class="ov-owner-inactive">22</span></td>
+      <td>
+        <div class="ov-ot-bar-wrap">
+          <div class="ov-ot-bar"><div class="ov-ot-bar-fill" style="width:45%"></div></div>
+          <span class="ov-ot-rate">45%</span>
+        </div>
+      </td>
+      <td class="ov-ot-num">57</td>
+      <td class="ov-ot-num">1843.0万</td>
+      <td class="ov-ot-num">1219</td>
+      <td class="ov-ot-num">367</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 <div class="ov-detail-row">
   <div class="ov-panel">
@@ -1647,7 +1657,7 @@ tr:hover td{background:#fef9f5;}
 </div><div class="more-hint">…还有 3 条帖子</div></div>
   </details>
 </div>
-<div class="creator-card tier-hi" data-uid="1065155" data-posts="22" data-views="3381097" data-likes="90" data-days="5" data-engagement="7692" data-fans="22273" data-accttype="personal" data-owner="chuiszewu" data-search="说财经 說財經">
+<div class="creator-card tier-hi" data-uid="1065155" data-posts="22" data-views="3381097" data-likes="90" data-days="5" data-engagement="7692" data-fans="22273" data-accttype="personal" data-owner="chuiszewu" data-search="說財經 说财经">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/1065155" target="_blank">说财经</a>
@@ -2729,7 +2739,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-hi" data-uid="17813031" data-posts="8" data-views="809386" data-likes="137" data-days="5" data-engagement="2504" data-fans="28419" data-accttype="personal" data-owner="kristrawzeng" data-search="大藍天 小雨点 大藍天 小雨點">
+<div class="creator-card tier-hi" data-uid="17813031" data-posts="8" data-views="809386" data-likes="137" data-days="5" data-engagement="2504" data-fans="28419" data-accttype="personal" data-owner="kristrawzeng" data-search="大藍天 小雨點 大藍天 小雨点">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17813031" target="_blank">大藍天 小雨點</a>
@@ -3362,7 +3372,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-hi" data-uid="16134209" data-posts="6" data-views="3919187" data-likes="337" data-days="5" data-engagement="9224" data-fans="13461" data-accttype="personal" data-owner="lisafu" data-search="股市马斯克 股市馬斯克">
+<div class="creator-card tier-hi" data-uid="16134209" data-posts="6" data-views="3919187" data-likes="337" data-days="5" data-engagement="9224" data-fans="13461" data-accttype="personal" data-owner="lisafu" data-search="股市馬斯克 股市马斯克">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16134209" target="_blank">股市马斯克</a>
@@ -3591,7 +3601,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-hi" data-uid="23597001" data-posts="5" data-views="873213" data-likes="81" data-days="5" data-engagement="2189" data-fans="9164" data-accttype="personal" data-owner="kristrawzeng" data-search="市场職人 gstock888 市場職人 gstock888">
+<div class="creator-card tier-hi" data-uid="23597001" data-posts="5" data-views="873213" data-likes="81" data-days="5" data-engagement="2189" data-fans="9164" data-accttype="personal" data-owner="kristrawzeng" data-search="市場職人 gstock888 市场職人 gstock888">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/23597001" target="_blank">市場職人 GStock888</a>
@@ -3664,7 +3674,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="17491305" data-posts="5" data-views="1747623" data-likes="64" data-days="4" data-engagement="3857" data-fans="37499" data-accttype="personal" data-owner="lisafu" data-search="读财报话新股 讀財報話新股">
+<div class="creator-card tier-mid" data-uid="17491305" data-posts="5" data-views="1747623" data-likes="64" data-days="4" data-engagement="3857" data-fans="37499" data-accttype="personal" data-owner="lisafu" data-search="讀財報話新股 读财报话新股">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17491305" target="_blank">读财报话新股</a>
@@ -3810,7 +3820,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="2869652" data-posts="5" data-views="80455" data-likes="3" data-days="3" data-engagement="174" data-fans="18844" data-accttype="personal" data-owner="chuiszewu" data-search="罗超频道 罗超頻道">
+<div class="creator-card tier-mid" data-uid="2869652" data-posts="5" data-views="80455" data-likes="3" data-days="3" data-engagement="174" data-fans="18844" data-accttype="personal" data-owner="chuiszewu" data-search="罗超頻道 罗超频道">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/2869652" target="_blank">罗超频道</a>
@@ -4084,7 +4094,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="18932740" data-posts="4" data-views="594506" data-likes="141" data-days="3" data-engagement="2267" data-fans="14826" data-accttype="personal" data-owner="chuiszewu" data-search="chiefpapa张志云 chiefpapa張志雲">
+<div class="creator-card tier-mid" data-uid="18932740" data-posts="4" data-views="594506" data-likes="141" data-days="3" data-engagement="2267" data-fans="14826" data-accttype="personal" data-owner="chuiszewu" data-search="chiefpapa張志雲 chiefpapa张志云">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/18932740" target="_blank">ChiefPapa張志雲</a>
@@ -4410,7 +4420,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="35244821" data-posts="4" data-views="451568" data-likes="4" data-days="4" data-engagement="920" data-fans="314" data-accttype="personal" data-owner="lisafu" data-search="美国中文投资网 美國中文投資网">
+<div class="creator-card tier-mid" data-uid="35244821" data-posts="4" data-views="451568" data-likes="4" data-days="4" data-engagement="920" data-fans="314" data-accttype="personal" data-owner="lisafu" data-search="美國中文投資网 美国中文投资网">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/35244821" target="_blank">美国中文投资网</a>
@@ -4659,7 +4669,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="10203125" data-posts="3" data-views="19971" data-likes="0" data-days="3" data-engagement="54" data-fans="0" data-accttype="personal" data-owner="kristrawzeng" data-search="下一个女股神经b 下一個女股神經b">
+<div class="creator-card tier-mid" data-uid="10203125" data-posts="3" data-views="19971" data-likes="0" data-days="3" data-engagement="54" data-fans="0" data-accttype="personal" data-owner="kristrawzeng" data-search="下一個女股神經b 下一个女股神经b">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/10203125" target="_blank">下一個女股神經B</a>
@@ -4887,7 +4897,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="12178975" data-posts="3" data-views="498918" data-likes="36" data-days="3" data-engagement="1130" data-fans="33244" data-accttype="personal" data-owner="lisafu" data-search="郭二侠说财 郭二侠說財">
+<div class="creator-card tier-mid" data-uid="12178975" data-posts="3" data-views="498918" data-likes="36" data-days="3" data-engagement="1130" data-fans="33244" data-accttype="personal" data-owner="lisafu" data-search="郭二侠說財 郭二侠说财">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/12178975" target="_blank">郭二侠说财</a>
@@ -4946,7 +4956,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="12257686" data-posts="3" data-views="125332" data-likes="20" data-days="2" data-engagement="325" data-fans="22692" data-accttype="personal" data-owner="lisafu" data-search="bluestar舰長 bluestar舰长">
+<div class="creator-card tier-lo" data-uid="12257686" data-posts="3" data-views="125332" data-likes="20" data-days="2" data-engagement="325" data-fans="22692" data-accttype="personal" data-owner="lisafu" data-search="bluestar舰长 bluestar舰長">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/12257686" target="_blank">BlueStar舰长</a>
@@ -5233,7 +5243,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="14639775" data-posts="3" data-views="414375" data-likes="3" data-days="2" data-engagement="847" data-fans="759" data-accttype="personal" data-owner="chuiszewu" data-search="ive仔30歲投資筆記 ive仔30歲投资筆記">
+<div class="creator-card tier-lo" data-uid="14639775" data-posts="3" data-views="414375" data-likes="3" data-days="2" data-engagement="847" data-fans="759" data-accttype="personal" data-owner="chuiszewu" data-search="ive仔30歲投资筆記 ive仔30歲投資筆記">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/14639775" target="_blank">Ive仔30歲投資筆記</a>
@@ -5292,7 +5302,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="30481835" data-posts="3" data-views="1120618" data-likes="114" data-days="3" data-engagement="2608" data-fans="8851" data-accttype="personal" data-owner="chuiszewu" data-search="牛頭法師 牛头法师">
+<div class="creator-card tier-mid" data-uid="30481835" data-posts="3" data-views="1120618" data-likes="114" data-days="3" data-engagement="2608" data-fans="8851" data-accttype="personal" data-owner="chuiszewu" data-search="牛头法师 牛頭法師">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/30481835" target="_blank">牛头法师</a>
@@ -5410,7 +5420,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="17296331" data-posts="2" data-views="4701249" data-likes="224" data-days="2" data-engagement="10469" data-fans="109460" data-accttype="personal" data-owner="kristrawzeng" data-search="孙子的末代傳人 孫子的末代傳人">
+<div class="creator-card tier-lo" data-uid="17296331" data-posts="2" data-views="4701249" data-likes="224" data-days="2" data-engagement="10469" data-fans="109460" data-accttype="personal" data-owner="kristrawzeng" data-search="孫子的末代傳人 孙子的末代傳人">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17296331" target="_blank">孫子的末代傳人</a>
@@ -6558,7 +6568,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="16751620" data-posts="1" data-views="38394" data-likes="9" data-days="1" data-engagement="103" data-fans="28222" data-accttype="personal" data-owner="kristrawzeng" data-search="中戶变大戶小牛变大牛 中戶變大戶小牛變大牛">
+<div class="creator-card tier-lo" data-uid="16751620" data-posts="1" data-views="38394" data-likes="9" data-days="1" data-engagement="103" data-fans="28222" data-accttype="personal" data-owner="kristrawzeng" data-search="中戶變大戶小牛變大牛 中戶变大戶小牛变大牛">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16751620" target="_blank">中戶變大戶小牛變大牛</a>
@@ -6648,7 +6658,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="23602671" data-posts="1" data-views="370635" data-likes="30" data-days="1" data-engagement="896" data-fans="3925" data-accttype="personal" data-owner="blakeli" data-search="水滴石穿-想飞的人 水滴石穿-想飛的人">
+<div class="creator-card tier-lo" data-uid="23602671" data-posts="1" data-views="370635" data-likes="30" data-days="1" data-engagement="896" data-fans="3925" data-accttype="personal" data-owner="blakeli" data-search="水滴石穿-想飛的人 水滴石穿-想飞的人">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/23602671" target="_blank">水滴石穿-想飛的人</a>
@@ -6693,7 +6703,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="11292105" data-posts="1" data-views="361135" data-likes="27" data-days="1" data-engagement="818" data-fans="28319" data-accttype="personal" data-owner="lisafu" data-search="肖總財經 肖总财经">
+<div class="creator-card tier-lo" data-uid="11292105" data-posts="1" data-views="361135" data-likes="27" data-days="1" data-engagement="818" data-fans="28319" data-accttype="personal" data-owner="lisafu" data-search="肖总财经 肖總財經">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11292105" target="_blank">肖总财经</a>
@@ -6828,7 +6838,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="5579233" data-posts="1" data-views="8112" data-likes="20" data-days="1" data-engagement="111" data-fans="78757" data-accttype="personal" data-owner="kristrawzeng" data-search="虎哥趨勢投资 虎哥趨勢投資">
+<div class="creator-card tier-lo" data-uid="5579233" data-posts="1" data-views="8112" data-likes="20" data-days="1" data-engagement="111" data-fans="78757" data-accttype="personal" data-owner="kristrawzeng" data-search="虎哥趨勢投資 虎哥趨勢投资">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/5579233" target="_blank">虎哥趨勢投資</a>
@@ -7045,7 +7055,7 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="127715" data-posts="1" data-views="90244" data-likes="30" data-days="1" data-engagement="280" data-fans="12768" data-accttype="personal" data-owner="kristrawzeng" data-search="只做主升不做调整 隻做主升不做調整">
+<div class="creator-card tier-lo" data-uid="127715" data-posts="1" data-views="90244" data-likes="30" data-days="1" data-engagement="280" data-fans="12768" data-accttype="personal" data-owner="kristrawzeng" data-search="隻做主升不做調整 只做主升不做调整">
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/127715" target="_blank">只做主升不做调整</a>
