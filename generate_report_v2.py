@@ -688,20 +688,7 @@ def gen_creator_card(uid, v):
     if len(own_posts) > 20:
         posts_list_html += f'<div class="more-hint">…还有 {len(own_posts)-20} 条帖子</div>'
 
-    # 代表帖
-    if posts:
-        best = max(posts, key=lambda p: p['likes'] * 3 + p['comments'] * 5 + p['views'] // 1000)
-        best_url = f'https://q.futunn.com/feed/{best["feed_id"]}'
-        best_display = best.get('title') or best.get('text', '')
-        best_short = esc(best_display[:60] + ('…' if len(best_display) > 60 else ''))
-        best_html = f'''<div class="best-post">
-  <span class="best-label">代表帖：</span>
-  <a href="{best_url}" target="_blank" class="best-link">{best_short}</a>
-  <span class="best-metrics">👁{best["views"]:,} 👍{best["likes"]} 💬{best["comments"]} 🔁{best["shares"]}</span>
-</div>'''
-    else:
-        best_html = ''
-
+    best_html = ''
     _tier = 'tier-hi' if day_count >= 5 else ('tier-mid' if day_count >= 3 else 'tier-lo')
     _owner = UID_TO_OWNER.get(str(uid), 'unknown')
     return f'''<div class="creator-card {_tier}" data-uid="{uid}" data-posts="{len(own_posts)}" data-views="{total_v}" data-likes="{total_l}" data-days="{day_count}" data-engagement="{engagement_score}" data-fans="{fans_count}" data-accttype="{acct_type}" data-owner="{_owner}" data-search="{esc(_search_str(s_name))}">
