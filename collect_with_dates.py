@@ -88,11 +88,12 @@ def extract_text(rich_text):
 
 def fetch_posts(session, uid, start_ts, end_ts, max_pages=30):
     posts = []
+    seen_feed_ids = set()
     more_mark = None
     page = 0
     done = False
     while not done and page < max_pages:
-        params = {'type': 301, 'num': 20, 'load_list_type': 1, 'target_uid': uid, '_': int(time.time() * 1000)}
+        params = {'type': 300, 'num': 20, 'load_list_type': 1, 'target_uid': uid, '_': int(time.time() * 1000)}
         if more_mark:
             params['more_mark'] = more_mark
         try:
@@ -104,17 +105,24 @@ def fetch_posts(session, uid, start_ts, end_ts, max_pages=30):
         if not feed:
             break
         page += 1
+        page_has_recent = False  # 本页是否有 >= start_ts 的帖子
         for item in feed:
             common = item.get('common', {})
             ts = int(common.get('timestamp', 0))
             if ts == 0:
                 continue
             if ts > end_ts:
+                page_has_recent = True  # 说明时间线还在范围附近，继续翻页
                 continue
             elif ts < start_ts:
-                done = True
-                break
+                continue  # 跳过旧帖（含置顶帖），不立即终止
             else:
+                page_has_recent = True
+                feed_id = common.get('feed_id', '')
+                if feed_id and feed_id in seen_feed_ids:
+                    continue
+                if feed_id:
+                    seen_feed_ids.add(feed_id)
                 summary = item.get('summary', {})
                 rich_text = summary.get('rich_text', [])
                 text_content = extract_text(rich_text)
@@ -127,7 +135,7 @@ def fetch_posts(session, uid, start_ts, end_ts, max_pages=30):
                             stocks.append({'name': s['stock_name'], 'code': s.get('display_symbol', '')})
                 dt = datetime.fromtimestamp(ts, tz=TZ_HK)
                 posts.append({
-                    'feed_id': common.get('feed_id', ''),
+                    'feed_id': feed_id,
                     'timestamp': ts,
                     'date': dt.strftime('%Y-%m-%d'),
                     'datetime': dt.strftime('%Y-%m-%d %H:%M'),
@@ -148,6 +156,9 @@ def fetch_posts(session, uid, start_ts, end_ts, max_pages=30):
                     'author_uid': str(item.get('user_info', {}).get('user_id', '')),
                 })
         more_mark = data.get('more_mark', '')
+        # 本页没有任何 >= start_ts 的帖子，说明已翻过时间窗口，停止
+        if not page_has_recent:
+            done = True
         if not more_mark:
             done = True
         if not done:

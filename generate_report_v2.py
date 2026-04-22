@@ -101,8 +101,8 @@ def get_articles(v):
             and (not p.get('author_uid') or p.get('author_uid') == uid)]
 
 def get_own_posts(uid, v):
-    """返回创作者本人原创内容，等价于平台「原创」tab：
-    author_uid==uid，且非纯转发（转发帖无文字且无图片才算纯转发）。去重：同一 feed_id 只保留一条。"""
+    """返回创作者本人原创内容，严格对齐平台 /post/original（type=300）：
+    author_uid==uid，且 feed_type 不是转发帖（2、3）。去重：同一 feed_id 只保留一条。"""
     uid_str = str(uid)
     seen, result = set(), []
     for p in v.get('posts', []):
@@ -112,9 +112,7 @@ def get_own_posts(uid, v):
         if fid:
             seen.add(fid)
         if ((not p.get('author_uid') or p.get('author_uid') == uid_str)
-                and not (p.get('feed_type_str') == '转发帖'
-                         and not p.get('text', '').strip()
-                         and not p.get('has_image'))):
+                and p.get('feed_type', 0) not in (2, 3)):
             result.append(p)
     return result
 
