@@ -38,6 +38,11 @@ a:hover{text-decoration:underline;}
 .hdr h1{font-size:32px;font-weight:700;margin-bottom:6px;letter-spacing:.2px;position:relative;}
 .hdr .sub{font-size:14px;opacity:.82;position:relative;}
 .hdr .meta{font-size:11px;opacity:.45;margin-top:6px;position:relative;}
+.hdr-week-nav{margin-top:16px;position:relative;display:inline-flex;align-items:center;gap:8px;}
+.hdr-week-nav label{font-size:11px;color:rgba(255,255,255,.55);font-weight:600;letter-spacing:.6px;text-transform:uppercase;}
+.hdr-week-nav select{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:8px;padding:6px 32px 6px 12px;font-size:12px;font-weight:600;cursor:pointer;outline:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,.6)'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;transition:background .15s,border-color .15s;}
+.hdr-week-nav select:hover{background-color:rgba(255,255,255,.18);border-color:rgba(255,255,255,.45);}
+.hdr-week-nav select option{background:#1e293b;color:#fff;}
 
 /* ── Overview box ── */
 .overview-box{
@@ -310,6 +315,16 @@ tr:hover td{background:#fef9f5;}
   <h1>🐂 富途牛牛圈 创作者运营周报</h1>
   <div class="sub">2026 年第 17 周 &nbsp;·&nbsp; 4月20日（周一）— 4月26日（周日）</div>
   <div class="meta">数据采集于 2026-04-28 18:03:24 UTC+08:00 &nbsp;·&nbsp; 共纳入 175 位创作者</div>
+  <div class="hdr-week-nav">
+    <label>查看周报</label>
+    <select onchange="if(this.value)location.href=this.value">
+      <option value="index.html">第18周（4/27–5/3）</option>
+      <option value="weekly_report_2026W17_0420-0426.html" selected>第17周（4/20–4/26）</option>
+      <option value="weekly_report_2026W16_0413-0419.html">第16周（4/13–4/19）</option>
+      <option value="weekly_report_2026W15_0406-0412.html">第15周（4/6–4/12）</option>
+      <option value="weekly_report_2026W14.html">第14周</option>
+    </select>
+  </div>
 </div>
 
 <!-- 本周总结 -->
