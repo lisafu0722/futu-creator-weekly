@@ -27,7 +27,7 @@ PRIORITY_SET = set(PRIORITY_ORDER)
 # Backfill missing meta for new priority creators
 # Manual owner assignment for priority KOLs not in W19 175-meta
 NEW_PRIORITY_OWNERS = {
-    '7109550': 'blakeli',     # 趋势就要HODL住
+    '7109550': 'kristrawzeng', # 趋势就要HODL住
     '12775482': 'blakeli',    # 潘老闲新增的时候
 }
 for uid in PRIORITY_ORDER:
