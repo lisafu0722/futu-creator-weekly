@@ -1,0 +1,91 @@
+{
+  "week": "2026-W19",
+  "start_date": "2026-05-04",
+  "end_date": "2026-05-10",
+  "collected_at": "2026-05-15",
+  "creators": {
+    "16134209": {
+      "uid": 16134209, "nick": "股市马斯克", "fans": "1.4万", "fans_raw": 14000,
+      "post_count": 3, "total_browse": 2379091, "total_like": 120, "total_comment": 25, "total_share": 15,
+      "posts": [
+        {"fid": "116525575307668", "ts": 1778039174, "date": "2026-05-06 11:46", "weekday": "周三", "feed_type": 4, "title": "三大指数齐创历史新高，美股正在进入“加速段”？黄金触底反弹，节前已加仓！", "browse": 440252, "like": 39, "comment": 12, "share": 3, "word_count": 1931},
+        {"fid": "116531264160148", "ts": 1778125980, "date": "2026-05-07 11:53", "weekday": "周四", "feed_type": 4, "title": "费城半导体暴涨4%，AI 上游还能不能追？黄金突破4700，后续空间有多大？", "browse": 1016147, "like": 44, "comment": 8, "share": 6, "word_count": 2177},
+        {"fid": "116536957010724", "ts": 1778212845, "date": "2026-05-08 12:00", "weekday": "周五", "feed_type": 4, "title": "美股三大指数全线收跌，黄金上演深V反弹，这次是调整信号还是假动作？", "browse": 922692, "like": 37, "comment": 5, "share": 6, "word_count": 2362}
+      ]
+    },
+    "15813386": {
+      "uid": 15813386, "nick": "嘉哥爱自由", "fans": "9259", "fans_raw": 9259,
+      "post_count": 6, "total_browse": 7594439, "total_like": 612, "total_comment": 173, "total_share": 148,
+      "posts": [
+        {"fid": "116516245274628", "ts": 1777896809, "date": "2026-05-04 20:13", "weekday": "周一", "feed_type": 3, "title": "五一假期港股开盘大涨！", "browse": 804628, "like": 92, "comment": 18, "share": 26, "word_count": 887},
+        {"fid": "116521094873492", "ts": 1777970808, "date": "2026-05-05 16:46", "weekday": "周二", "feed_type": 3, "title": "大肉剂泰来了，请做好梭哈准备！", "browse": 1999418, "like": 155, "comment": 31, "share": 38, "word_count": 659},
+        {"fid": "116526613725188", "ts": 1778055019, "date": "2026-05-06 16:10", "weekday": "周三", "feed_type": 3, "title": "昨夜美股上演崩盘式上涨，存储夯爆了！", "browse": 1512070, "like": 116, "comment": 38, "share": 13, "word_count": 553},
+        {"fid": "116532522385412", "ts": 1778145178, "date": "2026-05-07 17:12", "weekday": "周四", "feed_type": 3, "title": "全球普涨，甚至恒生科技都涨了3%！", "browse": 2045115, "like": 69, "comment": 30, "share": 20, "word_count": 658},
+        {"fid": "116538225721748", "ts": 1778232204, "date": "2026-05-08 17:23", "weekday": "周五", "feed_type": 3, "title": "存储调整，是否是上车机会？", "browse": 918705, "like": 110, "comment": 29, "share": 10, "word_count": 716},
+        {"fid": "116542510137348", "ts": 1778297579, "date": "2026-05-09 11:32", "weekday": "周六", "feed_type": 3, "title": "全网最全，8种方法投资三星海力士！", "browse": 314503, "like": 70, "comment": 27, "share": 41, "word_count": 286}
+      ]
+    },
+    "31505740": {
+      "uid": 31505740, "nick": "花街S姐", "fans": "8461", "fans_raw": 8461,
+      "post_count": 3, "total_browse": 600032, "total_like": 108, "total_comment": 8, "total_share": 136,
+      "posts": [
+        {"fid": "116526878490628", "ts": 1778059059, "date": "2026-05-06 17:17", "weekday": "周三", "feed_type": 4, "title": "70% 同比增长！AMD Q2 指引炸场，CPU 行情才刚刚开始", "browse": 96633, "like": 7, "comment": 2, "share": 4, "word_count": 1993},
+        {"fid": "116533048311812", "ts": 1778153203, "date": "2026-05-07 19:26", "weekday": "周四", "feed_type": 4, "title": "拆解 NVIDIA 的光通信帝国：为什么它要同时锁定上中下游三家公司？", "browse": 247531, "like": 68, "comment": 4, "share": 83, "word_count": 3537},
+        {"fid": "116538362298372", "ts": 1778234288, "date": "2026-05-08 17:58", "weekday": "周五", "feed_type": 4, "title": "CPU分化已经开始：AMD/INTC/ARM 谁能在叙事里真正跑出来", "browse": 255868, "like": 33, "comment": 2, "share": 49, "word_count": 4474}
+      ]
+    },
+    "10200673": {
+      "uid": 10200673, "nick": "o聖者為王o", "fans": "1.2万", "fans_raw": 12000,
+      "post_count": 1, "total_browse": 421689, "total_like": 26, "total_comment": 4, "total_share": 0,
+      "posts": [
+        {"fid": "116536765710340", "ts": 1778209926, "date": "2026-05-08 11:12", "weekday": "周五", "feed_type": 4, "title": "香港新一轮网购大战 HKTVMALL五名高层年薪近七千万！王维基高呼减价战 管理层自己会否85折？《风眼行业与经济周期功略》", "browse": 421689, "like": 26, "comment": 4, "share": 0, "word_count": 1129}
+      ]
+    },
+    "17296331": {
+      "uid": 17296331, "nick": "孫子的末代傳人", "fans": "11.2万", "fans_raw": 112000,
+      "post_count": 2, "total_browse": 3670478, "total_like": 138, "total_comment": 19, "total_share": 14,
+      "posts": [
+        {"fid": "116514382021012", "ts": 1777868378, "date": "2026-05-04 12:19", "weekday": "周一", "feed_type": 4, "title": "五月份开局思维 - 4月27至29日副覆盘", "browse": 3629377, "like": 123, "comment": 18, "share": 14, "word_count": 3089},
+        {"fid": "116515098984452", "ts": 1777879318, "date": "2026-05-04 15:21", "weekday": "周一", "feed_type": 3, "title": "孙子第一次的美食专访", "browse": 41101, "like": 15, "comment": 1, "share": 0, "word_count": 152}
+      ]
+    },
+    "7149196": {
+      "uid": 7149196, "nick": "Sam Lam 投資筆記", "fans": "8621", "fans_raw": 8621,
+      "post_count": 1, "total_browse": 885545, "total_like": 35, "total_comment": 10, "total_share": 7,
+      "posts": [
+        {"fid": "116527134670852", "ts": 1778062968, "date": "2026-05-06 18:22", "weekday": "周三", "feed_type": 4, "title": "【《结构先行｜市场笔记》】#15  ｜机会太多，心态要更冷静", "browse": 885545, "like": 35, "comment": 10, "share": 7, "word_count": 611}
+      ]
+    },
+    "23462267": {
+      "uid": 23462267, "nick": "年頭旺到年尾", "fans": "5.6万", "fans_raw": 56000,
+      "post_count": 3, "total_browse": 2103754, "total_like": 526, "total_comment": 116, "total_share": 9,
+      "posts": [
+        {"fid": "116519049166852", "ts": 1777939593, "date": "2026-05-05 08:06", "weekday": "周二", "feed_type": 4, "title": "5月4日覆盘", "browse": 1185155, "like": 205, "comment": 40, "share": 5, "word_count": 1303},
+        {"fid": "116529644765188", "ts": 1778101269, "date": "2026-05-07 05:01", "weekday": "周四", "feed_type": 4, "title": "5月6日覆盘", "browse": 596863, "like": 181, "comment": 37, "share": 2, "word_count": 495},
+        {"fid": "116550750502916", "ts": 1778423317, "date": "2026-05-10 22:28", "weekday": "周日", "feed_type": 4, "title": "5月8日覆盘", "browse": 321736, "like": 140, "comment": 39, "share": 2, "word_count": 563}
+      ]
+    },
+    "11891989": {
+      "uid": 11891989, "nick": "OptionJack", "fans": "1.1万", "fans_raw": 11000,
+      "post_count": 6, "total_browse": 908780, "total_like": 163, "total_comment": 22, "total_share": 14,
+      "posts": [
+        {"fid": "116520345797412", "ts": 1777959378, "date": "2026-05-05 13:36", "weekday": "周二", "feed_type": 4, "title": "港股上落震荡市可能持续到6月底", "browse": 60540, "like": 28, "comment": 4, "share": 5, "word_count": 510},
+        {"fid": "116525798129668", "ts": 1778042574, "date": "2026-05-06 12:42", "weekday": "周三", "feed_type": 4, "title": "恒指日升日跌", "browse": 18081, "like": 22, "comment": 2, "share": 1, "word_count": 54},
+        {"fid": "116531546030888", "ts": 1778130280, "date": "2026-05-07 13:04", "weekday": "周四", "feed_type": 4, "title": "港股追落后？", "browse": 246566, "like": 38, "comment": 4, "share": 2, "word_count": 41},
+        {"fid": "116537201852420", "ts": 1778216582, "date": "2026-05-08 13:03", "weekday": "周五", "feed_type": 4, "title": "最强与最弱的对垒：百度与快手的交易逻辑", "browse": 185448, "like": 30, "comment": 2, "share": 5, "word_count": 595},
+        {"fid": "116538011942924", "ts": 1778228942, "date": "2026-05-08 16:29", "weekday": "周五", "feed_type": 4, "title": "3月中时写的BTC 目标价到咗", "browse": 142038, "like": 16, "comment": 3, "share": 0, "word_count": 176},
+        {"fid": "116548128604164", "ts": 1778383310, "date": "2026-05-10 11:21", "weekday": "周日", "feed_type": 4, "title": "Short Put 接货的迷思", "browse": 256107, "like": 29, "comment": 7, "share": 1, "word_count": 317}
+      ]
+    },
+    "13298710": {
+      "uid": 13298710, "nick": "摩帥", "fans": "4.5万", "fans_raw": 45000,
+      "post_count": 4, "total_browse": 6482193, "total_like": 297, "total_comment": 50, "total_share": 32,
+      "posts": [
+        {"fid": "116516197171604", "ts": 1777896075, "date": "2026-05-04 20:01", "weekday": "周一", "feed_type": 3, "title": "摩帅日评：美伊局势近尾声，恒指乘势重返26000点！", "browse": 813561, "like": 52, "comment": 30, "share": 1, "word_count": 1284},
+        {"fid": "116527725151012", "ts": 1778071978, "date": "2026-05-06 20:52", "weekday": "周三", "feed_type": 3, "title": "摩帅日评：环球AI芯片存储疯涨，恒指终跟上步伐强势高收！", "browse": 1600704, "like": 19, "comment": 2, "share": 2, "word_count": 1301},
+        {"fid": "116539531984900", "ts": 1778252136, "date": "2026-05-08 22:55", "weekday": "周五", "feed_type": 3, "title": "摩帅日评：美伊和谈遇阻，恒指回吐后依然守稳高位！", "browse": 356818, "like": 16, "comment": 0, "share": 2, "word_count": 1124},
+        {"fid": "116548966023572", "ts": 1778396088, "date": "2026-05-10 14:54", "weekday": "周日", "feed_type": 4, "title": "摩帅•AI狂潮席卷全球股市，恒指强势刷新5月新高！", "browse": 3711110, "like": 210, "comment": 18, "share": 27, "word_count": 2452}
+      ]
+    }
+  }
+}

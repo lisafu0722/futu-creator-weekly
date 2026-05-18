@@ -51,6 +51,15 @@ a:hover{text-decoration:underline;}
 .hdr-week-nav select:hover{background-color:rgba(255,255,255,.18);border-color:rgba(255,255,255,.45);}
 .hdr-week-nav select option{background:#1e293b;color:#fff;}
 
+/* 简繁切换 */
+.hdr-lang-nav{margin-top:10px;display:inline-flex;align-items:center;gap:8px;margin-left:14px;position:relative;}
+.hdr-lang-nav label{font-size:11px;color:rgba(255,255,255,.55);font-weight:600;letter-spacing:.6px;text-transform:uppercase;}
+.hdr-lang-group{display:inline-flex;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:8px;overflow:hidden;}
+.hdr-lang-btn{background:transparent;border:0;color:rgba(255,255,255,.7);padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s,color .15s;border-right:1px solid rgba(255,255,255,.18);}
+.hdr-lang-btn:last-child{border-right:0;}
+.hdr-lang-btn:hover{background:rgba(255,255,255,.08);color:#fff;}
+.hdr-lang-btn.active{background:rgba(255,255,255,.22);color:#fff;}
+
 /* ── Overview box ── */
 .overview-box{
   background:var(--card);margin:20px auto;border-radius:var(--r);
@@ -224,6 +233,9 @@ tr:hover td{background:#fef9f5;}
 .creator-card.tier-lo::before{background:#e2e8f0;}
 .creator-card:hover{box-shadow:var(--sh-lg);transform:translateY(-2px);}
 
+.card-title{font-size:18px;font-weight:700;color:var(--p);margin-bottom:10px;letter-spacing:.3px;}
+.card-disclaimer{font-size:10px;color:#94a3b8;margin-top:6px;line-height:1.5;font-style:italic;}
+
 .card-header{margin-bottom:10px;}
 .name-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;}
 .creator-name{font-size:15px;font-weight:700;color:var(--sec);}
@@ -262,6 +274,62 @@ tr:hover td{background:#fef9f5;}
 
 /* Summary */
 .creator-summary{font-size:12px;line-height:1.75;color:#475569;background:linear-gradient(135deg,#f8fafc,#fff);border-left:3px solid var(--p);padding:8px 11px;border-radius:0 8px 8px 0;margin-bottom:8px;}
+
+/* Summary v2 (structured) */
+.cs2{font-size:12px;color:#475569;background:linear-gradient(135deg,#f8fafc,#fff);border-left:3px solid var(--p);padding:10px 12px;border-radius:0 8px 8px 0;margin-bottom:8px;line-height:1.55;}
+.cs2-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px;font-size:11px;}
+.cs2-chip{background:#fff;border:1px solid var(--bdr);border-radius:6px;padding:2px 8px;color:#475569;}
+.cs2-chip b{color:var(--p);font-weight:700;}
+.cs2-label{font-size:10px;font-weight:700;color:var(--lt);letter-spacing:.5px;margin-bottom:5px;text-transform:uppercase;}
+.cs2-peaks{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:10px;}
+.cs2-peak{background:#fff;border-left:2px solid var(--p);border-radius:4px;padding:5px 8px;font-size:11px;}
+.cs2-peak.alt{border-left-color:var(--blue);}
+.cs2-peak-l{font-weight:700;color:var(--p);}
+.cs2-peak.alt .cs2-peak-l{color:var(--blue-dark);}
+.cs2-peak-v{color:var(--sec);font-weight:700;}
+.cs2-peak-t{display:block;color:#64748b;font-size:10px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cs2-peak-t:hover{color:var(--p);}
+.cs2-peak-t.muted{color:#94a3b8;}
+.cs2-pattern{background:#fff8f0;border:1px solid #ffe4cc;border-radius:6px;padding:9px 11px;}
+.cs2-pattern-title{font-size:11px;font-weight:700;color:#c05500;margin-bottom:6px;}
+.cs2-insight{margin-top:7px;padding-top:7px;border-top:1px dashed #ffd9b0;}
+.cs2-insight:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+.cs2-insight-h{font-size:11px;font-weight:700;color:#c05500;margin-bottom:3px;}
+.cs2-insight-b{font-size:11px;color:#475569;line-height:1.75;}
+.cs2-insight-b b{color:var(--sec);font-weight:700;}
+.cs2-insight-b em{color:var(--p);font-style:normal;font-weight:700;}
+.cs2-insight-b ul{margin:4px 0 0 0;padding-left:16px;}
+.cs2-insight-b li{margin-bottom:2px;}
+
+/* KOL feedback editor */
+.kol-edit-bar{display:flex;justify-content:flex-end;gap:6px;margin-bottom:6px;flex-wrap:wrap;}
+.kol-edit-btn{font-size:11px;padding:3px 9px;border:1px solid #ffcfa3;background:#fff;color:#c05500;border-radius:4px;cursor:pointer;transition:all .15s;font-family:inherit;line-height:1.4;}
+.kol-edit-btn:hover{background:#fff1e0;border-color:#ff9d3d;}
+.kol-edit-btn.primary{background:#ff8c1a;border-color:#ff8c1a;color:#fff;}
+.kol-edit-btn.primary:hover{background:#e67700;border-color:#e67700;}
+.kol-edit-btn.ghost{color:#64748b;border-color:#e2e8f0;}
+.kol-edit-btn.ghost:hover{background:#f1f5f9;color:#334155;}
+.kol-edit-btn.danger{color:#b91c1c;border-color:#fecaca;}
+.kol-edit-btn.danger:hover{background:#fef2f2;border-color:#f87171;}
+.kol-edit-btn:disabled{opacity:.4;cursor:not-allowed;}
+.kol-edit-btn:disabled:hover{background:#fff;border-color:#e2e8f0;color:#94a3b8;}
+.kol-fmt-bar{display:none;flex-wrap:wrap;gap:5px;align-items:center;padding:6px 8px;margin-bottom:6px;background:#fff;border:1px solid #ffd9b0;border-radius:5px;}
+.cs2-pattern.editing .kol-fmt-bar{display:flex;}
+.kol-fmt-label{font-size:10px;color:#94a3b8;margin-right:2px;}
+.kol-fmt-btn{font-size:11px;padding:2px 7px;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:3px;cursor:pointer;font-family:inherit;line-height:1.4;min-width:22px;}
+.kol-fmt-btn:hover{background:#f1f5f9;border-color:#94a3b8;}
+.kol-fmt-btn.b{font-weight:700;}
+.kol-fmt-btn.i{font-style:italic;}
+.kol-fmt-btn.u{text-decoration:underline;}
+.kol-fmt-swatch{width:18px;height:18px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #cbd5e1;cursor:pointer;padding:0;}
+.kol-fmt-swatch:hover{transform:scale(1.15);}
+.kol-fmt-color-input{width:24px;height:22px;padding:0;border:1px solid #cbd5e1;border-radius:3px;cursor:pointer;background:#fff;}
+.kol-fmt-sep{width:1px;height:18px;background:#e2e8f0;margin:0 3px;}
+.cs2-pattern.editing{background:#fffaf3;border-color:#ff9d3d;box-shadow:0 0 0 3px rgba(255,140,26,0.15);}
+.cs2-pattern.editing .cs2-edit-area{outline:1px dashed #ff9d3d;outline-offset:3px;border-radius:4px;background:#fff;padding:6px;}
+.cs2-pattern.dirty .kol-edit-bar::before{content:"已自定义";font-size:10px;color:#ff8c1a;background:#fff1e0;padding:2px 7px;border-radius:10px;margin-right:auto;align-self:center;font-weight:600;}
+.kol-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:8px 16px;border-radius:6px;font-size:13px;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.2);opacity:0;transition:opacity .2s;}
+.kol-toast.show{opacity:1;}
 
 /* Stocks */
 .stocks-row{font-size:12px;color:var(--lt);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;}
@@ -318,16 +386,16 @@ tr:hover td{background:#fef9f5;}
 
 <!-- 顶部标题 -->
 <div class="hdr">
-  <div class="hdr-badge">WEEK 18 · 2026</div>
+  <div class="hdr-badge">WEEK 19 · 2026</div>
   <h1>🐂 富途牛牛圈 创作者运营周报</h1>
-  <div class="sub">2026 年第 18 周 &nbsp;·&nbsp; 4月27日（周一）— 5月3日（周日）</div>
-  <div class="meta">数据采集于 2026-05-06 10:16:34 UTC+08:00 &nbsp;·&nbsp; 共纳入 175 位创作者</div>
+  <div class="sub">2026 年第 19 周 &nbsp;·&nbsp; 5月4日（周一）— 5月10日（周日）</div>
+  <div class="meta">数据采集于 2026-05-15 UTC+08:00 &nbsp;·&nbsp; 本期为 9 位优先 KOL 内测版</div>
   <div class="hdr-week-nav">
     <label>查看周报</label>
     <select onchange="if(this.value)location.href=this.value">
       <option value="index.html">第20周（5/11–5/17）</option>
-      <option value="weekly_report_2026W19_0504-0510.html">第19周（5/4–5/10）</option>
-      <option value="weekly_report_2026W18_0427-0503.html" selected>第18周（4/27–5/3）</option>
+      <option value="weekly_report_2026W19_0504-0510.html" selected>第19周（5/4–5/10）</option>
+      <option value="weekly_report_2026W18_0427-0503.html">第18周（4/27–5/3）</option>
       <option value="weekly_report_2026W17_0420-0426.html">第17周（4/20–4/26）</option>
       <option value="weekly_report_2026W16_0413-0419.html">第16周（4/13–4/19）</option>
       <option value="weekly_report_2026W15_0406-0412.html">第15周（4/6–4/12）</option>
@@ -620,6 +688,11 @@ tr:hover td{background:#fef9f5;}
     <button class="tab" onclick="setOwner('chuiszewu',this)">chuiszewu</button>
     <button class="tab" onclick="setOwner('kristrawzeng',this)">kristrawzeng</button>
     <button class="tab" onclick="setOwner('lisafu',this)">lisafu</button>
+  </div>
+  <div class="tabs lang-tabs" data-lang-nav>
+    <button type="button" class="tab on" data-lang="orig">原文</button>
+    <button type="button" class="tab" data-lang="s">简体</button>
+    <button type="button" class="tab" data-lang="t">繁體</button>
   </div>
   <span class="cnt-lbl" id="cl">显示 86 位</span>
 </div>
@@ -2873,86 +2946,142 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-hi" data-uid="11891989" data-posts="7" data-views="349617" data-likes="124" data-days="5" data-engagement="1156" data-fans="10655" data-accttype="personal" data-owner="blakeli" data-search="optionjack">
+<div class="creator-card tier-hi" data-uid="11891989" data-posts="6" data-views="908780" data-likes="163" data-days="5" data-engagement="1099" data-fans="11000" data-accttype="personal" data-owner="blakeli" data-search="optionjack">
+  <div class="card-title">创作者周报 05.04-05.10</div>
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/11891989" target="_blank">OptionJack</a>
       <span class="creator-uid">#11891989</span>
       <span class="owner-tag">blakeli</span>
-      <span class="fans-inline">👥 10,655</span>
-      
+      <span class="fans-inline">👥 ~1.1万</span>
     </div>
     <div class="active-days-line">本周活跃 <b>5/7</b> 天</div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">本周内容</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">7</span><span class="lbl">原创内容</span></div>
+      <div class="metric"><span class="num">6</span><span class="lbl">原创内容</span></div>
     </div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">互动数据</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">349,617</span><span class="lbl">浏览</span></div>
-      <div class="metric"><span class="num">124</span><span class="lbl">获赞</span></div>
-      <div class="metric"><span class="num">17</span><span class="lbl">评论</span></div>
-      <div class="metric"><span class="num">3</span><span class="lbl">被转发</span></div>
+      <div class="metric"><span class="num">908,780</span><span class="lbl">浏览</span></div>
+      <div class="metric"><span class="num">163</span><span class="lbl">获赞</span></div>
+      <div class="metric"><span class="num">22</span><span class="lbl">评论</span></div>
+      <div class="metric"><span class="num">14</span><span class="lbl">被转发</span></div>
     </div>
   </div>
-  <div class="creator-summary">本周发布 7 篇文章，一周内 5 天活跃，包括《玩尽贴价恒指牛熊策略》、《SOXX 连升18日》、《长情腾讯熊》、《中芯国际》等。涉及英偉達、台積電、半導體ETF-iShares等标的。最高互动：《长情腾讯熊》（浏览 73,769、获赞 19）。总浏览量 34.0 万。获得 124 次点赞，互动表现良好。</div>
-  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/stock/NVDA-US" target="_blank">英偉達</a><a class="stock-tag" href="https://www.futunn.com/stock/TSM-US" target="_blank">台積電</a><a class="stock-tag" href="https://www.futunn.com/stock/SOXX-US" target="_blank">半導體ETF-iShares</a></div>
-  
+  <div class="cs2">
+    <div class="cs2-chips">
+      <span class="cs2-chip">📝 发文 <b>6</b> 篇（全部原创文章）</span>
+      <span class="cs2-chip">📅 周二~周五 + 周日 共 <b>5</b> 天</span>
+      <span class="cs2-chip">⏰ 多在午盘前后（11:21–17:12）</span>
+      <span class="cs2-chip">👁 总浏览 <b>91 万</b></span>
+    </div>
+
+    <div class="cs2-label">🏆 单篇峰值</div>
+    <div class="cs2-peaks">
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👁 浏览</span> <span class="cs2-peak-v">256,107</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116548128604164" target="_blank">《Short Put 接货的迷思》</a>
+      </div>
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👍 点赞</span> <span class="cs2-peak-v">38</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116531546030888" target="_blank">《港股追落后？》</a>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">💬 评论</span> <span class="cs2-peak-v">7</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116548128604164" target="_blank">《Short Put 接货的迷思》</a>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">🔁 转发</span> <span class="cs2-peak-v">5</span>
+        <span class="cs2-peak-t muted">《港股上落震荡市》《最强与最弱的对垒》并列</span>
+      </div>
+    </div>
+
+    <div class="cs2-pattern">
+      <div class="cs2-pattern-title">📬 本周小结 · 给您的反馈</div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">🌟 本周亮点</div>
+        <div class="cs2-insight-b">
+          本周您共发布 <em>6</em> 篇全原创文章，<b>5/7 天活跃，周日仍在更新</b>。累计带来 <b>91 万</b> 浏览、<b>163</b> 点赞——浏览较上周（35万）<b>翻 2.6 倍</b>。其中周日《Short Put 接货的迷思》单篇 <em>256,107</em> 浏览 + <em>7</em> 评（全周最高互动），周四《港股追落后？》仅 41 字短评拿到 <em>246,566</em> 浏览 + <em>38</em> 赞，<b>"短观点 + 期权策略"双轮驱动效果显著</b>。
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">✅ 做得很好的地方（建议继续保持）</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>"短问句标题"是本周流量利器</b>：《港股追落后？》《恒指日升日跌》两篇短到只有 41–54 字，却分别拿到 24 万 / 1.8 万浏览，<b>用最少的字提出最直接的市场疑问，符合午盘读者的快速决策心智</b>。</li>
+            <li><b>期权干货 = 高质量留存</b>：周日《Short Put 接货的迷思》是本周阅读冠军（25.6 万），证明<b>"期权策略实操痛点"是您粉丝最需要的内容</b>，比纯方向判断更具不可替代性。</li>
+            <li><b>多市场覆盖深度合理</b>：港股恒指牛熊 + 美股百度快手交易对 + BTC 价格目标 + 期权策略，单周 4 个赛道却不分散——<b>都围绕"短线择时 + 衍生品"这一核心定位</b>，粉丝心智清晰。</li>
+            <li><b>转发翻倍是积极信号</b>：本周 14 转发 vs 上周 3，<b>转发率从 0.4% 升至 1.5%</b>，说明内容的"可分享性"在变强。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">💡 下周可以尝试的小优化</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>把 Short Put 系列做成固定栏目</b>：周日这篇 25.6 万浏览证明读者吃"接货心理"这一套。建议每周固定一篇"期权交易者的反思/复盘"，把高互动篇沉淀成 IP 资产，让粉丝形成"周末必看"的预期。</li>
+            <li><b>评论池仍可激活</b>：6 篇 22 评论，篇均 3.7——对 25 万浏览的爆款来说偏低。建议在文末抛具体钩子（如"你现在 Short Put 接到货了吗？最高接到几张？"）直接拉起留言区。</li>
+            <li><b>"短问句"和"长策略"做更明显的栏目区分</b>：本周《港股追落后？》（41 字）和《最强与最弱的对垒》（595 字）混在一起发，建议给短观点加固定前缀（如「⚡ 早盘速评」），让粉丝从标题就能预判阅读时长。</li>
+            <li><b>BTC 内容可加跟踪续篇</b>：周五《BTC 目标价到咗》引用了 3 月旧文，<b>这种"长线预测兑现"自带说服力</b>，建议把每次目标价兑现都做成系列追踪，强化"提前下注 + 公开兑现"的人设。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/stock/HSI-HK" target="_blank">恒生指数</a><a class="stock-tag" href="https://www.futunn.com/stock/BIDU-US" target="_blank">百度</a><a class="stock-tag" href="https://www.futunn.com/stock/01024-HK" target="_blank">快手-W</a><a class="stock-tag" href="https://www.futunn.com/stock/BTC.CC-US" target="_blank">比特币</a></div>
+  <div class="card-disclaimer">上述內容由AI語言模型生成,僅供參考。以上內容不代表富途立場,不構成任何投資建議。</div>
+
   <details class="posts-detail">
-    <summary>📋 查看全部帖子（7 条）</summary>
+    <summary>📋 查看全部帖子（6 条）</summary>
     <div class="posts-list"><div class="post-row">
   <span class="post-meta">
-    <span class="post-date" style="color:#e74c3c">2026-05-03 18:43 周日</span>
+    <span class="post-date" style="color:#e74c3c">2026-05-10 11:21 周日</span>
     <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116510230642692" target="_blank">美股5月下跌？</a>
-  <span class="post-metrics">👁38,125 &nbsp;👍20 &nbsp;💬3 &nbsp;🔁1</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116548128604164" target="_blank">Short Put 接货的迷思</a>
+  <span class="post-metrics">👁256,107 &nbsp;👍29 &nbsp;💬7 &nbsp;🔁1</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date" style="color:#e74c3c">2026-05-02 10:42 周六</span>
+    <span class="post-date">2026-05-08 16:29 周五</span>
     <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116502674341892" target="_blank">9成的投机者都在追求利润最大化</a>
-  <span class="post-metrics">👁28,875 &nbsp;👍23 &nbsp;💬7 &nbsp;🔁0</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116538011942924" target="_blank">3月中时写的BTC 目标价到咗</a>
+  <span class="post-metrics">👁142,038 &nbsp;👍16 &nbsp;💬3 &nbsp;🔁0</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-29 15:45 周三</span>
+    <span class="post-date">2026-05-08 13:03 周五</span>
     <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116486881214868" target="_blank">终极一升时</a>
-  <span class="post-metrics">👁57,817 &nbsp;👍19 &nbsp;💬1 &nbsp;🔁0</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116537201852420" target="_blank">最强与最弱的对垒：百度与快手的交易逻辑</a>
+  <span class="post-metrics">👁185,448 &nbsp;👍30 &nbsp;💬2 &nbsp;🔁5</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-28 20:03 周二</span>
+    <span class="post-date">2026-05-07 13:04 周四</span>
     <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116482231501204" target="_blank">中芯国际</a>
-  <span class="post-metrics">👁55,934 &nbsp;👍16 &nbsp;💬0 &nbsp;🔁0</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116531546030888" target="_blank">港股追落后？</a>
+  <span class="post-metrics">👁246,566 &nbsp;👍38 &nbsp;💬4 &nbsp;🔁2</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-28 09:50 周二</span>
+    <span class="post-date">2026-05-06 12:42 周三</span>
     <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116479821938692" target="_blank">长情腾讯熊</a>
-  <span class="post-metrics">👁73,769 &nbsp;👍19 &nbsp;💬2 &nbsp;🔁1</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116525798129668" target="_blank">恒指日升日跌</a>
+  <span class="post-metrics">👁18,081 &nbsp;👍22 &nbsp;💬2 &nbsp;🔁1</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-27 19:42 周一</span>
+    <span class="post-date">2026-05-05 13:36 周二</span>
     <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116476488647060" target="_blank">SOXX 连升18日</a>
-  <span class="post-metrics">👁72,720 &nbsp;👍12 &nbsp;💬2 &nbsp;🔁0</span>
-</div><div class="post-row">
-  <span class="post-meta">
-    <span class="post-date">2026-04-27 16:24 周一</span>
-    <span class="badge">文章</span>
-  </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116475708376244" target="_blank">玩尽贴价恒指牛熊策略</a>
-  <span class="post-metrics">👁22,377 &nbsp;👍15 &nbsp;💬2 &nbsp;🔁1</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116520345797412" target="_blank">港股上落震荡市可能持续到6月底</a>
+  <span class="post-metrics">👁60,540 &nbsp;👍28 &nbsp;💬4 &nbsp;🔁5</span>
 </div></div>
   </details>
 </div>
@@ -3343,79 +3472,121 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="31505740" data-posts="6" data-views="2553127" data-likes="124" data-days="4" data-engagement="5593" data-fans="8128" data-accttype="personal" data-owner="chuiszewu" data-search="花街s姐">
+<div class="creator-card tier-mid" data-uid="31505740" data-posts="3" data-views="600032" data-likes="108" data-days="3" data-engagement="3360" data-fans="8461" data-accttype="personal" data-owner="chuiszewu" data-search="花街s姐">
+  <div class="card-title">创作者周报 05.04-05.10</div>
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/31505740" target="_blank">花街S姐</a>
       <span class="creator-uid">#31505740</span>
       <span class="owner-tag">chuiszewu</span>
-      <span class="fans-inline">👥 8,128</span>
-      
+      <span class="fans-inline">👥 8,461</span>
     </div>
-    <div class="active-days-line">本周活跃 <b>4/7</b> 天</div>
+    <div class="active-days-line">本周活跃 <b>3/7</b> 天</div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">本周内容</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">6</span><span class="lbl">原创内容</span></div>
+      <div class="metric"><span class="num">3</span><span class="lbl">原创内容</span></div>
     </div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">互动数据</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">2,553,127</span><span class="lbl">浏览</span></div>
-      <div class="metric"><span class="num">124</span><span class="lbl">获赞</span></div>
-      <div class="metric"><span class="num">23</span><span class="lbl">评论</span></div>
-      <div class="metric"><span class="num">108</span><span class="lbl">被转发</span></div>
+      <div class="metric"><span class="num">600,032</span><span class="lbl">浏览</span></div>
+      <div class="metric"><span class="num">108</span><span class="lbl">获赞</span></div>
+      <div class="metric"><span class="num">8</span><span class="lbl">评论</span></div>
+      <div class="metric"><span class="num">136</span><span class="lbl">被转发</span></div>
     </div>
   </div>
-  <div class="creator-summary">本周发布 6 篇文章，本周 4 天发布，包括《告别 GPU 独霸！AI Agent 重塑 CPU 价值，芯》、《4.28美股复盘——半导体美梦要终结了？接下来谁能接棒？》、《七年独家绑定终结！微软 AI 战略迎来关键转折点》、《美股前瞻4.29——super day如何应对》等。涉及三倍做多半导体ETF-Direxion等标的。最高互动：《别再喊 AI 基建泡沫了！四大云厂财报证明：现在是配置不足》（浏览 969,611、获赞 67）。总浏览量达 255 万，传播效果突出。获得 124 次点赞，互动表现良好。</div>
-  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/stock/SOXL-US" target="_blank">三倍做多半导体ETF-Direxion</a></div>
-  
+  <div class="cs2">
+    <div class="cs2-chips">
+      <span class="cs2-chip">📝 发文 <b>3</b> 篇（全部原创文章）</span>
+      <span class="cs2-chip">📅 周三~周五 连续 <b>3</b> 天</span>
+      <span class="cs2-chip">⏰ 固定 <b>17:17–19:26</b> 晚盘窗口</span>
+      <span class="cs2-chip">👁 总浏览 <b>60 万</b> · 转发 <b>136</b></span>
+    </div>
+
+    <div class="cs2-label">🏆 单篇峰值</div>
+    <div class="cs2-peaks">
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👁 浏览</span> <span class="cs2-peak-v">255,868</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116538362298372" target="_blank">《CPU分化已经开始：AMD/INTC/ARM》</a>
+      </div>
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👍 点赞</span> <span class="cs2-peak-v">68</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116533048311812" target="_blank">《拆解 NVIDIA 的光通信帝国》</a>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">💬 评论</span> <span class="cs2-peak-v">4</span>
+        <span class="cs2-peak-t muted">同《光通信帝国》</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">🔁 转发</span> <span class="cs2-peak-v">83</span>
+        <span class="cs2-peak-t muted">同《光通信帝国》— 当周圈内单篇转发 Top</span>
+      </div>
+    </div>
+
+    <div class="cs2-pattern">
+      <div class="cs2-pattern-title">📬 本周小结 · 给您的反馈</div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">🌟 本周亮点</div>
+        <div class="cs2-insight-b">
+          本周您共发布 <em>3</em> 篇全原创文章，篇均字数 <b>3,335</b>（最长 4,474 字），累计 <b>60 万</b> 浏览、<b>108</b> 点赞、<b>136</b> 次转发。其中周四《拆解 NVIDIA 的光通信帝国》单篇 <em>83</em> 转发 + <em>68</em> 赞——<b>转发量再次拿下当周圈内 Top</b>。<b>赞/转发 ≈ 0.79、转发率 1.26%</b>，说明您是"被认可即被分享"的研报型作者，读者主动当成深度研究片段在外网传播。
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">✅ 做得很好的地方（建议继续保持）</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>"产业链拆解"是您的护城河</b>：本周 NVIDIA 光通信上中下游、CPU 三巨头叙事分化、AMD Q2 指引解读——三篇全都围绕"<b>结构性产业脉络</b>"展开，区别于市面单纯的方向 call，已形成"S 姐 = 半导体/AI 基建产业研究"的强心智。</li>
+            <li><b>晚盘窗口稳定</b>：3 篇全部发布在 <em>17:17–19:26</em>，刚好覆盖港股收盘 + 美股盘前的"前瞻黄金时段"，与产业研究内容定位高度契合。</li>
+            <li><b>长内容反而更受欢迎</b>：4474 字的《CPU分化》拿到当周浏览冠军（25.6 万）、3537 字的《光通信帝国》拿到转发冠军（83）——证明<b>您的读者就是奔着深度而来，不要因为顾忌长度而压缩</b>。</li>
+            <li><b>选题对齐财报节奏</b>：3 篇全部踩在 NVDA/AMD/INTC 财报节点前后，"借势 + 信息增量"做得到位。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">💡 下周可以尝试的小优化</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>把"光通信帝国"这条爆款做成系列</b>：83 转发证明这个角度极受欢迎，下周可以延续"上中下游三家公司各自的拆解 / 上游 PIC 公司机会清单"，形成 2–3 篇连载，把当周一次性流量沉淀为长期 IP。</li>
+            <li><b>评论区可以再活跃一点</b>：本周赞/评 ≈ <em>13.5:1</em>，互动池有明显空间。建议在硬核文章末尾抛一个具体问题（如"光通信三家您看好哪一家？"），把读者从"读完转走"转为"留言讨论"，平台二次推流权重会更高。</li>
+            <li><b>补一篇周一前瞻或周五总结</b>：本周从周三才开始更新，缺一个"本周主线复盘/下周关注点"的收尾或起手文，这种"每周必看"型内容能拉高读者的订阅心智，也能填补周一/周二的内容空窗。</li>
+            <li><b>第一篇 AMD 文章浏览偏低</b>：周三 AMD Q2 指引仅 9.6 万，明显落后于另两篇。可能与"标题信息密度"有关，建议把数据信号（如"+70%"）前置到标题前 12 字。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/stock/NVDA-US" target="_blank">英偉達</a><a class="stock-tag" href="https://www.futunn.com/stock/AMD-US" target="_blank">AMD</a><a class="stock-tag" href="https://www.futunn.com/stock/INTC-US" target="_blank">英特尔</a><a class="stock-tag" href="https://www.futunn.com/stock/ARM-US" target="_blank">ARM</a></div>
+  <div class="card-disclaimer">上述內容由AI語言模型生成,僅供參考。以上內容不代表富途立場,不構成任何投資建議。</div>
+
   <details class="posts-detail">
-    <summary>📋 查看全部帖子（6 条）</summary>
+    <summary>📋 查看全部帖子（3 条）</summary>
     <div class="posts-list"><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-30 17:14 周四</span>
-    <span class="badge">文章</span>📷
-  </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116492891127812" target="_blank">别再喊 AI 基建泡沫了！四大云厂财报证明：现在是配置不足</a>
-  <span class="post-metrics">👁969,611 &nbsp;👍67 &nbsp;💬15 &nbsp;🔁74</span>
-</div><div class="post-row">
-  <span class="post-meta">
-    <span class="post-date">2026-04-29 19:05 周三</span>
+    <span class="post-date">2026-05-08 17:58 周五</span>
     <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116487667777540" target="_blank">算力狂飙逼出&quot;供电革命&quot;：800V DC全面接管数据中心，千亿市场大洗牌！</a>
-  <span class="post-metrics">👁679,843 &nbsp;👍17 &nbsp;💬1 &nbsp;🔁16</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116538362298372" target="_blank">CPU分化已经开始：AMD/INTC/ARM 谁能在叙事里真正跑出来</a>
+  <span class="post-metrics">👁255,868 &nbsp;👍33 &nbsp;💬2 &nbsp;🔁49</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-29 17:39 周三</span>
+    <span class="post-date">2026-05-07 19:26 周四</span>
     <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116487328825356" target="_blank">美股前瞻4.29——super day如何应对</a>
-  <span class="post-metrics">👁156,152 &nbsp;👍5 &nbsp;💬3 &nbsp;🔁3</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116533048311812" target="_blank">拆解 NVIDIA 的光通信帝国：为什么它要同时锁定上中下游三家公司？</a>
+  <span class="post-metrics">👁247,531 &nbsp;👍68 &nbsp;💬4 &nbsp;🔁83</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-28 19:15 周二</span>
-    <span class="badge">文章</span>📷
-  </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116482042363908" target="_blank">七年独家绑定终结！微软 AI 战略迎来关键转折点</a>
-  <span class="post-metrics">👁354,009 &nbsp;👍5 &nbsp;💬0 &nbsp;🔁4</span>
-</div><div class="post-row">
-  <span class="post-meta">
-    <span class="post-date">2026-04-28 18:57 周二</span>
+    <span class="post-date">2026-05-06 17:17 周三</span>
     <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116481972830212" target="_blank">4.28美股复盘——半导体美梦要终结了？接下来谁能接棒？</a>
-  <span class="post-metrics">👁256,749 &nbsp;👍20 &nbsp;💬1 &nbsp;🔁6</span>
-</div><div class="post-row">
-  <span class="post-meta">
-    <span class="post-date">2026-04-27 19:18 周一</span>
-    <span class="badge">文章</span>📷
-  </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116476392767492" target="_blank">告别 GPU 独霸！AI Agent 重塑 CPU 价值，芯片新周期胜负已定</a>
-  <span class="post-metrics">👁136,763 &nbsp;👍10 &nbsp;💬3 &nbsp;🔁5</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116526878490628" target="_blank">70% 同比增长！AMD Q2 指引炸场，CPU 行情才刚刚开始</a>
+  <span class="post-metrics">👁96,633 &nbsp;👍7 &nbsp;💬2 &nbsp;🔁4</span>
 </div></div>
   </details>
 </div>
@@ -3771,127 +3942,224 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="16134209" data-posts="4" data-views="3543900" data-likes="190" data-days="4" data-engagement="7817" data-fans="13461" data-accttype="personal" data-owner="lisafu" data-search="股市马斯克 股市馬斯克">
+<div class="creator-card tier-mid" data-uid="16134209" data-posts="3" data-views="2379091" data-likes="120" data-days="3" data-engagement="4969" data-fans="14000" data-accttype="personal" data-owner="lisafu" data-search="股市马斯克 股市馬斯克">
+  <div class="card-title">创作者周报 05.04-05.10</div>
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/16134209" target="_blank">股市马斯克</a>
       <span class="creator-uid">#16134209</span>
       <span class="owner-tag">lisafu</span>
-      <span class="fans-inline">👥 13,461</span>
-      
-    </div>
-    <div class="active-days-line">本周活跃 <b>4/7</b> 天</div>
-  </div>
-  <div class="card-data-section">
-    <div class="card-data-label">本周内容</div>
-    <div class="metrics-row">
-      <div class="metric"><span class="num">4</span><span class="lbl">原创内容</span></div>
-    </div>
-  </div>
-  <div class="card-data-section">
-    <div class="card-data-label">互动数据</div>
-    <div class="metrics-row">
-      <div class="metric"><span class="num">3,543,900</span><span class="lbl">浏览</span></div>
-      <div class="metric"><span class="num">190</span><span class="lbl">获赞</span></div>
-      <div class="metric"><span class="num">32</span><span class="lbl">评论</span></div>
-      <div class="metric"><span class="num">31</span><span class="lbl">被转发</span></div>
-    </div>
-  </div>
-  <div class="creator-summary">本周发布 4 篇文章，本周 4 天发布：《半导体18连涨创纪录，美股再新高，但是空头却在加码！》、《半导体终结历史连涨，财报周才是真正考验，科技股该减仓了吗？黄金继续承压！》、《美股半导体终于大跌，技术面超买和基本面强硬之间谁会占据主导？继续止盈！》、《四大巨头财报强劲，纳指盘后再度冲高！黄金夜盘多次探底，值得加仓吗！》。涉及纳斯达克综合指数、标普500指数、道琼斯指数等标的。最高互动：《美股半导体终于大跌，技术面超买和基本面强硬之间谁会占据主导？继续止盈！》（浏览 1,278,859、获赞 77）。总浏览量达 354 万，传播效果突出。获得 190 次点赞，互动表现良好。</div>
-  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/index/.IXIC-US" target="_blank">纳斯达克综合指数</a><a class="stock-tag" href="https://www.futunn.com/index/.SPX-US" target="_blank">标普500指数</a><a class="stock-tag" href="https://www.futunn.com/index/.DJI-US" target="_blank">道琼斯指数</a></div>
-  
-  <details class="posts-detail">
-    <summary>📋 查看全部帖子（4 条）</summary>
-    <div class="posts-list"><div class="post-row">
-  <span class="post-meta">
-    <span class="post-date">2026-04-30 11:38 周四</span>
-    <span class="badge">文章</span>📷
-  </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116491571691932" target="_blank">四大巨头财报强劲，纳指盘后再度冲高！黄金夜盘多次探底，值得加仓吗！</a>
-  <span class="post-metrics">👁935,409 &nbsp;👍39 &nbsp;💬9 &nbsp;🔁8</span>
-</div><div class="post-row">
-  <span class="post-meta">
-    <span class="post-date">2026-04-29 13:12 周三</span>
-    <span class="badge">文章</span>📷
-  </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116486277039284" target="_blank">美股半导体终于大跌，技术面超买和基本面强硬之间谁会占据主导？继续止盈！</a>
-  <span class="post-metrics">👁1,278,859 &nbsp;👍77 &nbsp;💬5 &nbsp;🔁9</span>
-</div><div class="post-row">
-  <span class="post-meta">
-    <span class="post-date">2026-04-28 12:59 周二</span>
-    <span class="badge">文章</span>📷
-  </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116480563478532" target="_blank">半导体终结历史连涨，财报周才是真正考验，科技股该减仓了吗？黄金继续承压！</a>
-  <span class="post-metrics">👁697,843 &nbsp;👍31 &nbsp;💬11 &nbsp;🔁5</span>
-</div><div class="post-row">
-  <span class="post-meta">
-    <span class="post-date">2026-04-27 12:00 周一</span>
-    <span class="badge">文章</span>📷
-  </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116474670416276" target="_blank">半导体18连涨创纪录，美股再新高，但是空头却在加码！</a>
-  <span class="post-metrics">👁631,789 &nbsp;👍43 &nbsp;💬7 &nbsp;🔁9</span>
-</div></div>
-  </details>
-</div>
-<div class="creator-card tier-mid" data-uid="10200673" data-posts="4" data-views="1465732" data-likes="122" data-days="3" data-engagement="3317" data-fans="11529" data-accttype="personal" data-owner="blakeli" data-search="o聖者为王o o聖者為王o">
-  <div class="card-header">
-    <div class="name-row">
-      <a class="creator-name" href="https://q.futunn.com/profile/10200673" target="_blank">o聖者為王o</a>
-      <span class="creator-uid">#10200673</span>
-      <span class="owner-tag">blakeli</span>
-      <span class="fans-inline">👥 11,529</span>
-      
+      <span class="fans-inline">👥 ~1.4万</span>
     </div>
     <div class="active-days-line">本周活跃 <b>3/7</b> 天</div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">本周内容</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">4</span><span class="lbl">原创内容</span></div>
+      <div class="metric"><span class="num">3</span><span class="lbl">原创内容</span></div>
     </div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">互动数据</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">1,465,732</span><span class="lbl">浏览</span></div>
-      <div class="metric"><span class="num">122</span><span class="lbl">获赞</span></div>
-      <div class="metric"><span class="num">4</span><span class="lbl">评论</span></div>
+      <div class="metric"><span class="num">2,379,091</span><span class="lbl">浏览</span></div>
+      <div class="metric"><span class="num">120</span><span class="lbl">获赞</span></div>
+      <div class="metric"><span class="num">25</span><span class="lbl">评论</span></div>
       <div class="metric"><span class="num">15</span><span class="lbl">被转发</span></div>
     </div>
   </div>
-  <div class="creator-summary">本周发布 2 篇文章，本周 3 天发布：《我去年11月说记忆体会涨到27年 现在有人后悔没跟吗？「三十年一遇超周期」：》、《投资没信仰很难赚到钱《笑傲江湖私房书单》》。涉及伯克希爾-B、南方兩倍做多伯克希爾、道瓊斯指數等标的。最高互动：《我去年11月说记忆体会涨到27年 现在有人后悔没跟吗？「三十年一遇超周期」：我的》（浏览 761,555、获赞 55）。总浏览量达 146 万，传播效果突出。获得 122 次点赞，互动表现良好。</div>
-  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/stock/BRK.B-US" target="_blank">伯克希爾-B</a><a class="stock-tag" href="https://www.futunn.com/stock/07777-HK" target="_blank">南方兩倍做多伯克希爾</a><a class="stock-tag" href="https://www.futunn.com/index/.DJI-US" target="_blank">道瓊斯指數</a></div>
-  
+  <div class="cs2">
+    <div class="cs2-chips">
+      <span class="cs2-chip">📝 发文 <b>3</b> 篇（均为文章）</span>
+      <span class="cs2-chip">📅 周三~周五 连续 <b>3</b> 天</span>
+      <span class="cs2-chip">⏰ 固定 <b>11:46–12:00</b> 午盘窗口</span>
+      <span class="cs2-chip">👁 总浏览 <b>238 万</b></span>
+    </div>
+
+    <div class="cs2-label">🏆 单篇峰值</div>
+    <div class="cs2-peaks">
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👁 浏览</span> <span class="cs2-peak-v">1,016,147</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116531264160148" target="_blank">《费城半导体暴涨4%，AI 上游还能不能追？》</a>
+      </div>
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👍 点赞</span> <span class="cs2-peak-v">44</span>
+        <span class="cs2-peak-t muted">同上篇（周四）</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">💬 评论</span> <span class="cs2-peak-v">12</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116525575307668" target="_blank">《三大指数齐创历史新高…》</a>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">🔁 转发</span> <span class="cs2-peak-v">6</span>
+        <span class="cs2-peak-t muted">周四、周五并列</span>
+      </div>
+    </div>
+
+    <div class="cs2-pattern">
+      <div class="cs2-pattern-title">📬 本周小结 · 给您的反馈</div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">🌟 本周亮点</div>
+        <div class="cs2-insight-b">
+          本周您共发布 <em>3</em> 篇文章，累计带来 <b>238 万</b> 浏览、<b>120</b> 点赞、<b>25</b> 条评论。其中周四《费城半导体暴涨4%，AI 上游还能不能追？》单篇斩获 <em>101.6 万</em> 浏览 + <em>44</em> 点赞，<b>是圈内当周少数突破百万浏览的原创文章之一</b>。周五《美股三大指数全线收跌，黄金深V反弹》也拿到 92.3 万浏览，"<b>双爆款连击</b>"是本周最大成果。
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">✅ 做得很好的地方（建议继续保持）</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>午盘窗口稳定</b>：连续 3 天均在 <em>11:46–12:00</em> 发文，刚好对应港股午休 + 美股盘后复盘的"信息消费高峰"，读者已形成稳定阅读预期。</li>
+            <li><b>"双主线"叙事鲜明</b>：3 篇全部围绕"<b>美股指数 + 黄金</b>"双线推进，从周三"齐创新高"到周四"AI 上游"再到周五"深V 反弹"，主线连贯有节奏，读者能跟着追更。</li>
+            <li><b>标题钩子专业化</b>："加速段"、"还能不能追"、"调整信号还是假动作"——疑问 + 反差结构成熟，这是您篇均 79 万浏览的核心引擎。</li>
+            <li><b>篇均字数 2,157</b>：兼顾深度与可读性，比纯短评更具研报感。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">💡 下周可以尝试的小优化</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>提升评论密度</b>：本周赞/评 ≈ <em>4.8:1</em>，对百万浏览爆款来说仍偏低。建议在文末抛具体钩子（如"您手里 AI 上游持仓比例多少？"），把"读完即走"的读者拉进留言区。</li>
+            <li><b>尝试补周一/周二内容</b>：本周一二未更新，但周一是美股新一周开盘的高需求时段，<b>一篇轻量"本周三大主线展望"</b>可填补空窗、强化"每周必看"的订阅心智。</li>
+            <li><b>转发率仍可提升</b>：3 篇 15 转发 ≈ 0.06%，相对百万浏览偏低。建议在硬干货文末加一句"看到的朋友欢迎转发给关注 AI 主线的同好"，或把核心观点做成可截图的金句卡片。</li>
+            <li><b>黄金"深V"系列可做连载</b>：周五这篇拿到全周第二高浏览，证明"黄金技术形态"自带流量，建议周一补一篇"深V 后到底是真反弹还是假动作"的兑现帖，沉淀 IP。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/index/.IXIC-US" target="_blank">纳斯达克综合指数</a><a class="stock-tag" href="https://www.futunn.com/index/.SPX-US" target="_blank">标普500指数</a><a class="stock-tag" href="https://www.futunn.com/stock/SOXX-US" target="_blank">半導體ETF-iShares</a><a class="stock-tag" href="https://www.futunn.com/stock/GLD-US" target="_blank">黄金ETF-SPDR</a></div>
+  <div class="card-disclaimer">上述內容由AI語言模型生成,僅供參考。以上內容不代表富途立場,不構成任何投資建議。</div>
+
   <details class="posts-detail">
-    <summary>📋 查看全部帖子（4 条）</summary>
+    <summary>📋 查看全部帖子（3 条）</summary>
     <div class="posts-list"><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-30 22:59 周四</span>
-    <span class="badge">转发帖</span>📷
+    <span class="post-date">2026-05-08 12:00 周五</span>
+    <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116494250213780" target="_blank">油股升、金价跌、欧洲惨、美国笑？战后两个月，谁在裸泳？ Happy Friday !</a>
-  <span class="post-metrics">👁165,093 &nbsp;👍23 &nbsp;💬0 &nbsp;🔁0</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116536957010724" target="_blank">美股三大指数全线收跌，黄金上演深V反弹，这次是调整信号还是假动作？</a>
+  <span class="post-metrics">👁922,692 &nbsp;👍37 &nbsp;💬5 &nbsp;🔁6</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-28 14:54 周二</span>
-    <span class="badge">文章</span>📷
+    <span class="post-date">2026-05-07 11:53 周四</span>
+    <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116481016791452" target="_blank">投资没信仰很难赚到钱《笑傲江湖私房书单》</a>
-  <span class="post-metrics">👁513,826 &nbsp;👍29 &nbsp;💬2 &nbsp;🔁4</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116531264160148" target="_blank">费城半导体暴涨4%，AI 上游还能不能追？黄金突破4700，后续空间有多大？</a>
+  <span class="post-metrics">👁1,016,147 &nbsp;👍44 &nbsp;💬8 &nbsp;🔁6</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-27 16:22 周一</span>
-    <span class="badge">股票评论</span>📷
+    <span class="post-date">2026-05-06 11:46 周三</span>
+    <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116475699595220" target="_blank">人赚不了认知以外的钱  60股先走了 剩下的兄弟祝大家赚得多些😆</a>
-  <span class="post-metrics">👁25,258 &nbsp;👍15 &nbsp;💬0 &nbsp;🔁1</span>
-</div><div class="post-row">
+  <a class="post-link" href="https://q.futunn.com/feed/116525575307668" target="_blank">三大指数齐创历史新高，美股正在进入"加速段"？黄金触底反弹，节前已加仓！</a>
+  <span class="post-metrics">👁440,252 &nbsp;👍39 &nbsp;💬12 &nbsp;🔁3</span>
+</div></div>
+  </details>
+</div>
+<div class="creator-card tier-mid" data-uid="10200673" data-posts="1" data-views="421689" data-likes="26" data-days="1" data-engagement="848" data-fans="12000" data-accttype="personal" data-owner="blakeli" data-search="o聖者为王o o聖者為王o">
+  <div class="card-title">创作者周报 05.04-05.10</div>
+  <div class="card-header">
+    <div class="name-row">
+      <a class="creator-name" href="https://q.futunn.com/profile/10200673" target="_blank">o聖者為王o</a>
+      <span class="creator-uid">#10200673</span>
+      <span class="owner-tag">blakeli</span>
+      <span class="fans-inline">👥 ~1.2万</span>
+    </div>
+    <div class="active-days-line">本周活跃 <b>1/7</b> 天</div>
+  </div>
+  <div class="card-data-section">
+    <div class="card-data-label">本周内容</div>
+    <div class="metrics-row">
+      <div class="metric"><span class="num">1</span><span class="lbl">原创内容</span></div>
+    </div>
+  </div>
+  <div class="card-data-section">
+    <div class="card-data-label">互动数据</div>
+    <div class="metrics-row">
+      <div class="metric"><span class="num">421,689</span><span class="lbl">浏览</span></div>
+      <div class="metric"><span class="num">26</span><span class="lbl">获赞</span></div>
+      <div class="metric"><span class="num">4</span><span class="lbl">评论</span></div>
+      <div class="metric"><span class="num">0</span><span class="lbl">被转发</span></div>
+    </div>
+  </div>
+  <div class="cs2">
+    <div class="cs2-chips">
+      <span class="cs2-chip">📝 发文 <b>1</b> 篇（原创长文章）</span>
+      <span class="cs2-chip">📅 仅 <b>周五</b> 一天活跃</span>
+      <span class="cs2-chip">⏰ 早盘 <b>11:12</b> 发布</span>
+      <span class="cs2-chip">👁 总浏览 <b>42 万</b></span>
+    </div>
+
+    <div class="cs2-label">🏆 单篇峰值</div>
+    <div class="cs2-peaks">
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👁 浏览</span> <span class="cs2-peak-v">421,689</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116536765710340" target="_blank">《HKTVMALL 五名高层年薪近七千万》</a>
+      </div>
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👍 点赞</span> <span class="cs2-peak-v">26</span>
+        <span class="cs2-peak-t muted">同上篇</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">💬 评论</span> <span class="cs2-peak-v">4</span>
+        <span class="cs2-peak-t muted">同上篇</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">🔁 转发</span> <span class="cs2-peak-v">0</span>
+        <span class="cs2-peak-t muted">本周无转发</span>
+      </div>
+    </div>
+
+    <div class="cs2-pattern">
+      <div class="cs2-pattern-title">📬 本周小结 · 给您的反馈</div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">🌟 本周亮点</div>
+        <div class="cs2-insight-b">
+          本周您发布 <em>1</em> 篇原创长文章，<b>单篇仍带来 42 万浏览</b>。这篇《HKTVMALL 五名高层年薪近七千万！王维基高呼减价战，管理层自己会否85折？》主打"<b>港股本地零售管理层薪酬 vs 价格战矛盾</b>"，1129 字短深度文，钩子精准——<b>说明您一发就能调动起读者的关注</b>，这是创作者最稀缺的资产。
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">✅ 做得很好的地方（建议继续保持）</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>选题刁钻有梗</b>："五名高管年薪7千万 vs 减价战"是典型的港式财经"反差揭穿"角度，迎合您粉丝对香港本地公司治理的好奇心，这种角度别人写不出。</li>
+            <li><b>"风眼行业与经济周期功略"系列化</b>：标题保留固定栏目后缀，长期看有助于沉淀 IP，让读者形成"这是 X 系列的最新一篇"的连续记忆。</li>
+            <li><b>读者粘性仍在</b>：单篇出击仍可拿到 42 万浏览，<b>说明粉丝对您"哪天发就追哪天"</b>，没有因休更而流失。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">💡 下周可以尝试的小优化</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>恢复发布频率是首要任务</b>：本周仅 1 篇 / 1 天活跃，<b>对比上周（4 篇 / 146 万浏览）下滑明显</b>。建议下周稳定到 3–4 篇/3 天，您单篇产能完全足够，恢复频率即可恢复账号活跃权重。</li>
+            <li><b>转发为 0 是本周最大遗憾</b>：上周同等量级文章可拿 10+ 转发，本周 0 转发可能与"本地议题"传播圈层小有关。建议下篇文末加一句"看到觉得离谱的，欢迎转给身边玩港股零售股的朋友"，主动激活转发。</li>
+            <li><b>评论钩子可以更直接</b>：4 条评论对 42 万浏览偏低，文末抛一个具体问题（如"你觉得 85 折应该先减谁的薪？"），能直接拉起留言区互动。</li>
+            <li><b>趁热补一篇兑现帖</b>：HKTVMALL 减价战是连续故事，下周可补一篇"减价战开打第一周，股价/客流到底怎么变了"的兑现贴，把 IP 从"事件爆料"升级为"长期跟踪"。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/stock/01137-HK" target="_blank">香港科技探索</a><a class="stock-tag" href="https://www.futunn.com/index/.HSI-HK" target="_blank">恒生指數</a></div>
+  <div class="card-disclaimer">上述內容由AI語言模型生成,僅供參考。以上內容不代表富途立場,不構成任何投資建議。</div>
+
+  <details class="posts-detail">
+    <summary>📋 查看全部帖子（1 条）</summary>
+    <div class="posts-list"><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-27 14:01 周一</span>
-    <span class="badge">文章</span>📷
+    <span class="post-date">2026-05-08 11:12 周五</span>
+    <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116475146338308" target="_blank">我去年11月说记忆体会涨到27年 现在有人后悔没跟吗？「三十年一遇超周期」：我的预测对了 但连我都低估了速度《风眼行业与经济周期功略》</a>
-  <span class="post-metrics">👁761,555 &nbsp;👍55 &nbsp;💬2 &nbsp;🔁10</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116536765710340" target="_blank">香港新一轮网购大战 HKTVMALL五名高层年薪近七千万！王维基高呼减价战 管理层自己会否85折？《风眼行业与经济周期功略》</a>
+  <span class="post-metrics">👁421,689 &nbsp;👍26 &nbsp;💬4 &nbsp;🔁0</span>
 </div></div>
   </details>
 </div>
@@ -4081,65 +4349,142 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="15813386" data-posts="4" data-views="4663139" data-likes="317" data-days="4" data-engagement="10757" data-fans="5737" data-accttype="personal" data-owner="lisafu" data-search="嘉哥爱自由">
+<div class="creator-card tier-mid" data-uid="15813386" data-posts="6" data-views="7594439" data-likes="612" data-days="6" data-engagement="20633" data-fans="9259" data-accttype="personal" data-owner="lisafu" data-search="嘉哥爱自由">
+  <div class="card-title">创作者周报 05.04-05.10</div>
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/15813386" target="_blank">嘉哥爱自由</a>
       <span class="creator-uid">#15813386</span>
       <span class="owner-tag">lisafu</span>
-      <span class="fans-inline">👥 5,737</span>
-      
+      <span class="fans-inline">👥 9,259</span>
     </div>
-    <div class="active-days-line">本周活跃 <b>4/7</b> 天</div>
+    <div class="active-days-line">本周活跃 <b>6/7</b> 天</div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">本周内容</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">4</span><span class="lbl">原创内容</span></div>
+      <div class="metric"><span class="num">6</span><span class="lbl">原创内容</span></div>
     </div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">互动数据</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">4,663,139</span><span class="lbl">浏览</span></div>
-      <div class="metric"><span class="num">317</span><span class="lbl">获赞</span></div>
-      <div class="metric"><span class="num">96</span><span class="lbl">评论</span></div>
-      <div class="metric"><span class="num">54</span><span class="lbl">被转发</span></div>
+      <div class="metric"><span class="num">7,594,439</span><span class="lbl">浏览</span></div>
+      <div class="metric"><span class="num">612</span><span class="lbl">获赞</span></div>
+      <div class="metric"><span class="num">173</span><span class="lbl">评论</span></div>
+      <div class="metric"><span class="num">148</span><span class="lbl">被转发</span></div>
     </div>
   </div>
-  <div class="creator-summary">本周发布 2 篇文章，本周 4 天发布：《美股五姐妹29日盘后发布财报，你看好谁？》、《赚钱是为了更好的生活，大家五一快乐》。涉及微软、谷歌-C、亚马逊等标的。最高互动：《赚钱是为了更好的生活，大家五一快乐》（浏览 1,494,247、获赞 76）。总浏览量达 466 万，传播效果突出。获得 317 次点赞，互动表现良好。</div>
-  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/stock/MSFT-US" target="_blank">微软</a><a class="stock-tag" href="https://www.futunn.com/stock/GOOG-US" target="_blank">谷歌-C</a><a class="stock-tag" href="https://www.futunn.com/stock/AMZN-US" target="_blank">亚马逊</a></div>
-  
+  <div class="cs2">
+    <div class="cs2-chips">
+      <span class="cs2-chip">📝 发文 <b>6</b> 篇（带二次解读的转发短文）</span>
+      <span class="cs2-chip">📅 周一~周六 连续 <b>6</b> 天</span>
+      <span class="cs2-chip">⏰ 集中 <b>16:10–17:23</b> 收盘窗口</span>
+      <span class="cs2-chip">👁 总浏览 <b>759 万</b></span>
+    </div>
+
+    <div class="cs2-label">🏆 单篇峰值</div>
+    <div class="cs2-peaks">
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👁 浏览</span> <span class="cs2-peak-v">2,045,115</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116532522385412" target="_blank">《全球普涨，甚至恒生科技都涨了3%！》</a>
+      </div>
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👍 点赞</span> <span class="cs2-peak-v">155</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116521094873492" target="_blank">《大肉剂泰来了，请做好梭哈准备！》</a>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">💬 评论</span> <span class="cs2-peak-v">38</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116526613725188" target="_blank">《昨夜美股上演崩盘式上涨，存储夯爆了！》</a>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">🔁 转发</span> <span class="cs2-peak-v">41</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116542510137348" target="_blank">《全网最全，8种方法投资三星海力士！》</a>
+      </div>
+    </div>
+
+    <div class="cs2-pattern">
+      <div class="cs2-pattern-title">📬 本周小结 · 给您的反馈</div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">🌟 本周亮点</div>
+        <div class="cs2-insight-b">
+          本周您共发布 <em>6</em> 篇内容，累计带来 <b>759 万</b> 浏览、<b>612</b> 点赞、<b>173</b> 条评论、<b>148</b> 次转发——<b>稳坐本周圈内浏览/互动 Top 级</b>。浏览较上周（466 万）<b>+63%</b>。其中周四《全球普涨，恒生科技涨3%》单篇 <em>204.5 万</em>、周三《存储夯爆了！》<em>151.2 万</em>、周二《大肉剂泰来》<em>199.9 万</em>——<b>三篇连续破百万</b>，含金量极高。
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">✅ 做得很好的地方（建议继续保持）</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>6/7 天连续在场是最大差异化</b>：上周 4 天 → 本周 6 天，<b>包括周六也在更新</b>，圈内同量级 KOL 大多周一~周四发完就停。"全天候在场"让粉丝形成"嘉哥每天都在"的稳定预期，是浏览翻倍的核心引擎。</li>
+            <li><b>短文 + 即时性是流量密码</b>：篇均字数 627，多数是 5–10 分钟可读完的"夜盘速报"，但篇均浏览高达 <em>126 万</em>——<b>证明读者不需要长文，只需要"今天最该知道的一件事"</b>。这是您与"产业研究型作者"的明确区隔。</li>
+            <li><b>互动池极活跃</b>：赞/评 ≈ <em>3.5:1</em>，远超圈内 6:1 平均。篇均 29 条评论 + 25 转发——<b>读者不只是"读完即走"</b>，是真在留言区参与讨论。这说明您的"梭哈"、"大肉"等口语化叙事拉近了距离。</li>
+            <li><b>周六补位策略成功</b>：周六《8 种方法投资三星海力士》拿到全周最高转发 <em>41</em>，证明"周末干货收纳贴"是您的隐藏王牌——周末读者有时间收藏与执行。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">💡 下周可以尝试的小优化</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>把"周六干货收纳贴"做成固定栏目</b>：本周这篇 41 转发是全周转发 Top，<b>说明读者吃"周末做功课"这一套</b>。建议每周六固定一篇"X 种方法投资 X"的清单贴，把高转发篇沉淀成 IP。</li>
+            <li><b>互动钩子可以更具体</b>：评论池虽活跃，但 173 条评论分散在 6 篇里，对单篇 200 万浏览仍偏低。建议在文末抛具体钩子（如"你今天跟车了吗？跟到几成仓？"），把"沉默支持者"拉进评论。</li>
+            <li><b>原创文章篇可以补 1–2 篇</b>：本周 6 篇全部是 feed_type=3 的二次解读短文，缺一篇真正的"长篇深度文"。建议下周加 1 篇 1500 字+的"本月主线复盘"，把账号深度感拉起来——上周 2 篇深度文已证明读者也吃这一套。</li>
+            <li><b>周日补一篇美股周末展望</b>：本周日还差一天就 7/7 全勤。如果能补一篇周日轻量"下周看什么"的展望短文，活跃天数 = 7 满分，平台权重会再上一个台阶。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/index/.HSTECH-HK" target="_blank">恒生科技指数</a><a class="stock-tag" href="https://www.futunn.com/stock/005930-KR" target="_blank">三星电子</a><a class="stock-tag" href="https://www.futunn.com/stock/000660-KR" target="_blank">SK海力士</a><a class="stock-tag" href="https://www.futunn.com/index/.IXIC-US" target="_blank">纳斯达克综合指数</a></div>
+  <div class="card-disclaimer">上述內容由AI語言模型生成,僅供參考。以上內容不代表富途立場,不構成任何投資建議。</div>
+
   <details class="posts-detail">
-    <summary>📋 查看全部帖子（4 条）</summary>
+    <summary>📋 查看全部帖子（6 条）</summary>
     <div class="posts-list"><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-30 15:13 周四</span>
-    <span class="badge">文章</span>📷
+    <span class="post-date" style="color:#e74c3c">2026-05-09 11:32 周六</span>
+    <span class="badge">转发帖</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116492418088968" target="_blank">赚钱是为了更好的生活，大家五一快乐</a>
-  <span class="post-metrics">👁1,494,247 &nbsp;👍76 &nbsp;💬37 &nbsp;🔁14</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116542510137348" target="_blank">全网最全，8种方法投资三星海力士！</a>
+  <span class="post-metrics">👁314,503 &nbsp;👍70 &nbsp;💬27 &nbsp;🔁41</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-29 16:35 周三</span>
-    <span class="badge">文章</span>📷
+    <span class="post-date">2026-05-08 17:23 周五</span>
+    <span class="badge">转发帖</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116487078282020" target="_blank">美股五姐妹29日盘后发布财报，你看好谁？</a>
-  <span class="post-metrics">👁1,537,009 &nbsp;👍64 &nbsp;💬22 &nbsp;🔁9</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116538225721748" target="_blank">存储调整，是否是上车机会？</a>
+  <span class="post-metrics">👁918,705 &nbsp;👍110 &nbsp;💬29 &nbsp;🔁10</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-28 16:07 周二</span>
-    <span class="badge">转发帖</span>📷
+    <span class="post-date">2026-05-07 17:12 周四</span>
+    <span class="badge">转发帖</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116481304494884" target="_blank">相信光，曦智上市首日股价接近1000港币</a>
-  <span class="post-metrics">👁783,765 &nbsp;👍75 &nbsp;💬9 &nbsp;🔁6</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116532522385412" target="_blank">全球普涨，甚至恒生科技都涨了3%！</a>
+  <span class="post-metrics">👁2,045,115 &nbsp;👍69 &nbsp;💬30 &nbsp;🔁20</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-27 16:04 周一</span>
-    <span class="badge">转发帖</span>📷
+    <span class="post-date">2026-05-06 16:10 周三</span>
+    <span class="badge">转发帖</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116475628684868" target="_blank">曦智暗盘开奖，涨的你怀疑人生</a>
-  <span class="post-metrics">👁848,118 &nbsp;👍102 &nbsp;💬28 &nbsp;🔁25</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116526613725188" target="_blank">昨夜美股上演崩盘式上涨，存储夯爆了！</a>
+  <span class="post-metrics">👁1,512,070 &nbsp;👍116 &nbsp;💬38 &nbsp;🔁13</span>
+</div><div class="post-row">
+  <span class="post-meta">
+    <span class="post-date">2026-05-05 16:46 周二</span>
+    <span class="badge">转发帖</span>
+  </span>
+  <a class="post-link" href="https://q.futunn.com/feed/116521094873492" target="_blank">大肉剂泰来了，请做好梭哈准备！</a>
+  <span class="post-metrics">👁1,999,418 &nbsp;👍155 &nbsp;💬31 &nbsp;🔁38</span>
+</div><div class="post-row">
+  <span class="post-meta">
+    <span class="post-date">2026-05-04 20:13 周一</span>
+    <span class="badge">转发帖</span>
+  </span>
+  <a class="post-link" href="https://q.futunn.com/feed/116516245274628" target="_blank">五一假期港股开盘大涨！</a>
+  <span class="post-metrics">👁804,628 &nbsp;👍92 &nbsp;💬18 &nbsp;🔁26</span>
 </div></div>
   </details>
 </div>
@@ -4205,14 +4550,14 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-mid" data-uid="23462267" data-posts="3" data-views="765969" data-likes="420" data-days="3" data-engagement="3246" data-fans="55238" data-accttype="personal" data-owner="kristrawzeng" data-search="年頭旺到年尾 年头旺到年尾">
+<div class="creator-card tier-mid" data-uid="23462267" data-posts="3" data-views="2103754" data-likes="526" data-days="3" data-engagement="6826" data-fans="56000" data-accttype="personal" data-owner="kristrawzeng" data-search="年頭旺到年尾 年头旺到年尾">
+  <div class="card-title">创作者周报 05.04-05.10</div>
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/23462267" target="_blank">年頭旺到年尾</a>
       <span class="creator-uid">#23462267</span>
       <span class="owner-tag">kristrawzeng</span>
-      <span class="fans-inline">👥 55,238</span>
-      
+      <span class="fans-inline">👥 ~5.6万</span>
     </div>
     <div class="active-days-line">本周活跃 <b>3/7</b> 天</div>
   </div>
@@ -4225,38 +4570,101 @@ tr:hover td{background:#fef9f5;}
   <div class="card-data-section">
     <div class="card-data-label">互动数据</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">765,969</span><span class="lbl">浏览</span></div>
-      <div class="metric"><span class="num">420</span><span class="lbl">获赞</span></div>
-      <div class="metric"><span class="num">91</span><span class="lbl">评论</span></div>
-      <div class="metric"><span class="num">4</span><span class="lbl">被转发</span></div>
+      <div class="metric"><span class="num">2,103,754</span><span class="lbl">浏览</span></div>
+      <div class="metric"><span class="num">526</span><span class="lbl">获赞</span></div>
+      <div class="metric"><span class="num">116</span><span class="lbl">评论</span></div>
+      <div class="metric"><span class="num">9</span><span class="lbl">被转发</span></div>
     </div>
   </div>
-  <div class="creator-summary">本周发布 3 篇文章，本周 3 天发布：《4月28日覆盘*》、《回去再追😅😂》、《4月29日覆盘 *》。涉及恒生指數、恒指當月期貨、騰訊控股等标的。最高互动：《4月28日覆盘*》（浏览 392,163、获赞 148）。总浏览量 76.0 万。获得 420 次点赞，互动表现良好。</div>
+  <div class="cs2">
+    <div class="cs2-chips">
+      <span class="cs2-chip">📝 发文 <b>3</b> 篇覆盘文章</span>
+      <span class="cs2-chip">📅 周二/周四/周日 共 <b>3</b> 天</span>
+      <span class="cs2-chip">⏰ 早盘 + 凌晨深夜（05:01–22:28）</span>
+      <span class="cs2-chip">👁 总浏览 <b>210 万</b> · 评论 <b>116</b></span>
+    </div>
+
+    <div class="cs2-label">🏆 单篇峰值</div>
+    <div class="cs2-peaks">
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👁 浏览</span> <span class="cs2-peak-v">1,185,155</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116519049166852" target="_blank">《5月4日覆盘》</a>
+      </div>
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👍 点赞</span> <span class="cs2-peak-v">205</span>
+        <span class="cs2-peak-t muted">同上篇（周二早盘）</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">💬 评论</span> <span class="cs2-peak-v">40</span>
+        <span class="cs2-peak-t muted">同上篇（周二早盘）</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">🔁 转发</span> <span class="cs2-peak-v">5</span>
+        <span class="cs2-peak-t muted">同上篇（周二早盘）</span>
+      </div>
+    </div>
+
+    <div class="cs2-pattern">
+      <div class="cs2-pattern-title">📬 本周小结 · 给您的反馈</div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">🌟 本周亮点</div>
+        <div class="cs2-insight-b">
+          本周您共发布 <em>3</em> 篇覆盘文章，累计带来 <b>210 万</b> 浏览、<b>526</b> 点赞、<b>116</b> 条评论——<b>浏览较上周（76 万）翻 2.7 倍</b>。其中周二早盘《5月4日覆盘》单篇 <em>118.5 万</em> 浏览 + <em>205</em> 点赞 + <em>40</em> 评论，<b>是您本周最亮眼的爆款</b>。<b>赞/评比 ≈ 4.5:1</b>，5.6 万粉丝下的互动密度仍然碾压圈内同量级，您的"日历覆盘"IP 已经稳定。
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">✅ 做得很好的地方（建议继续保持）</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>"X月X日覆盘"已成强心智 IP</b>：连续三周都用同一个标题结构，读者一看到就知道是您。本周 3 篇覆盘篇均 <em>70 万</em> 浏览，<b>说明这个栏目自带"必看流量"</b>。</li>
+            <li><b>早盘 05:01 / 08:06 抢占黄金窗口</b>：周二《5月4日覆盘》早上 8:06 发出 + 周四《5月6日覆盘》凌晨 5:01 抢发——<b>港股开盘前最饥渴的时点</b>，单篇 60 万 / 118 万浏览证明时点价值，已经超过纯内容价值本身。</li>
+            <li><b>互动池极活跃</b>：篇均 39 评 + 175 赞，是真正的"小型社区"。这对您长期 IP 沉淀价值远超浏览数据，是您 5.6 万粉丝中"高质量真粉"占比的直接证据。</li>
+            <li><b>"覆盘 + 表情符号 + 短句"风格统一</b>：标题里星号、emoji 的固定使用让读者一眼就能识别您的内容，这是别的覆盘类作者没有的视觉记忆点。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">💡 下周可以尝试的小优化</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>把"日历覆盘"做成 5 天全勤</b>：港股每个交易日都有覆盘需求，但您本周仅周二/四/日发布，<b>缺周一/周三/周五覆盘是流量大漏斗</b>。如果补足成"5/5 全勤覆盘"，预计单周浏览可冲到 350 万+，是接下来最大的增长空间。</li>
+            <li><b>转发率仍是短板</b>：116 评对应仅 9 转发——内容很"自留型"。建议在覆盘文末加一段"<b>一句话金句总结</b>"或"截图卡片"（含核心观点 + 您的 ID），这类"可分享物料"能把转发率提高 5–10 倍。</li>
+            <li><b>篇幅均衡可以优化</b>：周二《5月4日覆盘》1303 字 vs 周四《5月6日覆盘》495 字——<b>差了 2.6 倍</b>。建议覆盘篇长度统一在 800–1200 字之间，避免读者每次打开都要"赌"今天有没有干货。</li>
+            <li><b>周日《5月8日覆盘》延迟发布</b>：5/10 周日才发 5/8 覆盘——延迟 2 天导致流量打折（仅 32 万）。建议尽量在当晚或次日凌晨发出，时效性是覆盘内容的命门。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/index/800000-HK" target="_blank">恒生指數</a><a class="stock-tag" href="https://www.futunn.com/futures/HSICURRENT-HK" target="_blank">恒指當月期貨</a><a class="stock-tag" href="https://www.futunn.com/stock/00700-HK" target="_blank">騰訊控股</a></div>
-  
+  <div class="card-disclaimer">上述內容由AI語言模型生成,僅供參考。以上內容不代表富途立場,不構成任何投資建議。</div>
+
   <details class="posts-detail">
     <summary>📋 查看全部帖子（3 条）</summary>
     <div class="posts-list"><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-30 07:39 周四</span>
-    <span class="badge">文章</span>📷
+    <span class="post-date" style="color:#e74c3c">2026-05-10 22:28 周日</span>
+    <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116490631774212" target="_blank">4月29日覆盘 *</a>
-  <span class="post-metrics">👁320,513 &nbsp;👍154 &nbsp;💬25 &nbsp;🔁2</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116550750502916" target="_blank">5月8日覆盘</a>
+  <span class="post-metrics">👁321,736 &nbsp;👍140 &nbsp;💬39 &nbsp;🔁2</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-29 13:54 周三</span>
-    <span class="badge">文章</span>📷
+    <span class="post-date">2026-05-07 05:01 周四</span>
+    <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116486442189204" target="_blank">回去再追😅😂</a>
-  <span class="post-metrics">👁53,293 &nbsp;👍118 &nbsp;💬36 &nbsp;🔁0</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116529644765188" target="_blank">5月6日覆盘</a>
+  <span class="post-metrics">👁596,863 &nbsp;👍181 &nbsp;💬37 &nbsp;🔁2</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-28 23:41 周二</span>
-    <span class="badge">文章</span>📷
+    <span class="post-date">2026-05-05 08:06 周二</span>
+    <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116483088515876" target="_blank">4月28日覆盘*</a>
-  <span class="post-metrics">👁392,163 &nbsp;👍148 &nbsp;💬30 &nbsp;🔁2</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116519049166852" target="_blank">5月4日覆盘</a>
+  <span class="post-metrics">👁1,185,155 &nbsp;👍205 &nbsp;💬40 &nbsp;🔁5</span>
 </div></div>
   </details>
 </div>
@@ -5181,51 +5589,128 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="13298710" data-posts="2" data-views="3393957" data-likes="128" data-days="2" data-engagement="7301" data-fans="44580" data-accttype="personal" data-owner="kristrawzeng" data-search="摩帥 摩帅">
+<div class="creator-card tier-hi" data-uid="13298710" data-posts="4" data-views="6482193" data-likes="297" data-days="4" data-engagement="13869" data-fans="45000" data-accttype="personal" data-owner="kristrawzeng" data-search="摩帥 摩帅">
+  <div class="card-title">创作者周报 05.04-05.10</div>
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/13298710" target="_blank">摩帥</a>
       <span class="creator-uid">#13298710</span>
       <span class="owner-tag">kristrawzeng</span>
-      <span class="fans-inline">👥 44,580</span>
-      
+      <span class="fans-inline">👥 ~4.5万</span>
     </div>
-    <div class="active-days-line">本周活跃 <b>2/7</b> 天</div>
+    <div class="active-days-line">本周活跃 <b>4/7</b> 天</div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">本周内容</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">2</span><span class="lbl">原创内容</span></div>
+      <div class="metric"><span class="num">4</span><span class="lbl">原创内容</span></div>
     </div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">互动数据</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">3,393,957</span><span class="lbl">浏览</span></div>
-      <div class="metric"><span class="num">128</span><span class="lbl">获赞</span></div>
-      <div class="metric"><span class="num">26</span><span class="lbl">评论</span></div>
-      <div class="metric"><span class="num">5</span><span class="lbl">被转发</span></div>
+      <div class="metric"><span class="num">6,482,193</span><span class="lbl">浏览</span></div>
+      <div class="metric"><span class="num">297</span><span class="lbl">获赞</span></div>
+      <div class="metric"><span class="num">50</span><span class="lbl">评论</span></div>
+      <div class="metric"><span class="num">32</span><span class="lbl">被转发</span></div>
     </div>
   </div>
-  <div class="creator-summary">本周转发 2 条内容，仅在 04-27、04-29 发布。总浏览量达 339 万，传播效果突出。获得 128 次点赞，互动表现良好。</div>
-  
-  
+  <div class="cs2">
+    <div class="cs2-chips">
+      <span class="cs2-chip">📝 发文 <b>4</b> 篇（3 日评 + 1 周末复盘长文）</span>
+      <span class="cs2-chip">📅 周一/周三/周五/周日 共 <b>4</b> 天</span>
+      <span class="cs2-chip">⏰ 收盘后晚盘 <b>14:54–22:55</b></span>
+      <span class="cs2-chip">👁 总浏览 <b>648 万</b></span>
+    </div>
+
+    <div class="cs2-label">🏆 单篇峰值</div>
+    <div class="cs2-peaks">
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👁 浏览</span> <span class="cs2-peak-v">3,711,110</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116548966023572" target="_blank">《摩帅•AI狂潮席卷全球股市…刷新5月新高》</a>
+      </div>
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👍 点赞</span> <span class="cs2-peak-v">210</span>
+        <span class="cs2-peak-t muted">同上篇（周日）</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">💬 评论</span> <span class="cs2-peak-v">30</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116516197171604" target="_blank">《美伊局势近尾声，恒指重返26000》</a>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">🔁 转发</span> <span class="cs2-peak-v">27</span>
+        <span class="cs2-peak-t muted">同浏览峰值（周日）</span>
+      </div>
+    </div>
+
+    <div class="cs2-pattern">
+      <div class="cs2-pattern-title">📬 本周小结 · 给您的反馈</div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">🌟 本周亮点</div>
+        <div class="cs2-insight-b">
+          本周您共发布 <em>4</em> 篇内容，累计带来 <b>648 万</b> 浏览、<b>297</b> 点赞、<b>50</b> 条评论、<b>32</b> 次转发——<b>是本周圈内浏览体量 Top 3 的创作者</b>。其中周日《AI狂潮席卷全球股市…刷新5月新高》单篇 <em>371 万</em> 浏览 + <em>210</em> 赞 + <em>27</em> 转发，<b>是您本周表现最炸的爆款，也是当周圈内单篇浏览/点赞双榜冠军</b>。
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">✅ 做得很好的地方（建议继续保持）</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>"摩帅日评"已成强心智 IP</b>：4 篇全部以"摩帅日评：…"开头，固定模板让读者一眼识别。本周 3 篇日评 + 1 篇周末复盘长文，<b>"日评 + 周复盘"双层节奏</b>已经稳定。</li>
+            <li><b>周末长文是隐藏王牌</b>：周日 2452 字的"AI狂潮"周复盘单篇 371 万浏览，比 3 篇日评（合计 277 万）总和还高，<b>说明读者最饥渴的不是日评而是"对一周做总结的长文"</b>。这条爆款公式值得每周保留。</li>
+            <li><b>晚盘窗口稳定</b>：3 篇日评分别在 20:01 / 20:52 / 22:55 发出，刚好覆盖港股收盘后 + 美股开盘前的"复盘+前瞻黄金时段"，与"日评"内容定位高度匹配。</li>
+            <li><b>"恒指主线 + 国际事件"叙事框架</b>：4 篇标题都把"恒指走势"和"美伊/AI"等国际宏观挂钩，<b>构建了清晰的"宏观 → 港股"逻辑链</b>，是您与单纯港股技术派创作者的最大差异。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">💡 下周可以尝试的小优化</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>可以把"周末复盘长文"做成固定栏目</b>：周日这篇 371 万浏览证明读者很吃这一套，可以考虑每周日固定一篇"摩帅•周复盘"，沉淀成 IP，让粉丝形成"周日必看"的预期。</li>
+            <li><b>日评风格可以尝试多样化</b>：本周 3 篇日评都采用"标题 + 长篇行文"的同一模板，下周不妨试试不同形态——比如<b>"数据要点卡片版"、"3 张图速览版"、或"今日问答版"</b>，看看哪种节奏更受读者欢迎，也能让日更内容不显单调。</li>
+            <li><b>标题钩子可以更聚焦</b>：本周三篇日评中，<b>把"AI芯片存储疯涨"这种具体信号写进标题的那一篇浏览最高（160 万）</b>，而偏宏观叙事的标题表现相对平稳。下周可以多试试"今日唯一关键信号 + 港股影响"的标题写法，让读者一眼看到"今天为什么必须读这篇"。</li>
+            <li><b>转发场景还有发挥空间</b>：周日长文 27 转发非常出色，日评的转发数也可以再向上拉一拉。可以试试在日评末尾加一张"<b>一句话金句卡片</b>"或"明日观察清单"，方便读者顺手转发给朋友。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/index/800000-HK" target="_blank">恒生指數</a><a class="stock-tag" href="https://www.futunn.com/index/.HSTECH-HK" target="_blank">恒生科技指数</a><a class="stock-tag" href="https://www.futunn.com/index/.IXIC-US" target="_blank">纳斯达克综合指数</a></div>
+  <div class="card-disclaimer">上述內容由AI語言模型生成,僅供參考。以上內容不代表富途立場,不構成任何投資建議。</div>
+
   <details class="posts-detail">
-    <summary>📋 查看全部帖子（2 条）</summary>
+    <summary>📋 查看全部帖子（4 条）</summary>
     <div class="posts-list"><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-29 20:09 周三</span>
-    <span class="badge">转发帖</span>📷
+    <span class="post-date" style="color:#e74c3c">2026-05-10 14:54 周日</span>
+    <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116487917862916" target="_blank">摩帅日评：横行闷局终打破，恒指强势回归26000点！</a>
-  <span class="post-metrics">👁1,214,273 &nbsp;👍59 &nbsp;💬12 &nbsp;🔁1</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116548966023572" target="_blank">摩帅•AI狂潮席卷全球股市，恒指强势刷新5月新高！</a>
+  <span class="post-metrics">👁3,711,110 &nbsp;👍210 &nbsp;💬18 &nbsp;🔁27</span>
 </div><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-27 19:56 周一</span>
-    <span class="badge">转发帖</span>📷
+    <span class="post-date">2026-05-08 22:55 周五</span>
+    <span class="badge">转发帖</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116476541403140" target="_blank">摩帅日评：美伊僵局未破，恒指横行等变，静待方向！</a>
-  <span class="post-metrics">👁2,179,684 &nbsp;👍69 &nbsp;💬14 &nbsp;🔁4</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116539531984900" target="_blank">摩帅日评：美伊和谈遇阻，恒指回吐后依然守稳高位！</a>
+  <span class="post-metrics">👁356,818 &nbsp;👍16 &nbsp;💬0 &nbsp;🔁2</span>
+</div><div class="post-row">
+  <span class="post-meta">
+    <span class="post-date">2026-05-06 20:52 周三</span>
+    <span class="badge">转发帖</span>
+  </span>
+  <a class="post-link" href="https://q.futunn.com/feed/116527725151012" target="_blank">摩帅日评：环球AI芯片存储疯涨，恒指终跟上步伐强势高收！</a>
+  <span class="post-metrics">👁1,600,704 &nbsp;👍19 &nbsp;💬2 &nbsp;🔁2</span>
+</div><div class="post-row">
+  <span class="post-meta">
+    <span class="post-date">2026-05-04 20:01 周一</span>
+    <span class="badge">转发帖</span>
+  </span>
+  <a class="post-link" href="https://q.futunn.com/feed/116516197171604" target="_blank">摩帅日评：美伊局势近尾声，恒指乘势重返26000点！</a>
+  <span class="post-metrics">👁813,561 &nbsp;👍52 &nbsp;💬30 &nbsp;🔁1</span>
 </div></div>
   </details>
 </div>
@@ -5997,44 +6482,114 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="17296331" data-posts="1" data-views="2936989" data-likes="109" data-days="1" data-engagement="6340" data-fans="109460" data-accttype="personal" data-owner="kristrawzeng" data-search="孙子的末代傳人 孫子的末代傳人">
+<div class="creator-card tier-lo" data-uid="17296331" data-posts="2" data-views="3670478" data-likes="138" data-days="1" data-engagement="7945" data-fans="112000" data-accttype="personal" data-owner="kristrawzeng" data-search="孙子的末代傳人 孫子的末代傳人">
+  <div class="card-title">创作者周报 05.04-05.10</div>
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/17296331" target="_blank">孫子的末代傳人</a>
       <span class="creator-uid">#17296331</span>
       <span class="owner-tag">kristrawzeng</span>
-      <span class="fans-inline">👥 109,460</span>
-      
+      <span class="fans-inline">👥 ~11.2万</span>
     </div>
     <div class="active-days-line">本周活跃 <b>1/7</b> 天</div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">本周内容</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">1</span><span class="lbl">原创内容</span></div>
+      <div class="metric"><span class="num">2</span><span class="lbl">原创内容</span></div>
     </div>
   </div>
   <div class="card-data-section">
     <div class="card-data-label">互动数据</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">2,936,989</span><span class="lbl">浏览</span></div>
-      <div class="metric"><span class="num">109</span><span class="lbl">获赞</span></div>
-      <div class="metric"><span class="num">28</span><span class="lbl">评论</span></div>
-      <div class="metric"><span class="num">23</span><span class="lbl">被转发</span></div>
+      <div class="metric"><span class="num">3,670,478</span><span class="lbl">浏览</span></div>
+      <div class="metric"><span class="num">138</span><span class="lbl">获赞</span></div>
+      <div class="metric"><span class="num">19</span><span class="lbl">评论</span></div>
+      <div class="metric"><span class="num">14</span><span class="lbl">被转发</span></div>
     </div>
   </div>
-  <div class="creator-summary">本周发布 1 篇文章，仅在 04-27 发布。文章《就像美男不懂港女的弱 - 4月22至27日覆盘》，浏览 2,936,989、获赞 109。总浏览量达 293 万，传播效果突出。获得 109 次点赞，互动表现良好。</div>
-  
-  
+  <div class="cs2">
+    <div class="cs2-chips">
+      <span class="cs2-chip">📝 发文 <b>2</b> 篇（1 篇深度文 + 1 篇轻量短文）</span>
+      <span class="cs2-chip">📅 仅 <b>周一</b> 一天活跃</span>
+      <span class="cs2-chip">⏰ 午盘 <b>12:19 / 15:21</b></span>
+      <span class="cs2-chip">👁 总浏览 <b>367 万</b> · 当周圈内 Top</span>
+    </div>
+
+    <div class="cs2-label">🏆 单篇峰值（一篇即爆款）</div>
+    <div class="cs2-peaks">
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👁 浏览</span> <span class="cs2-peak-v">3,629,377</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116514382021012" target="_blank">《五月份开局思维 - 4月27至29日副覆盘》</a>
+      </div>
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👍 点赞</span> <span class="cs2-peak-v">123</span>
+        <span class="cs2-peak-t muted">同上篇（周一覆盘）</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">💬 评论</span> <span class="cs2-peak-v">18</span>
+        <span class="cs2-peak-t muted">同上篇（周一覆盘）</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">🔁 转发</span> <span class="cs2-peak-v">14</span>
+        <span class="cs2-peak-t muted">同上篇（周一覆盘）</span>
+      </div>
+    </div>
+
+    <div class="cs2-pattern">
+      <div class="cs2-pattern-title">📬 本周小结 · 给您的反馈</div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">🌟 本周亮点</div>
+        <div class="cs2-insight-b">
+          本周您发布 <em>2</em> 篇内容（仅周一一天），其中《五月份开局思维 - 4月27至29日副覆盘》单篇斩获 <b>362.9 万</b> 浏览 + <b>123</b> 点赞 + <b>18</b> 评论 + <b>14</b> 转发——<b>是当周牛牛圈单篇浏览量 Top 级表现</b>。3089 字的深度复盘 + "5月份开局思维"的强结论钩子，证明<b>您的"硬干货长文"是平台稀缺资产</b>。
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">✅ 做得很好的地方（建议继续保持）</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>粉丝基础深 + 内容稀缺 = 单篇即爆款</b>：<em>11.2 万粉丝</em>体量，加上一周仅 1 篇覆盘的稀缺感，让每篇都自带"必读"心智，单篇 ROI 极高（浏览/发文 ≈ <em>180 万</em>）。</li>
+            <li><b>"周复盘 + 月度展望"组合内容</b>：本周覆盘文不止做"过去 X 天回顾"，还把"5月开局思维"作为前瞻钩子，<b>"回看 + 前瞻"双层结构</b>是您与单纯日评创作者的最大差异。</li>
+            <li><b>3089 字深度文反而更受欢迎</b>：长内容在快消时代仍能跑出 360 万浏览，<b>说明您的读者就是冲着深度而来</b>，不要因顾虑长度而压缩。</li>
+            <li><b>美食专访短文也有惊喜</b>：周一下午 15:21 那篇《孙子第一次的美食专访》虽然只有 152 字 + 4.1 万浏览，但作为"人格化 IP 拓展"是有价值的尝试，让粉丝看到您内容之外的一面。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">💡 下周可以尝试的小优化</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>提升发布频率（最大优化空间）</b>：362 万单篇浏览说明您的<b>每篇内容都是稀缺资产</b>，但一周只更 1 次覆盘太可惜——按当前 ROI，每多发 1 篇即可多带来 100 万+浏览。建议下周尝试 2–3 篇，至少在周三/周五补一篇"中周观察"。</li>
+            <li><b>把"X月开局思维"做成系列</b>：每月初的"开局思维"自带"必看"心智，建议固定为月度栏目，再加一篇月末的"X月收官思维"，沉淀成专属 IP 资产。</li>
+            <li><b>评论池可激活</b>：362 万浏览仅 18 评论——<b>篇均互动率不到 0.001%</b>，对深度文来说偏低。建议在文末抛具体钩子（如"5月你最看好哪个方向？"），把"读完即走"的读者拉进留言区，平台二次推流权重会更高。</li>
+            <li><b>美食专访可做成轻量栏目</b>：4.1 万浏览证明读者对您的"生活面"也有好奇心，建议把这种"人格化短文"作为周中调剂，每周固定 1–2 篇 200 字以内的轻量内容，活跃账号同时不消耗深度文产能。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/index/800000-HK" target="_blank">恒生指數</a><a class="stock-tag" href="https://www.futunn.com/index/.HSTECH-HK" target="_blank">恒生科技指数</a></div>
+  <div class="card-disclaimer">上述內容由AI語言模型生成,僅供參考。以上內容不代表富途立場,不構成任何投資建議。</div>
+
   <details class="posts-detail">
-    <summary>📋 查看全部帖子（1 条）</summary>
+    <summary>📋 查看全部帖子（2 条）</summary>
     <div class="posts-list"><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-27 19:57 周一</span>
-    <span class="badge">文章</span>📷
+    <span class="post-date">2026-05-04 15:21 周一</span>
+    <span class="badge">转发帖</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116476545400836" target="_blank">就像美男不懂港女的弱 - 4月22至27日覆盘</a>
-  <span class="post-metrics">👁2,936,989 &nbsp;👍109 &nbsp;💬28 &nbsp;🔁23</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116515098984452" target="_blank">孙子第一次的美食专访</a>
+  <span class="post-metrics">👁41,101 &nbsp;👍15 &nbsp;💬1 &nbsp;🔁0</span>
+</div><div class="post-row">
+  <span class="post-meta">
+    <span class="post-date">2026-05-04 12:19 周一</span>
+    <span class="badge">文章</span>
+  </span>
+  <a class="post-link" href="https://q.futunn.com/feed/116514382021012" target="_blank">五月份开局思维 - 4月27至29日副覆盘</a>
+  <span class="post-metrics">👁3,629,377 &nbsp;👍123 &nbsp;💬18 &nbsp;🔁14</span>
 </div></div>
   </details>
 </div>
@@ -6530,14 +7085,14 @@ tr:hover td{background:#fef9f5;}
 </div></div>
   </details>
 </div>
-<div class="creator-card tier-lo" data-uid="7149196" data-posts="1" data-views="1149682" data-likes="28" data-days="1" data-engagement="2403" data-fans="8304" data-accttype="personal" data-owner="chuiszewu" data-search="sam lam 投资筆記 sam lam 投資筆記">
+<div class="creator-card tier-lo" data-uid="7149196" data-posts="1" data-views="885545" data-likes="35" data-days="1" data-engagement="1888" data-fans="8621" data-accttype="personal" data-owner="chuiszewu" data-search="sam lam 投资筆記 sam lam 投資筆記">
+  <div class="card-title">创作者周报 05.04-05.10</div>
   <div class="card-header">
     <div class="name-row">
       <a class="creator-name" href="https://q.futunn.com/profile/7149196" target="_blank">Sam Lam 投資筆記</a>
       <span class="creator-uid">#7149196</span>
       <span class="owner-tag">chuiszewu</span>
-      <span class="fans-inline">👥 8,304</span>
-      
+      <span class="fans-inline">👥 8,621</span>
     </div>
     <div class="active-days-line">本周活跃 <b>1/7</b> 天</div>
   </div>
@@ -6550,24 +7105,87 @@ tr:hover td{background:#fef9f5;}
   <div class="card-data-section">
     <div class="card-data-label">互动数据</div>
     <div class="metrics-row">
-      <div class="metric"><span class="num">1,149,682</span><span class="lbl">浏览</span></div>
-      <div class="metric"><span class="num">28</span><span class="lbl">获赞</span></div>
-      <div class="metric"><span class="num">4</span><span class="lbl">评论</span></div>
-      <div class="metric"><span class="num">1</span><span class="lbl">被转发</span></div>
+      <div class="metric"><span class="num">885,545</span><span class="lbl">浏览</span></div>
+      <div class="metric"><span class="num">35</span><span class="lbl">获赞</span></div>
+      <div class="metric"><span class="num">10</span><span class="lbl">评论</span></div>
+      <div class="metric"><span class="num">7</span><span class="lbl">被转发</span></div>
     </div>
   </div>
-  <div class="creator-summary">本周发布 1 篇文章，仅在 04-29 发布。文章《【《结构先行｜市场笔记》】#14  ｜  半导体爆后稍作休息，纯属技术性回调？》，涉及半導體ETF-iShares等标的，浏览 1,149,682、获赞 28。总浏览量达 114 万，传播效果突出。</div>
-  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/stock/SOXX-US" target="_blank">半導體ETF-iShares</a></div>
-  
+  <div class="cs2">
+    <div class="cs2-chips">
+      <span class="cs2-chip">📝 发文 <b>1</b> 篇（连载系列 #15）</span>
+      <span class="cs2-chip">📅 仅 <b>周三</b> 发布</span>
+      <span class="cs2-chip">⏰ <b>18:22</b> 港股收盘后窗口</span>
+      <span class="cs2-chip">👁 单篇 <b>88.6 万</b></span>
+    </div>
+
+    <div class="cs2-label">🏆 单篇峰值（仅 1 篇）</div>
+    <div class="cs2-peaks">
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👁 浏览</span> <span class="cs2-peak-v">885,545</span>
+        <a class="cs2-peak-t" href="https://q.futunn.com/feed/116527134670852" target="_blank">《结构先行｜市场笔记 #15｜机会太多，心态要更冷静》</a>
+      </div>
+      <div class="cs2-peak">
+        <span class="cs2-peak-l">👍 点赞</span> <span class="cs2-peak-v">35</span>
+        <span class="cs2-peak-t muted">同上篇</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">💬 评论</span> <span class="cs2-peak-v">10</span>
+        <span class="cs2-peak-t muted">同上篇</span>
+      </div>
+      <div class="cs2-peak alt">
+        <span class="cs2-peak-l">🔁 转发</span> <span class="cs2-peak-v">7</span>
+        <span class="cs2-peak-t muted">同上篇</span>
+      </div>
+    </div>
+
+    <div class="cs2-pattern">
+      <div class="cs2-pattern-title">📬 本周小结 · 给您的反馈</div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">🌟 本周亮点</div>
+        <div class="cs2-insight-b">
+          本周您发布 <em>1</em> 篇连载文章《结构先行｜市场笔记 #15》，单篇拿到 <b>88.6 万</b> 浏览 + <b>35</b> 赞 + <b>10</b> 评 + <b>7</b> 转发——<b>对 8.6K 粉丝来说是出色的算法外溢表现</b>（粉丝/单篇浏览比 ≈ 1:103）。"机会太多，心态要更冷静"这种"反市场情绪"的标题角度，<b>切中了 5 月初行情亢奋时读者的真实心理需求</b>。
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">✅ 做得很好的地方（建议继续保持）</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>"系列化栏目"持续沉淀</b>：「结构先行｜市场笔记」做到 <em>#15</em>，已经形成稳定 IP——读者看到栏目名就知道是您，这种"栏目化连载"模式在圈内极少见。</li>
+            <li><b>"反向情绪"标题杀伤力强</b>：当全网都在喊"梭哈、加仓"时，您选择了"机会太多，心态要更冷静"——<b>反市场情绪本身就是稀缺信号</b>，这是单篇 88 万浏览的核心引擎。</li>
+            <li><b>互动率较上周提升</b>：评论 10（上周 4）、转发 7（上周 1）——<b>本周互动信号比浏览翻倍更值得关注</b>，说明读者从"读完即走"开始转向"留言讨论"。</li>
+            <li><b>晚盘 18:22 抢占港股收盘后窗口</b>：刚好覆盖港股收盘 + 美股开盘前的"信息消费高峰"。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs2-insight">
+        <div class="cs2-insight-h">💡 下周可以尝试的小优化</div>
+        <div class="cs2-insight-b">
+          <ul>
+            <li><b>提升发布频率（首要建议）</b>：连续两周单周仅 1 篇，浏览从 114.9 万 → 88.6 万小幅回落，<b>说明算法对低更新频率账号的扶持在递减</b>。建议下周补 1 篇 #16 或一篇短评/补充观点，把当前算法权重保持住。</li>
+            <li><b>"反向情绪"系列可以做成专栏</b>：本周这篇拿到 7 转发证明读者吃这一套，建议每两周固定一篇"#冷静系列"，把高互动篇沉淀成 IP。</li>
+            <li><b>评论钩子可以更直接</b>：10 评相对 88 万浏览仍偏低。建议在文末抛具体钩子（如"你最近最容易冲动加仓的方向是什么？"），把"沉默支持者"拉进评论。</li>
+            <li><b>栏目编号 + 主题双标签可加强 SEO</b>：建议标题中除了 #15，再带一个核心主题词标签（如 #冷静加仓 #五月主线），方便平台搜索和长尾流量沉淀。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stocks-row">关注标的：<a class="stock-tag" href="https://www.futunn.com/index/.IXIC-US" target="_blank">纳斯达克综合指数</a><a class="stock-tag" href="https://www.futunn.com/stock/SOXX-US" target="_blank">半導體ETF-iShares</a></div>
+  <div class="card-disclaimer">上述內容由AI語言模型生成,僅供參考。以上內容不代表富途立場,不構成任何投資建議。</div>
+
   <details class="posts-detail">
     <summary>📋 查看全部帖子（1 条）</summary>
     <div class="posts-list"><div class="post-row">
   <span class="post-meta">
-    <span class="post-date">2026-04-29 20:14 周三</span>
-    <span class="badge">文章</span>📷
+    <span class="post-date">2026-05-06 18:22 周三</span>
+    <span class="badge">文章</span>
   </span>
-  <a class="post-link" href="https://q.futunn.com/feed/116487935951252" target="_blank">【《结构先行｜市场笔记》】#14  ｜  半导体爆后稍作休息，纯属技术性回调？</a>
-  <span class="post-metrics">👁1,149,682 &nbsp;👍28 &nbsp;💬4 &nbsp;🔁1</span>
+  <a class="post-link" href="https://q.futunn.com/feed/116527134670852" target="_blank">【《结构先行｜市场笔记》】#15  ｜机会太多，心态要更冷静</a>
+  <span class="post-metrics">👁885,545 &nbsp;👍35 &nbsp;💬10 &nbsp;🔁7</span>
 </div></div>
   </details>
 </div>
@@ -6774,6 +7392,330 @@ function resort(){
   });
   cs.forEach(c=>g.appendChild(c));
 }
+</script>
+
+<script>
+/* === KOL 反馈卡片编辑器（① 内联编辑 + localStorage 持久化）=== */
+(function(){
+  const WEEK_TAG='W19';
+  const LS_PREFIX='cw-'+WEEK_TAG+'-';
+
+  function showToast(msg){
+    let t=document.querySelector('.kol-toast');
+    if(!t){t=document.createElement('div');t.className='kol-toast';document.body.appendChild(t);}
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove('show'),1800);
+  }
+
+  let _h2cPromise=null;
+  function loadHtml2Canvas(){
+    if(window.html2canvas)return Promise.resolve(window.html2canvas);
+    if(_h2cPromise)return _h2cPromise;
+    _h2cPromise=new Promise((resolve,reject)=>{
+      const s=document.createElement('script');
+      s.src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+      s.onload=()=>resolve(window.html2canvas);
+      s.onerror=()=>reject(new Error('加载 html2canvas 失败，请检查网络'));
+      document.head.appendChild(s);
+    });
+    return _h2cPromise;
+  }
+
+  async function captureCard(card,bar){
+    showToast('正在生成卡片图片…');
+    let h2c;
+    try{h2c=await loadHtml2Canvas();}catch(e){showToast(e.message);return;}
+    /* 截图前：隐藏工具栏、隐藏 .posts-detail、临时白底 */
+    const detailsList=card.querySelectorAll('details[open]');
+    const restore=[];
+    bar.style.visibility='hidden';
+    detailsList.forEach(d=>{d.removeAttribute('open');restore.push(d);});
+    const postsDetails=card.querySelectorAll('.posts-detail');
+    const postsRestore=[];
+    postsDetails.forEach(pd=>{postsRestore.push({el:pd,prev:pd.style.display});pd.style.display='none';});
+    try{
+      const canvas=await h2c(card,{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false});
+      canvas.toBlob(async(blob)=>{
+        if(!blob){showToast('生成图片失败');return;}
+        const name=card.querySelector('.creator-name')?.textContent.trim()||'creator';
+        const fname=`${WEEK_TAG}_${name}_${card.dataset.uid||''}.png`;
+        try{
+          if(window.ClipboardItem&&navigator.clipboard?.write){
+            await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
+            showToast('卡片图片已复制到剪贴板');
+          }else throw new Error('no-clipboard-image');
+        }catch(_){
+          const url=URL.createObjectURL(blob);
+          const a=document.createElement('a');a.href=url;a.download=fname;document.body.appendChild(a);a.click();a.remove();
+          setTimeout(()=>URL.revokeObjectURL(url),1500);
+          showToast('已下载为图片（浏览器不支持直接复制图片）');
+        }
+      },'image/png');
+    }catch(e){showToast('截图失败：'+e.message);}
+    finally{
+      bar.style.visibility='';
+      restore.forEach(d=>d.setAttribute('open',''));
+      postsRestore.forEach(o=>{o.el.style.display=o.prev||'';});
+    }
+  }
+
+  function htmlToText(el){
+    const clone=el.cloneNode(true);
+    clone.querySelectorAll('br').forEach(b=>b.replaceWith('\n'));
+    clone.querySelectorAll('li').forEach(li=>{li.prepend('• ');li.append('\n');});
+    clone.querySelectorAll('div,p,h1,h2,h3,h4').forEach(b=>b.append('\n'));
+    return clone.textContent.replace(/\n{3,}/g,'\n\n').trim();
+  }
+
+  function buildExportText(card){
+    const name=card.querySelector('.creator-name')?.textContent.trim()||'';
+    const uid=card.dataset.uid||'';
+    const pat=card.querySelector('.cs2-pattern');
+    const peaks=card.querySelector('.cs2-peaks');
+    const chips=card.querySelector('.cs2-chips');
+    const lines=[];
+    lines.push(`【富途牛牛圈 创作者周报 · ${WEEK_TAG} (5/4–5/10)】`);
+    lines.push(`致 ${name} (#${uid})`);
+    lines.push('');
+    if(chips) lines.push(htmlToText(chips));
+    lines.push('');
+    if(peaks){lines.push('—— 单篇峰值 ——');lines.push(htmlToText(peaks));lines.push('');}
+    if(pat){lines.push(htmlToText(pat));}
+    return lines.filter(x=>x!==undefined).join('\n');
+  }
+
+  function attach(card){
+    const pat=card.querySelector('.cs2-pattern');
+    if(!pat||pat.dataset.kolBound) return;
+    pat.dataset.kolBound='1';
+    const uid=card.dataset.uid;if(!uid) return;
+    const lsKey=LS_PREFIX+uid;
+
+    const editArea=document.createElement('div');
+    editArea.className='cs2-edit-area';
+    while(pat.firstChild) editArea.appendChild(pat.firstChild);
+    pat.appendChild(editArea);
+
+    const bar=document.createElement('div');
+    bar.className='kol-edit-bar';
+    pat.insertBefore(bar,editArea);
+
+    /* 格式工具条（编辑时显示） */
+    const fmt=document.createElement('div');
+    fmt.className='kol-fmt-bar';
+    fmt.innerHTML='<span class="kol-fmt-label">颜色:</span>';
+    const colors=[
+      {c:'#000000',t:'黑'},
+      {c:'#c05500',t:'富途橙'},
+      {c:'#dc2626',t:'红'},
+      {c:'#1d4ed8',t:'蓝'},
+      {c:'#15803d',t:'绿'},
+      {c:'#7c3aed',t:'紫'},
+      {c:'#64748b',t:'灰'}
+    ];
+    colors.forEach(({c,t})=>{
+      const sw=document.createElement('button');sw.type='button';sw.className='kol-fmt-swatch';sw.style.background=c;sw.title='文字颜色：'+t;
+      sw.addEventListener('mousedown',e=>{e.preventDefault();document.execCommand('foreColor',false,c);});
+      fmt.appendChild(sw);
+    });
+    const colorInput=document.createElement('input');
+    colorInput.type='color';colorInput.className='kol-fmt-color-input';colorInput.title='自定义颜色';
+    colorInput.addEventListener('input',e=>{document.execCommand('foreColor',false,e.target.value);editArea.focus();});
+    fmt.appendChild(colorInput);
+    fmt.appendChild(Object.assign(document.createElement('span'),{className:'kol-fmt-sep'}));
+    fmt.insertAdjacentHTML('beforeend','<span class="kol-fmt-label">高亮:</span>');
+    [{c:'#fff3a0',t:'黄'},{c:'#fecaca',t:'红'},{c:'#bbf7d0',t:'绿'},{c:'#bfdbfe',t:'蓝'}].forEach(({c,t})=>{
+      const sw=document.createElement('button');sw.type='button';sw.className='kol-fmt-swatch';sw.style.background=c;sw.title='高亮：'+t;
+      sw.addEventListener('mousedown',e=>{e.preventDefault();document.execCommand('hiliteColor',false,c);});
+      fmt.appendChild(sw);
+    });
+    fmt.appendChild(Object.assign(document.createElement('span'),{className:'kol-fmt-sep'}));
+    [
+      {l:'B',cls:'b',cmd:'bold',title:'加粗'},
+      {l:'I',cls:'i',cmd:'italic',title:'斜体'},
+      {l:'U',cls:'u',cmd:'underline',title:'下划线'},
+      {l:'清除格式',cls:'',cmd:'removeFormat',title:'清除选区格式'}
+    ].forEach(({l,cls,cmd,title})=>{
+      const b=document.createElement('button');b.type='button';b.className='kol-fmt-btn '+cls;b.textContent=l;b.title=title;
+      b.addEventListener('mousedown',e=>{e.preventDefault();document.execCommand(cmd,false,null);});
+      fmt.appendChild(b);
+    });
+    pat.insertBefore(fmt,bar.nextSibling);
+
+    const btnEdit=document.createElement('button');btnEdit.className='kol-edit-btn';btnEdit.textContent='✏️ 编辑';
+    const btnCopyText=document.createElement('button');btnCopyText.className='kol-edit-btn';btnCopyText.textContent='📝 复制文字';
+    const btnCopyImg=document.createElement('button');btnCopyImg.className='kol-edit-btn';btnCopyImg.textContent='🖼️ 复制卡片';
+    const btnReset=document.createElement('button');btnReset.className='kol-edit-btn danger';btnReset.textContent='🔄 重置';btnReset.disabled=true;btnReset.title='清掉自定义内容，恢复默认小结';
+    const btnSave=document.createElement('button');btnSave.className='kol-edit-btn primary';btnSave.textContent='💾 保存';btnSave.style.display='none';
+    const btnCancel=document.createElement('button');btnCancel.className='kol-edit-btn ghost';btnCancel.textContent='↩️ 取消';btnCancel.style.display='none';
+    bar.append(btnEdit,btnCopyText,btnCopyImg,btnReset,btnSave,btnCancel);
+
+    const original=editArea.innerHTML;
+    let snapshot=null;
+
+    /* 回填已保存的内容 */
+    try{
+      const saved=localStorage.getItem(lsKey);
+      if(saved){editArea.innerHTML=saved;pat.classList.add('dirty');btnReset.disabled=false;}
+    }catch(e){}
+
+    function enterEdit(){
+      snapshot=editArea.innerHTML;
+      editArea.contentEditable='true';
+      pat.classList.add('editing');
+      btnEdit.style.display='none';btnCopyText.style.display='none';btnCopyImg.style.display='none';btnReset.style.display='none';
+      btnSave.style.display='';btnCancel.style.display='';
+      editArea.focus();
+    }
+    function exitEdit(){
+      editArea.contentEditable='false';
+      pat.classList.remove('editing');
+      btnEdit.style.display='';btnCopyText.style.display='';btnCopyImg.style.display='';btnReset.style.display='';
+      btnSave.style.display='none';btnCancel.style.display='none';
+      btnReset.disabled=!localStorage.getItem(lsKey);
+    }
+    btnEdit.addEventListener('click',enterEdit);
+    btnCancel.addEventListener('click',()=>{editArea.innerHTML=snapshot;exitEdit();});
+    btnSave.addEventListener('click',()=>{
+      try{localStorage.setItem(lsKey,editArea.innerHTML);pat.classList.add('dirty');showToast('已保存到本地');}
+      catch(e){showToast('保存失败：'+e.message);}
+      exitEdit();
+    });
+    btnReset.addEventListener('click',()=>{
+      if(btnReset.disabled)return;
+      if(!confirm('确认要清掉自定义内容、恢复默认小结？'))return;
+      localStorage.removeItem(lsKey);
+      editArea.innerHTML=original;
+      pat.classList.remove('dirty');
+      btnReset.disabled=true;
+      showToast('已恢复默认');
+    });
+    btnCopyText.addEventListener('click',async()=>{
+      const text=buildExportText(card);
+      try{await navigator.clipboard.writeText(text);showToast('文字已复制到剪贴板');}
+      catch(e){
+        const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();
+        try{document.execCommand('copy');showToast('文字已复制（fallback）');}catch(_){showToast('复制失败，请手动选择');}
+        ta.remove();
+      }
+    });
+    btnCopyImg.addEventListener('click',()=>captureCard(card,bar));
+  }
+
+  function init(){document.querySelectorAll('.creator-card').forEach(attach);}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
+</script>
+
+<script>
+/* === 简繁切换（基于 opencc-js）=== */
+(function(){
+  const LS_LANG_KEY='cw-lang-pref';
+  const LANG_DEFAULT='orig';
+  const SKIP_TAGS=new Set(['SCRIPT','STYLE','NOSCRIPT','TEXTAREA','INPUT','SELECT','OPTION','CODE','PRE']);
+  const ATTRS_TO_CONVERT=['title','placeholder','alt','aria-label'];
+
+  /* 收集所有要转换的文本节点 + 属性槽，并保存"原文"快照到 dataset */
+  const textNodes=[];
+  const attrSlots=[];
+  function collect(root){
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_ELEMENT|NodeFilter.SHOW_TEXT,{
+      acceptNode(n){
+        if(n.nodeType===3){
+          if(!n.nodeValue||!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;
+          const p=n.parentElement;
+          if(!p)return NodeFilter.FILTER_REJECT;
+          if(SKIP_TAGS.has(p.tagName))return NodeFilter.FILTER_REJECT;
+          if(p.closest('.cs2-pattern.editing'))return NodeFilter.FILTER_REJECT;
+          if(p.closest('.kol-edit-bar,.kol-fmt-bar,.kol-toast'))return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+        return NodeFilter.FILTER_SKIP;
+      }
+    });
+    let n;
+    while((n=walker.nextNode())){
+      textNodes.push({node:n,orig:n.nodeValue});
+    }
+    /* 属性槽 */
+    root.querySelectorAll('[title],[placeholder],[alt],[aria-label]').forEach(el=>{
+      if(el.closest('.cs2-edit-area,.kol-edit-bar,.kol-fmt-bar'))return;
+      ATTRS_TO_CONVERT.forEach(a=>{
+        const v=el.getAttribute(a);
+        if(v&&v.trim())attrSlots.push({el,attr:a,orig:v});
+      });
+    });
+  }
+
+  let _opencc=null;
+  function loadOpenCC(){
+    if(_opencc)return _opencc;
+    _opencc=new Promise((resolve,reject)=>{
+      if(window.OpenCC){resolve(window.OpenCC);return;}
+      const s=document.createElement('script');
+      s.src='https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/full.min.js';
+      s.onload=()=>resolve(window.OpenCC);
+      s.onerror=()=>reject(new Error('opencc-js 加载失败'));
+      document.head.appendChild(s);
+    });
+    return _opencc;
+  }
+
+  let toS=null,toT=null;
+  async function ensureConverters(){
+    if(toS&&toT)return;
+    const cc=await loadOpenCC();
+    toS=cc.Converter({from:'tw',to:'cn'});  /* 繁/混合 → 简体 */
+    toT=cc.Converter({from:'cn',to:'tw'});  /* 简/混合 → 繁体（台标，可换 hk） */
+  }
+
+  function applyLang(mode){
+    if(mode==='orig'){
+      textNodes.forEach(({node,orig})=>{if(node.nodeValue!==orig)node.nodeValue=orig;});
+      attrSlots.forEach(({el,attr,orig})=>{if(el.getAttribute(attr)!==orig)el.setAttribute(attr,orig);});
+      return;
+    }
+    const fn=mode==='s'?toS:toT;
+    textNodes.forEach(({node,orig})=>{
+      const v=fn(orig);
+      if(node.nodeValue!==v)node.nodeValue=v;
+    });
+    attrSlots.forEach(({el,attr,orig})=>{
+      const v=fn(orig);
+      if(el.getAttribute(attr)!==v)el.setAttribute(attr,v);
+    });
+  }
+
+  function setActive(mode){
+    document.querySelectorAll('.lang-tabs [data-lang]').forEach(b=>{
+      b.classList.toggle('on',b.dataset.lang===mode);
+    });
+  }
+
+  async function switchLang(mode,persist=true){
+    setActive(mode);
+    if(mode==='orig'){applyLang('orig');}
+    else{
+      try{await ensureConverters();applyLang(mode);}
+      catch(e){console.error(e);alert('切换失败：'+e.message);return;}
+    }
+    if(persist){try{localStorage.setItem(LS_LANG_KEY,mode);}catch(_){}}
+  }
+
+  function init(){
+    collect(document.body);
+    document.querySelectorAll('.lang-tabs [data-lang]').forEach(b=>{
+      b.addEventListener('click',()=>switchLang(b.dataset.lang));
+    });
+    let saved=LANG_DEFAULT;
+    try{saved=localStorage.getItem(LS_LANG_KEY)||LANG_DEFAULT;}catch(_){}
+    if(saved!=='orig')switchLang(saved,false);
+    else setActive('orig');
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
 </script>
 </body>
 </html>
