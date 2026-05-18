@@ -7425,10 +7425,24 @@ function resort(){
     showToast('正在生成卡片图片…');
     let h2c;
     try{h2c=await loadHtml2Canvas();}catch(e){showToast(e.message);return;}
-    /* 截图前：隐藏工具栏、隐藏 .posts-detail、临时白底 */
+    /* 截图前：完全收起工具栏与格式栏（display:none）、移除"已自定义"徽章、收起 details 与 posts-detail，
+       并强制 contenteditable=false 以避免 html2canvas 在可编辑节点上出现行高/换行渲染异常 */
     const detailsList=card.querySelectorAll('details[open]');
     const restore=[];
-    bar.style.visibility='hidden';
+    const fmt=card.querySelector('.kol-fmt-bar');
+    const prevBarDisplay=bar.style.display;
+    const prevFmtDisplay=fmt?fmt.style.display:'';
+    bar.style.display='none';
+    if(fmt) fmt.style.display='none';
+    const dirtyPats=[];
+    card.querySelectorAll('.cs2-pattern.dirty').forEach(p=>{p.classList.remove('dirty');dirtyPats.push(p);});
+    const editingPats=[];
+    card.querySelectorAll('.cs2-pattern.editing').forEach(p=>{p.classList.remove('editing');editingPats.push(p);});
+    const editAreas=[];
+    card.querySelectorAll('.cs2-edit-area').forEach(ea=>{
+      editAreas.push({el:ea,prev:ea.getAttribute('contenteditable')});
+      ea.setAttribute('contenteditable','false');
+    });
     detailsList.forEach(d=>{d.removeAttribute('open');restore.push(d);});
     const postsDetails=card.querySelectorAll('.posts-detail');
     const postsRestore=[];
@@ -7453,7 +7467,14 @@ function resort(){
       },'image/png');
     }catch(e){showToast('截图失败：'+e.message);}
     finally{
-      bar.style.visibility='';
+      bar.style.display=prevBarDisplay;
+      if(fmt) fmt.style.display=prevFmtDisplay;
+      dirtyPats.forEach(p=>p.classList.add('dirty'));
+      editingPats.forEach(p=>p.classList.add('editing'));
+      editAreas.forEach(o=>{
+        if(o.prev===null) o.el.removeAttribute('contenteditable');
+        else o.el.setAttribute('contenteditable',o.prev);
+      });
       restore.forEach(d=>d.setAttribute('open',''));
       postsRestore.forEach(o=>{o.el.style.display=o.prev||'';});
     }
