@@ -8,7 +8,7 @@ Build W20 index.html with full W19-style structure:
 - Inactive chips section
 - Footer + JS
 """
-import json, os, html, re
+import json, os, html, re, hashlib
 from collections import Counter, defaultdict
 from datetime import datetime, timezone, timedelta
 
@@ -694,6 +694,40 @@ def find_distinct_strength(posts):
         'type_count': dict(types),
     }
 
+def uid_pick(uid, salt, options):
+    """Deterministic pick from options based on uid+salt — same KOL always gets same wording, different KOLs get different ones."""
+    h = int(hashlib.md5(f'{uid}-{salt}'.encode()).hexdigest(), 16)
+    return options[h % len(options)]
+
+
+def detect_series(posts):
+    """Detect serialized title pattern. Returns label (str) or None."""
+    titles = [p.get('title','') for p in posts if p.get('title')]
+    if len(titles) < 2:
+        return None
+    daily_pat = re.compile(r'^\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日')
+    if sum(1 for t in titles if daily_pat.match(t)) >= 2:
+        return '「X月X日…」每日复盘体'
+    if sum(1 for t in titles if re.match(r'^\d{6,8}', t)) >= 2:
+        return '日期前缀日记体'
+    bracket_pat = re.compile(r'^[【\[]([^】\]]{1,8})[】\]]')
+    bracket_groups = Counter()
+    for t in titles:
+        m = bracket_pat.match(t)
+        if m:
+            bracket_groups[m.group(1)] += 1
+    for tag, cnt in bracket_groups.items():
+        if cnt >= 2:
+            return f'「【{tag}】」固定栏目'
+    if len(titles) >= 3:
+        prefix_groups = Counter(t[:4] for t in titles if len(t) >= 4)
+        threshold = max(2, len(titles)//2)
+        for prefix, cnt in prefix_groups.items():
+            if cnt >= threshold and not prefix.isspace():
+                return f'「{prefix}…」固定开头'
+    return None
+
+
 def gen_cs2_insights(uid, c, m):
     """Generate richer cs2 reflection blocks."""
     # Hand-crafted overrides for KOLs in same WeChat group (avoid feeling templated)
@@ -825,82 +859,209 @@ def gen_cs2_insights(uid, c, m):
     if wow_text:
         insight1_b += f' {wow_text}'
 
-    # ─── Insight 2: 做得好的地方 ───
+    # Series detection — used by both strengths and suggestions
+    series_label = detect_series(posts)
+
+    # Title sentiment markers / length stats
+    title_lens = [len(p.get('title','')) for p in posts] or [0]
+    title_len_spread = max(title_lens) - min(title_lens)
+    emo_count = sum(1 for p in posts if re.search(r'[?!？！]{2,}|[‼❗❓⁉]', p.get('title','')))
+    no_stock_ratio = sum(1 for p in posts if not p.get('stocks')) / max(pc,1)
+
+    # Single-post dominance
+    top_browse_share = (top_browse.get('browse',0) / max(c['browse'],1)) if c['browse'] else 0
+
+    # Type concentration
+    main_type, main_type_n = types.most_common(1)[0] if types else ('其他',0)
+    type_concentration = main_type_n / max(pc,1)
+
+    # WoW positive
+    wow_pos = (w19_pc > 0 and w19_views > 0 and c['browse'] >= w19_views * 1.5)
+
+    # Engagement subtleties
+    cpr = c['comment'] / max(pc,1)
+    spr = c['share'] / max(pc,1)
+    lpr = c['like'] / max(pc,1)
+    high_like_low_share = (lpr >= 30 and spr < 1 and pc >= 2)
+
+    # ─── Insight 2: 做得好的地方（≤3 条） ───
     strengths = []
+    # 系列已成型 — 优先级最高，因为这是创作者真实功夫
+    if series_label:
+        strengths.append(uid_pick(uid, 'series_strength', [
+            f'<b>{esc(series_label)}已稳定输出</b>：连续输出形成的"栏目记忆"是单篇爆款换不来的资产，订阅曲线最稳的就是这种格式。',
+            f'<b>{esc(series_label)}成形度高</b>：粉丝点进您主页一眼就能识别"这是 XX 的招牌"，比任何运营推位都管用。',
+            f'<b>已建立{esc(series_label)}的栏目识别度</b>：连载本身就是护城河——每一篇都在为下一篇导流，复利效应明显。',
+        ]))
+    # WoW 正向信号
+    if wow_pos:
+        strengths.append(uid_pick(uid, 'wow_pos', [
+            f'<b>本周浏览较 W19 增长 {round((c["browse"]-w19_views)/w19_views*100)}%</b>：在圈内整体回调的环境里跑出反向曲线，说明选题踩中了主线。',
+            f'<b>WoW 浏览翻倍级（{fmt_wan(w19_views)}→{fmt_wan(c["browse"])}）</b>：增长不是偶然，是您本周的角度被算法和读者同时认可。',
+        ]))
     # Active days
     if day_count >= 5:
-        strengths.append(f'<b>{day_count}/7 天高频在场</b>（包含{"周末" if has_weekend else "工作日全覆盖"}）：粉丝形成"每天都在"的稳定预期，是浏览基础的核心支撑。')
-    elif day_count >= 3:
-        strengths.append(f'<b>保持 {day_count} 天活跃节奏</b>：在普遍周中休息的同侪中，这个频率足以维持读者订阅心智。')
-    # Top post performance
-    if top_browse.get('browse',0) >= 500_000:
-        strengths.append(f'<b>《{esc(short_title(top_browse.get("title",""),20))}》单篇 {fmt_wan(top_browse["browse"])}</b> 浏览，是当周圈内少数突破 50 万浏览的爆款，<b>说明您的标题钩子和议题切入精准</b>。')
-    elif top_browse.get('browse',0) >= 100_000:
-        strengths.append(f'最高单篇《{esc(short_title(top_browse.get("title",""),20))}》拿到 <b>{fmt_wan(top_browse["browse"])}</b> 浏览，足见您的选题和读者关注度高度匹配。')
-    # Engagement quality
-    if share_per_post >= 5 and pc <= 10:
-        strengths.append(f'<b>转发量优秀</b>（篇均 {share_per_post:.1f} 转发）：内容"可分享性"强，读者愿意主动传播，这是含金量最高的信号。')
-    if c['comment'] >= pc * 5 and pc > 0:
-        strengths.append(f'<b>评论池活跃</b>（篇均 {c["comment"]/pc:.1f} 评论）：粉丝深度互动而非单纯阅读，社群粘性扎实。')
-    # Time consistency
-    if len(set(hours)) <= 4 and pc >= 3:
-        strengths.append(f'<b>发布时段集中</b>（{period_str}），形成稳定阅读窗口预期，对算法权重和粉丝习惯都是加分项。')
-    # Content type variety
-    if len(types) >= 2 and pc >= 3:
-        strengths.append(f'<b>内容形式有节奏感</b>：{esc(type_summary)}——单一形式容易疲劳，多元混合更能覆盖不同心智场景。')
-    # Word count strength
+        strengths.append(uid_pick(uid, 'high_freq', [
+            f'<b>{day_count}/7 天高频在场</b>{"（含周末）" if has_weekend else "（工作日全勤）"}：粉丝形成"每天都在"的预期，这是浏览基础最稳的来源。',
+            f'<b>本周 {day_count} 天活跃</b>{"，周末也在" if has_weekend else "覆盖整个工作日"}：高频在场带来的算法权重提升不容易被波动打散。',
+        ]))
+    elif day_count >= 3 and pc >= 3:
+        strengths.append(uid_pick(uid, 'mid_freq', [
+            f'<b>{day_count} 天稳定节奏</b>：在普遍周中断更的同侪中，这个频率已经足以维持读者订阅心智。',
+            f'<b>{day_count} 天分布</b>：不堆产、不躺平，节奏感对长期订阅者最友好。',
+        ]))
+    # Top post
+    tb_views = top_browse.get('browse',0)
+    if tb_views >= 500_000:
+        strengths.append(f'<b>《{esc(short_title(top_browse.get("title",""),20))}》单篇 {fmt_wan(tb_views)}</b> 浏览，是当周圈内少数破 50 万的爆款，<b>标题钩子和议题切入精准</b>。')
+    elif tb_views >= 100_000:
+        strengths.append(uid_pick(uid, 'top10w', [
+            f'最高单篇《{esc(short_title(top_browse.get("title",""),20))}》拿到 <b>{fmt_wan(tb_views)}</b> 浏览，选题与读者关注度高度匹配。',
+            f'《{esc(short_title(top_browse.get("title",""),20))}》冲到 <b>{fmt_wan(tb_views)}</b>：这种破 10 万级单篇是账号势能的最直接体现。',
+        ]))
+    # 转发优秀
+    if spr >= 5 and pc <= 10:
+        strengths.append(f'<b>转发量优秀</b>（篇均 {spr:.1f}）：内容"可分享性"强，读者愿意主动传播，这是含金量最高的信号。')
+    # 评论池活跃
+    if cpr >= 5 and pc > 0:
+        strengths.append(uid_pick(uid, 'comment_hot', [
+            f'<b>评论池活跃</b>（篇均 {cpr:.1f} 评论）：粉丝在留言区深度互动，社群粘性扎实。',
+            f'<b>篇均 {cpr:.1f} 条评论</b>：留言区已经形成"读者会主动来聊"的氛围，是 KOL → 社群的关键一跃。',
+        ]))
+    # 时段集中
+    if len(set(hours)) <= 4 and pc >= 3 and not series_label:
+        strengths.append(f'<b>发布时段集中</b>（{period_str}）：形成稳定阅读窗口预期，对算法权重和粉丝习惯都是加分项。')
+    # 内容多元
+    if len(types) >= 3 and pc >= 4:
+        strengths.append(f'<b>内容形式多线推进</b>（{esc(type_summary)}）：单一形式容易疲劳，多元组合更能覆盖不同阅读心智。')
+    # 字数差异化
     if avg_wc >= 1500:
-        strengths.append(f'<b>篇均字数 {avg_wc}</b>，在快阅读时代坚持深度长文，自带研报感，建立了明确的"专业型作者"心智。')
-    elif avg_wc <= 200 and pc >= 3:
-        strengths.append(f'<b>篇均字数 {avg_wc}</b>：短小精悍的格式契合午盘 / 盘前的快决策需求，"5 分钟读完"是您的差异化优势。')
-    # Stock coverage
+        strengths.append(uid_pick(uid, 'long', [
+            f'<b>篇均 {avg_wc} 字</b>：在快阅读时代坚持深度长文，自带研报感，"专业型作者"心智已立。',
+            f'<b>{avg_wc} 字篇均</b>：长文密度让账号天然带着研报权重，读者对单篇的信任阈值会更低。',
+        ]))
+    elif avg_wc <= 200 and pc >= 4:
+        strengths.append(f'<b>篇均 {avg_wc} 字</b>：短小精悍契合午盘/盘前的快决策场景，"5 分钟读完"是您的差异化点。')
+    # 标的覆盖
     if len(stock_set) >= 4:
-        strengths.append(f'<b>覆盖标的多元</b>（{esc(", ".join(stock_set[:4]))}），"一周一图谱"式的全市场视角是您与单股 KOL 的明确区隔。')
+        strengths.append(f'<b>覆盖标的多元</b>（{esc("、".join(stock_set[:4]))}）：全市场视角是您与单股 KOL 的明确区隔。')
+    # 单股深耕（与上一条互斥）
+    if len(stock_set) == 1 and pc >= 4:
+        strengths.append(f'<b>专注「{esc(stock_set[0])}」深耕</b>：在 KOL 普遍泛主题的环境里，单股深度是稀缺定位，搜索流量也更容易聚拢。')
+    # 互动率高
+    if eng_rate >= 1.5 and pc >= 2:
+        strengths.append(f'<b>互动率 {eng_rate:.2f}%</b>：高于圈内大多数 KOL，说明读者不是路过、是真在意您说什么。')
+    # Fallback
     if not strengths:
-        strengths.append(f'本周持续更新 <b>{pc}</b> 篇，<b>累计 {fmt_wan(c["browse"])} 浏览</b>——在普遍流量回调的圈内环境下，能保持基本盘已属难得。')
-    insight2_html = ''.join(f'<li>{s}</li>' for s in strengths[:4])
+        strengths.append(f'本周持续更新 <b>{pc}</b> 篇 / <b>{fmt_wan(c["browse"])}</b> 浏览：在普遍回调的圈内环境下保持基本盘已属难得。')
+    insight2_html = ''.join(f'<li>{s}</li>' for s in strengths[:3])
 
-    # ─── Insight 3: 下周建议 ───
+    # ─── Insight 3: 下周可以尝试的小优化（≤3 条） ───
     suggestions = []
-    # Suggestion 1: top post follow-up
-    if top_browse.get('browse',0) >= 100_000:
-        suggestions.append(f'<b>把《{esc(short_title(top_browse.get("title",""),18))}》做成系列</b>：单篇 {fmt_wan(top_browse["browse"])} 浏览证明这个角度极受欢迎，下周可补一篇兑现帖或续篇，<b>把一次性流量沉淀为长期 IP</b>。')
-    # Suggestion 2: comment activation
-    if pc > 0:
-        cpr = c['comment'] / pc
-        if cpr < 3 and avg_browse >= 50_000:
-            suggestions.append(f'<b>评论池可激活</b>：篇均 {cpr:.1f} 评论，对 {fmt_int(avg_browse)} 篇均浏览来说偏低。建议在文末抛具体钩子（如"您手上 X 持仓比例多少？"），把"读完即走"转为留言区互动，平台二次推流权重会更高。')
-    # Suggestion 3: weekday gap fill
+    # 系列已成型 → 升级而非"做成系列"
+    if series_label:
+        suggestions.append(uid_pick(uid, 'series_upgrade', [
+            f'<b>{esc(series_label)}的"目录化"</b>：在主页置顶或在最新一篇文末，加一段"系列索引"链回过往 3–5 篇，让新读者一进来就能"补课式订阅"。',
+            f'<b>给{esc(series_label)}做一次月度合集</b>：把过去 4 周里点击最高的 3 篇整合成"月度精华回看"，是把单篇流量沉淀为长期资产的快路径。',
+            f'<b>{esc(series_label)}加一条"导读线"</b>：在每篇开头用 1 行讲清"上一篇我们看到 X，今天看 Y"，连续阅读体验比单篇质量更能留住订阅。',
+        ]))
+    elif tb_views >= 100_000:
+        suggestions.append(uid_pick(uid, 'make_series', [
+            f'<b>把《{esc(short_title(top_browse.get("title",""),18))}》延展为短系列</b>：单篇 {fmt_wan(tb_views)} 浏览证明角度受欢迎，下周补一篇兑现帖或续篇，把一次性流量沉淀。',
+            f'<b>《{esc(short_title(top_browse.get("title",""),18))}》后续可做"复盘×预判"双稿</b>：先复盘单篇为何爆，再对同一议题给下周判断，单篇变两点曝光。',
+        ]))
+
+    # 头部一篇打天下（风险信号）
+    if top_browse_share > 0.6 and pc >= 3:
+        suggestions.append(uid_pick(uid, 'head_concentrated', [
+            f'<b>头部依赖度偏高</b>：《{esc(short_title(top_browse.get("title",""),16))}》一篇占了本周 {top_browse_share*100:.0f}% 浏览，其余文章未跑出来。建议复盘头部为何赢、把同方法论复用到 1–2 篇腰部内容。',
+            f'<b>本周浏览的 {top_browse_share*100:.0f}% 集中在 1 篇</b>：腰部文章拉力不足，下周可针对腰部文章重做标题/首段，看能否把分布拉平。',
+        ]))
+
+    # 内容形式偏科
+    if type_concentration >= 0.85 and pc >= 4 and not series_label:
+        suggestions.append(f'<b>形式过于单一</b>：本周 {pc} 篇里 {main_type_n} 篇是"{main_type}"，{type_concentration*100:.0f}% 同质。建议穿插 1 篇视频/投票/短评换节奏，避免读者审美疲劳。')
+
+    # 评论池可激活
+    if cpr < 3 and avg_browse >= 50_000:
+        suggestions.append(uid_pick(uid, 'comment_low', [
+            f'<b>评论池可激活</b>：篇均 {cpr:.1f} 评论 vs {fmt_int(avg_browse)} 篇均浏览，比例偏低。可在文末抛具体钩子（如"您仓位 X 占比多少？"），引导留言。',
+            f'<b>{cpr:.1f} 评论/篇 在 {fmt_int(avg_browse)} 浏览面前偏冷</b>：建议挑 1 篇试试"问题式收尾"——结尾留一个非二选一的开放问题，往往能把潜水读者拉出来。',
+        ]))
+
+    # 选题集中（>=5篇仅围绕≤1标的）— 只在没系列、没专注定位时提
+    if len(stock_set) <= 1 and pc >= 5 and not series_label:
+        focus = esc(stock_set[0]) if stock_set else '单一标的'
+        suggestions.append(f'<b>选题密度可调</b>：本周 {pc} 篇集中在「{focus}」，建议穿插 1–2 个跨主线（港股新股/黄金/加密）保持新鲜感。')
+
+    # 选题过散（≥6 标的且 pc≤6 → 没有故事线）
+    if len(stock_set) >= 6 and pc <= 6:
+        suggestions.append(f'<b>本周选题略散</b>：{pc} 篇覆盖了 {len(stock_set)} 个标的，没有形成明显主线。下周可挑 1 个最高确信的方向连写 2 篇，给读者一个"跟着您走"的入口。')
+
+    # 标题情绪化
+    if emo_count >= max(2, pc//2) and pc >= 3:
+        suggestions.append(f'<b>标题情绪化标点偏多</b>（{emo_count}/{pc} 篇含 ?? !! 类）：圈内"惊叹号疲劳"已经出现，下周试试用具体数字代替强调号（"三月以来 7 次反弹"比"惊天反弹‼️" 更让人想点）。')
+
+    # 缺股票标签
+    if no_stock_ratio >= 0.4 and pc >= 4:
+        suggestions.append(f'<b>{int(no_stock_ratio*100)}% 文章未关联标的</b>：股票圈的搜索流量很依赖标的标签，建议每篇至少绑 1 个相关标的，搜索曝光会显著提升。')
+
+    # 周末空窗
     if not has_weekend and day_count <= 4:
-        gap_days = [WEEKDAYS[i] for i in range(7) if i not in weekdays_set]
+        gap_days = [WEEKDAYS[i] for i in range(5) if i not in weekdays_set]  # 工作日 gap 优先
         if gap_days:
-            suggestions.append(f'<b>补齐内容空窗</b>：本周{esc("/".join(gap_days[:3]))}未更新，建议在空窗日补一篇轻量"市场速评 / 周复盘"，强化"每周必看"的订阅心智。')
-    # Suggestion 4: title pattern
-    if pc >= 3:
-        # Check title length variance
-        title_lens = [len(p.get('title','')) for p in posts]
-        if max(title_lens) - min(title_lens) > 25:
-            suggestions.append(f'<b>标题长度差异大</b>：本周最短 {min(title_lens)} 字、最长 {max(title_lens)} 字混在一起，建议给短观点加固定前缀（如「⚡早盘速评」），让粉丝从标题就能预判阅读时长。')
-    # Suggestion 5: share rate
-    if pc > 0:
-        spr = c['share'] / pc
-        if spr < 1 and avg_browse >= 100_000:
-            suggestions.append(f'<b>转发率仍可提升</b>：篇均 {spr:.1f} 转发，对篇均 {fmt_int(avg_browse)} 浏览偏低。建议在硬干货文末加一句"看到的朋友欢迎转发给关注 X 主线的同好"，或把核心观点做成可截图的金句卡片。')
-    # Suggestion 6: WoW decline
+            suggestions.append(uid_pick(uid, 'gap_fill', [
+                f'<b>{esc("、".join(gap_days[:2]))}空窗</b>：建议在空窗日补一篇轻量"盘前速评/周复盘"，强化"每周必看"的订阅心智。',
+                f'<b>本周 {esc(gap_days[0])} 没更新</b>：工作日空窗会让上一篇的浏览曲线提前断尾，节奏上"每天有声"的成本其实只是 200–500 字。',
+            ]))
+
+    # 标题长度差异
+    if title_len_spread > 25 and pc >= 4 and not series_label:
+        suggestions.append(f'<b>标题长度跨度大</b>：本周最短 {min(title_lens)} 字、最长 {max(title_lens)} 字。给短观点加固定前缀（如「⚡早盘速评」），让粉丝从标题就能预判阅读时长。')
+
+    # 转发率
+    if spr < 1 and avg_browse >= 100_000:
+        suggestions.append(uid_pick(uid, 'share_low', [
+            f'<b>转发率仍有空间</b>：篇均 {spr:.1f} 转发 vs {fmt_int(avg_browse)} 浏览偏低。建议在硬干货文末加一句"看到的朋友欢迎转给关注 X 主线的同好"，或把核心观点做成可截图金句卡。',
+            f'<b>{spr:.1f} 转发/篇 vs {fmt_int(avg_browse)} 浏览</b>：内容质量没问题，但缺一个"让人想转"的钩子。试试金句加粗 + 文末 1 句"转给会用得上的人"。',
+        ]))
+
+    # WoW 回落
     if w19_pc > 0 and pc < w19_pc * 0.5:
-        suggestions.append(f'<b>本周产能回落明显</b>：W19 {w19_pc} 篇 → W20 {pc} 篇 / 跌 {round((w19_pc-pc)/w19_pc*100)}%，建议下周尽量稳回 W19 节奏，频率波动太大对算法推流不利。')
-    # Suggestion 7: time pattern shift
+        suggestions.append(f'<b>本周产能回落明显</b>：W19 {w19_pc} 篇 → W20 {pc} 篇 / 跌 {round((w19_pc-pc)/w19_pc*100)}%，建议下周回到 W19 节奏，频率波动太大对推流权重不利。')
+
+    # WoW 翻倍 → 加投
+    if wow_pos and pc >= 2:
+        suggestions.append(f'<b>本周已跑出增长</b>，建议趁热加 1 篇与"{esc(short_title(top_browse.get("title",""),12))}"同主题的延伸稿，把上升势头多续 1 周。')
+
+    # 凌晨/深夜发文
     if night >= pc * 0.5 and pc >= 3:
-        suggestions.append(f'<b>多数发布在深夜</b>，错过了早盘 / 午盘的黄金阅读窗口。建议挑 1–2 篇调整到 09:00–12:00 发布，可能带来更大初始浏览量。')
-    # Suggestion 8: stock concentration
-    if len(stock_set) <= 1 and pc >= 5:
-        suggestions.append(f'<b>选题集中度过高</b>：本周仅围绕"{esc(stock_set[0]) if stock_set else "单一标的"}"展开，<b>读者新鲜感会下降</b>。建议穿插 1–2 个跨主线标的（如港股 / 黄金 / 加密），保持选题密度。')
-    # Default fallback if list is short
+        suggestions.append(uid_pick(uid, 'night', [
+            f'<b>多数发布在深夜（{night}/{pc} 篇 0–6 点）</b>，错过了早盘/午盘黄金阅读窗口。建议挑 1–2 篇调到 09:00–12:00 发布。',
+            f'<b>本周 {night}/{pc} 篇在 0–6 点发出</b>：港美股圈这个时段读者基数小，调到早盘前后浏览能直接 ×2。',
+        ]))
+
+    # 长文无锚点
+    if avg_wc >= 1500 and lpr < 20 and pc >= 2:
+        suggestions.append(f'<b>长文需要"读得下去"的视觉锚点</b>：篇均 {avg_wc} 字但篇均 {lpr:.0f} 赞偏低，建议加 H3 小标题/数字编号/加粗金句，让快速翻阅者也能抓到重点。')
+
+    # 短评太短
+    if avg_wc < 300 and pc >= 4 and tb_views < 100_000:
+        suggestions.append(f'<b>短评偏多但浏览未起</b>：{avg_wc} 字篇均 + 单篇最高 {fmt_wan(tb_views)} 浏览，建议每周挑 1 篇做到 800–1200 字"中等深度"，给账号注入"重头戏"权重。')
+
+    # 高赞低转
+    if high_like_low_share:
+        suggestions.append(f'<b>高赞低转</b>（篇均 {lpr:.0f} 赞 / {spr:.1f} 转发）：读者认同您但没动力分享，可在文末加一句"如果对 X 主线感兴趣，欢迎转给同好"，把认同转为传播。')
+
+    # Fallback (only if list still short)
     if len(suggestions) < 2:
-        suggestions.append(f'<b>对齐市场主线</b>：本周热点为中美元首会面、美联储换届、半导体回调、港股IPO周。下周可挑一个您熟悉的角度切入，借势 + 信息增量是稳定流量的核心。')
+        suggestions.append(uid_pick(uid, 'fallback_macro', [
+            f'<b>对齐市场主线</b>：本周热点（中美元首会面、美联储换届、半导体回调、港股IPO周）下周仍会发酵，可挑 1 个您熟悉的角度切入。',
+            f'<b>下周可借势</b>：宏观叙事还在演化（联储/AI/半导体），从您熟悉的标的角度切一篇"我对 X 的判断没变"，是借势 + 信息增量的组合拳。',
+        ]))
     if len(suggestions) < 2:
-        suggestions.append(f'<b>固定栏目化</b>：把您最具差异化的一篇（如本周阅读冠军）做成每周固定栏目，让粉丝形成"周X必看"的预期，是把单篇流量沉淀为长期资产的最快路径。')
-    insight3_html = ''.join(f'<li>{s}</li>' for s in suggestions[:4])
+        suggestions.append(f'<b>下周建议</b>：固定一个"周X必出"的栏目锚点（如"周一盘前/周日复盘"），让粉丝从节奏开始记住您。')
+    insight3_html = ''.join(f'<li>{s}</li>' for s in suggestions[:3])
 
     return f'''
       <div class="cs2-insight">
