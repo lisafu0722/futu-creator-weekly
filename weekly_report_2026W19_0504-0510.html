@@ -7628,7 +7628,7 @@ function resort(){
           if(!p)return NodeFilter.FILTER_REJECT;
           if(SKIP_TAGS.has(p.tagName))return NodeFilter.FILTER_REJECT;
           if(p.closest('.cs2-pattern.editing'))return NodeFilter.FILTER_REJECT;
-          if(p.closest('.kol-edit-bar,.kol-fmt-bar,.kol-toast'))return NodeFilter.FILTER_REJECT;
+          if(p.closest('.kol-toast'))return NodeFilter.FILTER_REJECT;
           return NodeFilter.FILTER_ACCEPT;
         }
         return NodeFilter.FILTER_SKIP;
@@ -7640,7 +7640,7 @@ function resort(){
     }
     /* 属性槽 */
     root.querySelectorAll('[title],[placeholder],[alt],[aria-label]').forEach(el=>{
-      if(el.closest('.cs2-edit-area,.kol-edit-bar,.kol-fmt-bar'))return;
+      if(el.closest('.cs2-edit-area'))return;
       ATTRS_TO_CONVERT.forEach(a=>{
         const v=el.getAttribute(a);
         if(v&&v.trim())attrSlots.push({el,attr:a,orig:v});
