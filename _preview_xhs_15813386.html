@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>嘉哥爱自由 · W20 周报（小红书风格预览）</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',system-ui,sans-serif;
+    background:#f7f7f7;color:#222;line-height:1.55;
+    padding:32px 16px;min-height:100vh;
+  }
+  .wrap{max-width:780px;margin:0 auto;}
+  .preview-tag{display:inline-block;background:#fff0f3;color:#ff2442;font-size:11px;font-weight:600;padding:4px 10px;border-radius:10px;letter-spacing:.5px;margin-bottom:14px;}
+
+  /* ---- Header card ---- */
+  .xhs-card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.04);margin-bottom:14px;overflow:hidden;}
+  .xhs-hdr{padding:20px 24px;display:flex;align-items:center;gap:16px;border-bottom:1px solid #f5f5f5;}
+  .avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#ff2442 0%,#ff7a99 100%);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:700;flex-shrink:0;}
+  .hdr-info{flex:1;min-width:0;}
+  .hdr-name{font-size:18px;font-weight:600;color:#222;display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+  .cert-pill{display:inline-block;font-size:11px;background:#fff0f3;color:#ff2442;padding:2px 8px;border-radius:8px;font-weight:500;}
+  .hdr-meta{font-size:13px;color:#999;display:flex;gap:16px;}
+  .hdr-meta span{display:inline-flex;align-items:center;gap:4px;}
+  .week-badge{background:#222;color:#fff;font-size:12px;padding:6px 12px;border-radius:8px;font-weight:500;}
+
+  /* ---- KPI grid ---- */
+  .kpi-section{padding:18px 24px 22px;}
+  .section-title{font-size:14px;font-weight:600;color:#222;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+  .section-title .dot{width:3px;height:14px;background:#ff2442;border-radius:2px;}
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .kpi{background:#fafafa;border-radius:12px;padding:14px 12px;text-align:left;}
+  .kpi-label{font-size:12px;color:#999;margin-bottom:6px;}
+  .kpi-num{font-size:22px;font-weight:700;color:#222;line-height:1.1;letter-spacing:-.5px;}
+  .kpi-unit{font-size:13px;color:#999;font-weight:500;margin-left:2px;}
+  .kpi-trend{font-size:11px;margin-top:6px;display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:6px;font-weight:600;}
+  .kpi-trend.up{background:#fff0f3;color:#ff2442;}
+  .kpi-trend.down{background:#f0f9ff;color:#3b82f6;}
+  .kpi-trend.flat{background:#f5f5f5;color:#999;}
+
+  /* ---- Daily distribution ---- */
+  .daily-row{display:flex;justify-content:space-between;gap:6px;margin-top:10px;}
+  .daily-col{flex:1;text-align:center;}
+  .daily-bar{background:#f5f5f5;border-radius:6px;height:54px;position:relative;overflow:hidden;}
+  .daily-bar-fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#ff7a99 0%,#ff2442 100%);border-radius:6px 6px 0 0;}
+  .daily-num{font-size:11px;font-weight:600;color:#222;margin-top:5px;}
+  .daily-day{font-size:10px;color:#bbb;margin-top:2px;}
+
+  /* ---- Peaks ---- */
+  .peaks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .peak-card{background:#fafafa;border-radius:12px;padding:14px;border:1px solid #f5f5f5;}
+  .peak-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+  .peak-icon{font-size:14px;color:#999;font-weight:500;}
+  .peak-num{font-size:20px;font-weight:700;color:#ff2442;}
+  .peak-title{font-size:12px;color:#666;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+
+  /* ---- Top post ---- */
+  .top-post{background:linear-gradient(135deg,#fff5f7 0%,#fff 60%);border:1px solid #ffe0e8;border-radius:12px;padding:16px;}
+  .top-post-label{font-size:11px;font-weight:600;color:#ff2442;letter-spacing:1px;margin-bottom:6px;}
+  .top-post-title{font-size:15px;font-weight:600;color:#222;line-height:1.5;margin-bottom:10px;}
+  .top-post-stats{display:flex;gap:16px;font-size:12px;color:#666;flex-wrap:wrap;}
+  .top-post-stats b{color:#222;font-size:14px;}
+
+  /* ---- Tags / chips ---- */
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+  .chip{font-size:11px;background:#fafafa;color:#666;padding:5px 10px;border-radius:8px;border:1px solid #f0f0f0;}
+  .chip.hot{background:#fff0f3;color:#ff2442;border-color:#ffe0e8;}
+
+  /* ---- Insight blocks ---- */
+  .ins-tabs{display:flex;gap:8px;margin-bottom:12px;}
+  .ins-tab{font-size:12px;padding:6px 14px;border-radius:20px;background:#f5f5f5;color:#666;font-weight:500;cursor:pointer;}
+  .ins-tab.active{background:#222;color:#fff;}
+  .ins-body{font-size:13px;color:#444;line-height:1.7;}
+  .ins-list{list-style:none;}
+  .ins-list li{padding:12px 14px;background:#fafafa;border-radius:10px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start;}
+  .ins-list .num{flex-shrink:0;width:22px;height:22px;background:#ff2442;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+  .ins-list .num.gray{background:#222;}
+  .ins-list b{color:#222;font-weight:600;}
+  .ins-list em{font-style:normal;color:#ff2442;font-weight:600;}
+
+  /* ---- Footer ---- */
+  .xhs-footer{padding:16px 24px;display:flex;justify-content:space-between;align-items:center;background:#fafafa;font-size:12px;color:#999;}
+  .xhs-footer a{color:#ff2442;text-decoration:none;font-weight:500;}
+
+  /* ---- Compare note ---- */
+  .compare-note{background:#fff;border-radius:12px;padding:14px 18px;font-size:13px;color:#666;margin-top:18px;border-left:3px solid #ff2442;}
+  .compare-note b{color:#222;}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="preview-tag">🎨 PREVIEW · 小红书风格</span>
+
+  <!-- ============ Card ============ -->
+  <div class="xhs-card">
+
+    <!-- Header -->
+    <div class="xhs-hdr">
+      <div class="avatar">嘉</div>
+      <div class="hdr-info">
+        <div class="hdr-name">嘉哥爱自由</div>
+        <div class="hdr-meta">
+          <span>👥 9,259 粉丝</span>
+          <span>🆔 15813386</span>
+          <span>👤 lisafu</span>
+        </div>
+      </div>
+      <span class="week-badge">W20 · 5/11–5/17</span>
+    </div>
+
+    <!-- KPI -->
+    <div class="kpi-section">
+      <div class="section-title"><span class="dot"></span>本周表现</div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-label">📝 发文</div>
+          <div class="kpi-num">8<span class="kpi-unit">篇</span></div>
+          <span class="kpi-trend up">↑ 33%</span>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">👁 浏览</div>
+          <div class="kpi-num">879<span class="kpi-unit">万</span></div>
+          <span class="kpi-trend up">↑ 187%</span>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">💬 互动</div>
+          <div class="kpi-num">1,898</div>
+          <span class="kpi-trend up">↑ 92%</span>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">📅 活跃</div>
+          <div class="kpi-num">6<span class="kpi-unit">/7天</span></div>
+          <span class="kpi-trend flat">— 持平</span>
+        </div>
+      </div>
+
+      <!-- Daily mini chart -->
+      <div class="daily-row">
+        <div class="daily-col"><div class="daily-bar"><div class="daily-bar-fill" style="height:90%"></div></div><div class="daily-num">2</div><div class="daily-day">5/11</div></div>
+        <div class="daily-col"><div class="daily-bar"><div class="daily-bar-fill" style="height:100%"></div></div><div class="daily-num">3</div><div class="daily-day">5/12</div></div>
+        <div class="daily-col"><div class="daily-bar"><div class="daily-bar-fill" style="height:60%"></div></div><div class="daily-num">1</div><div class="daily-day">5/13</div></div>
+        <div class="daily-col"><div class="daily-bar"><div class="daily-bar-fill" style="height:60%"></div></div><div class="daily-num">1</div><div class="daily-day">5/14</div></div>
+        <div class="daily-col"><div class="daily-bar"><div class="daily-bar-fill" style="height:60%"></div></div><div class="daily-num">1</div><div class="daily-day">5/15</div></div>
+        <div class="daily-col"><div class="daily-bar"><div class="daily-bar-fill" style="height:60%"></div></div><div class="daily-num">1</div><div class="daily-day">5/16</div></div>
+        <div class="daily-col"><div class="daily-bar"><div class="daily-bar-fill" style="height:0%"></div></div><div class="daily-num">0</div><div class="daily-day">5/17</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Peaks ============ -->
+  <div class="xhs-card">
+    <div class="kpi-section">
+      <div class="section-title"><span class="dot"></span>本周高光</div>
+
+      <!-- Top post highlight -->
+      <div class="top-post">
+        <div class="top-post-label">🏆 单周浏览冠军</div>
+        <div class="top-post-title">今晚8点-9点，富途社区直播讲港股打新炒新，欢迎大家捧场~</div>
+        <div class="top-post-stats">
+          <span>👁 <b>241万</b></span>
+          <span>👍 <b>118</b></span>
+          <span>💬 <b>23</b></span>
+          <span>🔁 <b>20</b></span>
+          <span style="color:#bbb">·</span>
+          <span style="color:#999">5/12 16:07 · 744字</span>
+        </div>
+        <div class="chips">
+          <span class="chip hot">#港股打新</span>
+          <span class="chip">#直播预告</span>
+          <span class="chip">Rocket Lab</span>
+          <span class="chip">Circle</span>
+        </div>
+      </div>
+
+      <!-- 4 peaks grid -->
+      <div class="peaks-grid" style="margin-top:14px;">
+        <div class="peak-card">
+          <div class="peak-head"><span class="peak-icon">👍 点赞峰值</span><span class="peak-num">296</span></div>
+          <div class="peak-title">《港股新股牛市，点抽 点炒新股赢高收益？》</div>
+        </div>
+        <div class="peak-card">
+          <div class="peak-head"><span class="peak-icon">💬 评论峰值</span><span class="peak-num">396</span></div>
+          <div class="peak-title">《港股新股牛市，点抽 点炒新股赢高收益？》</div>
+        </div>
+        <div class="peak-card">
+          <div class="peak-head"><span class="peak-icon">🔁 转发峰值</span><span class="peak-num">34</span></div>
+          <div class="peak-title">《港股新股牛市，点抽 点炒新股赢高收益？》</div>
+        </div>
+        <div class="peak-card">
+          <div class="peak-head"><span class="peak-icon">🔥 篇均浏览</span><span class="peak-num">109万</span></div>
+          <div class="peak-title">8 篇 / 879万 总浏览，互动率 0.22%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 做得好的地方 ============ -->
+  <div class="xhs-card">
+    <div class="kpi-section">
+      <div class="section-title"><span class="dot"></span>做得好的地方</div>
+      <ul class="ins-list">
+        <li>
+          <span class="num">1</span>
+          <div><b>WoW 浏览翻倍级增长</b>：本周 <em>879 万</em> 浏览，对比上周大幅跃升 <em>+187%</em>。在圈内整体回调环境里跑出反向曲线，说明本周直播预告 + 新股议题选题精准踩中主线。</div>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <div><b>6/7 天高频在场</b>：除周日外每日有更新，粉丝形成"每天都在"的稳定预期，是浏览基础最稳的来源。</div>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <div><b>评论池活跃度顶级</b>：篇均 <em>84 评论</em>，单篇《港股新股牛市》396 条评论——读者不是路过、是真在意您说什么，社群粘性扎实。</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 下周建议 ============ -->
+  <div class="xhs-card">
+    <div class="kpi-section">
+      <div class="section-title"><span class="dot"></span>下周可以尝试的小优化</div>
+      <ul class="ins-list">
+        <li>
+          <span class="num gray">1</span>
+          <div><b>把"直播预告"升级为系列栏目</b>：本周《今晚8点-9点直播》单篇 <em>241万</em> 浏览证明这个角度极受欢迎，建议固定每周一次的「【嘉哥直播间】」前缀，把一次性流量沉淀为长期 IP。</div>
+        </li>
+        <li>
+          <span class="num gray">2</span>
+          <div><b>转发率仍有空间</b>：篇均 <em>18 转发</em> vs 篇均 <em>110 万</em> 浏览偏低。建议在硬干货文末加一句"看到的朋友欢迎转给关注港股新股的同好"，或把核心观点做成可截图金句卡。</div>
+        </li>
+        <li>
+          <span class="num gray">3</span>
+          <div><b>周日空窗可补一篇轻量复盘</b>：本周 5/17（周日）未更新，建议在空窗日补一篇"本周三大主线复盘"，强化"每周必看"的订阅心智。</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="xhs-card">
+    <div class="xhs-footer">
+      <span>富途牛牛圈 · 创作者周报 · W20</span>
+      <a href="#">查看完整数据 →</a>
+    </div>
+  </div>
+
+  <!-- Compare note -->
+  <div class="compare-note">
+    <b>设计说明</b>：参考小红书创作者中心 + 蒲公英后台风格。改动点：① KPI 改为四宫格大数字 + WoW 趋势 ② 单周冠军独立做高亮卡 ③ 4 个峰值改为 2×2 网格 ④ 优化建议改为编号列表 + 圆角灰底 ⑤ 主色：小红书红 #ff2442 + 中性灰 ⑥ 字体 PingFang SC，圆角 12-16px，阴影 0 4px 24px rgba(0,0,0,.04)。
+  </div>
+</div>
+</body>
+</html>
